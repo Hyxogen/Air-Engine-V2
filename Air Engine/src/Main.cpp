@@ -26,15 +26,24 @@ int main() {
 
 	VertexArray* vertexArray = new VertexArray(std::move(vertices));
 	SimpleRenderer* renderer = new SimpleRenderer();
+
+	//std::cout << "1" << std::endl;
 	
 	while (!window->shouldClose()) {
-		glClear(GL_COLOR_BUFFER_BIT);
-		renderer->prepareRender();
+		//std::cout << "2" << std::endl;
 
-		renderer->render(*vertexArray);
+		glClear(GL_COLOR_BUFFER_BIT);
+		//std::cout << "3" << std::endl;
+
+		renderer->prepareRender();
+		//std::cout << "4" << std::endl;
+
+		renderer->render(vertexArray);
+		//std::cout << "5" << std::endl;
+
 	}
 
-	vertexArray->UnBind();
+	vertexArray->unBind();
 
 	delete vertexArray;
 	delete renderer;

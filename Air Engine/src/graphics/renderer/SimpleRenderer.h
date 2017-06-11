@@ -12,7 +12,7 @@ namespace engine {
 
 			void prepareRender() const;
 
-			void render(const buffer::VertexArray& vao) const;
+			void render(const buffer::VertexArray* vao) const;
 		};
 
 } }

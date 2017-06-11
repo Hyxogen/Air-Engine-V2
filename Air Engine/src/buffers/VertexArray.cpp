@@ -26,11 +26,11 @@ namespace engine {
 			glDeleteVertexArrays(1, &VAO);
 		}
 
-		void VertexArray::Bind() const {
+		void VertexArray::bind() const {
 			glBindVertexArray(VAO);
 		}
 
-		void VertexArray::UnBind() const {
+		void VertexArray::unBind() const {
 			glBindVertexArray(0);
 		}
 	}

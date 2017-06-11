@@ -11,13 +11,13 @@ namespace engine {
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		}
 
-		void SimpleRenderer::render(const buffer::VertexArray& vertexArray) const {
-			vertexArray.Bind();
+		void SimpleRenderer::render(const buffer::VertexArray* vertexArray) const {
+			glBindVertexArray(vertexArray->getVertexID());
 
 			glEnableVertexAttribArray(0);
 			glDrawArrays(GL_TRIANGLES, 0, 6);
 			glDisableVertexAttribArray(0);
 
-			vertexArray.UnBind();
+			glBindVertexArray(0);
 		}
 } }

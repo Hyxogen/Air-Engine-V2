@@ -17,11 +17,11 @@ namespace engine {
 
 			~VertexArray();
 
-			void Bind() const;
+			void bind() const;
 			
-			void UnBind() const;
+			void unBind() const;
 
-			inline const GLuint* getVertexID() const { return &VAO; }
+			inline const GLuint getVertexID() const { return VAO; }
 
 			inline const std::vector<float>& getData() const { return mData; }
 
