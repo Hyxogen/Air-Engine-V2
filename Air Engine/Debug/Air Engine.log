@@ -1,5 +1,7 @@
-﻿  SimpleRenderer.cpp
-  Main.cpp
-  Generating Code...
+﻿  File.cpp
+g:\onedrive\documenten\visual studio 2017\projects\air engine\air engine\src\io\file.cpp(21): warning C4244: 'initializing': conversion from 'std::streamoff' to 'unsigned int', possible loss of data
+g:\onedrive\documenten\visual studio 2017\projects\air engine\air engine\src\io\file.cpp(22): warning C4244: 'argument': conversion from 'std::streamoff' to 'int', possible loss of data
+g:\onedrive\documenten\visual studio 2017\projects\air engine\air engine\src\io\file.cpp(38): warning C4172: returning address of local variable or temporary: out
+g:\onedrive\documenten\visual studio 2017\projects\air engine\air engine\src\io\file.cpp(66): warning C4172: returning address of local variable or temporary: buffer
   Air Engine.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Debug\Air Engine.exe
   Air Engine.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Debug\Air Engine.pdb (Partial PDB)

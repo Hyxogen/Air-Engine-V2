@@ -3,12 +3,14 @@
 #include "graphics/Window.h"
 #include "buffers\VertexArray.h"
 #include "graphics\renderer\SimpleRenderer.h"
+#include "io\File.h"
 
 int main() {
 	using namespace engine;
 	using namespace graphics;
 	using namespace buffer;
 	using namespace renderer;
+	using namespace io;
 
 	Window* window = new Window("Engine", 800, 600);
 
@@ -18,29 +20,32 @@ int main() {
 	}
 	glClearColor(0.0f, 0.5f, 0.5f, 1.0f);
 
+	File file("G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Test fileeee.txt");
+	file.createFile();
+	bool exists = file.exists();
+	long long size = file.file_size();
+	std::vector<std::string> lines = file.readFileLines();
+	const char* chars = file.readFile();
+
 	std::vector<float> vertices = {
 		-0.5f, -0.5f, 0.0f,
 		0.5f, -0.5f, 0.0f,
 		0.0f,  0.5f, 0.0f
 	};
 
+	file.close();
+	delete[] chars;
+
 	VertexArray* vertexArray = new VertexArray(std::move(vertices));
 	SimpleRenderer* renderer = new SimpleRenderer();
 
-	//std::cout << "1" << std::endl;
-	
-	while (!window->shouldClose()) {
-		//std::cout << "2" << std::endl;
-
+	while (!window->shouldClose()) {	
 		glClear(GL_COLOR_BUFFER_BIT);
-		//std::cout << "3" << std::endl;
-
+		
 		renderer->prepareRender();
-		//std::cout << "4" << std::endl;
-
+		
 		renderer->render(vertexArray);
-		//std::cout << "5" << std::endl;
-
+		window->Update();
 	}
 
 	vertexArray->unBind();
@@ -49,6 +54,6 @@ int main() {
 	delete renderer;
 	delete window;
 	
-
+	file.close();
 	return 0;
 }
