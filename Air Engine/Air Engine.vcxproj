@@ -120,11 +120,13 @@
     <ClCompile Include="..\Dependencies\GLAD\src\glad.c" />
     <ClCompile Include="src\buffers\VertexArray.cpp" />
     <ClCompile Include="src\graphics\renderer\SimpleRenderer.cpp" />
+    <ClCompile Include="src\graphics\shader\Shader.cpp" />
     <ClCompile Include="src\graphics\Window.cpp" />
     <ClCompile Include="src\io\File.cpp" />
     <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\graphics\shader\Shader.h" />
     <ClInclude Include="src\graphics\Window.h" />
     <ClInclude Include="src\buffers\VertexArray.h" />
     <ClInclude Include="src\graphics\renderer\SimpleRenderer.h" />
