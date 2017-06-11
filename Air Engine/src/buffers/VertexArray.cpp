@@ -3,8 +3,8 @@
 namespace engine {
 	namespace buffer {
 
-		VertexArray::VertexArray(std::vector<float>&& data) {
-			std::swap(this->data, data);
+		VertexArray::VertexArray(std::vector<float>&& data) : mData() {
+			std::swap(mData, data);
 
 			glGenVertexArrays(1, &VAO);
 			glBindVertexArray(VAO);
@@ -12,7 +12,7 @@ namespace engine {
 			glGenBuffers(1, &VBO);
 			glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-			glBufferData(GL_ARRAY_BUFFER, this->data.size() * sizeof(GLfloat), this->data.data(), GL_STATIC_DRAW);
+			glBufferData(GL_ARRAY_BUFFER, mData.size() * sizeof(GLfloat), mData.data(), GL_STATIC_DRAW);
 			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void *) NULL);
 
 			glBindBuffer(GL_ARRAY_BUFFER, 0);

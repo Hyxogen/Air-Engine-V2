@@ -9,7 +9,7 @@ namespace engine {
 
 		class VertexArray {
 
-			std::vector<float> data;
+			std::vector<float> mData;
 			GLuint VAO = 0, VBO = 0, EBO = 0;
 
 		public:
@@ -23,7 +23,7 @@ namespace engine {
 
 			inline const GLuint* getVertexID() const { return &VAO; }
 
-			inline const std::vector<float> getData() const { return data; }
+			inline const std::vector<float>& getData() const { return mData; }
 
 		};
 
