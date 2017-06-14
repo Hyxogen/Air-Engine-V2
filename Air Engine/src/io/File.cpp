@@ -19,7 +19,8 @@ namespace engine {
 			mFile.seekg(0, std::ios::beg);
 
 			char* buffer = new char[length];
-			buffer[length] = 0;
+			memset(buffer, 0, length);
+			//buffer[length] = 0;
 
 			mFile.read(buffer, length);
 
@@ -74,6 +75,13 @@ namespace engine {
 			if (!mFile.is_open()) open(std::ios::in);
 			mFile.seekg(0, std::ios::end);
 			return mFile.tellg();
+		}
+
+		const char* File::readFile(const std::string& path) {
+			File file(path);
+			if (!file.exists()) return nullptr;
+
+			return file.readFile();
 		}
 	}
 }

@@ -38,5 +38,7 @@ namespace engine {
 			void write(const char* data);
 
 			long long file_size();
+
+			static const char* readFile(const std::string& path);
 		};
 } }

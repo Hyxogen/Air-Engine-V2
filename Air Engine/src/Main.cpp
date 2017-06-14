@@ -4,6 +4,7 @@
 #include "buffers\VertexArray.h"
 #include "graphics\renderer\SimpleRenderer.h"
 #include "io\File.h"
+#include "graphics\shader\Shader.h"
 
 int main() {
 	using namespace engine;
@@ -20,40 +21,35 @@ int main() {
 	}
 	glClearColor(0.0f, 0.5f, 0.5f, 1.0f);
 
-	File file("G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Test fileeee.txt");
-	file.createFile();
-	bool exists = file.exists();
-	long long size = file.file_size();
-	std::vector<std::string> lines = file.readFileLines();
-	const char* chars = file.readFile();
+	const char* vertexSource = File::readFile("res/shaders/SimpleVertexShader.vert");
+	const char* fragmentSource = File::readFile("res/shaders/SimpleFragmentShader.frag");
 
+	Shader* shader = new Shader(vertexSource, fragmentSource);
+	
 	std::vector<float> vertices = {
 		-0.5f, -0.5f, 0.0f,
 		0.5f, -0.5f, 0.0f,
 		0.0f,  0.5f, 0.0f
 	};
 
-	file.close();
-	delete[] chars;
-
 	VertexArray* vertexArray = new VertexArray(std::move(vertices));
 	SimpleRenderer* renderer = new SimpleRenderer();
 
+	shader->bind();
 	while (!window->shouldClose()) {	
-		glClear(GL_COLOR_BUFFER_BIT);
-		
 		renderer->prepareRender();
 		
 		renderer->render(vertexArray);
 		window->Update();
 	}
+	shader->unBind();
 
 	vertexArray->unBind();
 
 	delete vertexArray;
+	delete shader;
 	delete renderer;
 	delete window;
 	
-	file.close();
 	return 0;
 }

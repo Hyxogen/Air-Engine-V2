@@ -13,6 +13,7 @@ namespace engine {
 			glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 			glfwWindowHint(GLFW_RESIZABLE, 0);
 			glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+			//glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
 			this->window = glfwCreateWindow((int)width, (int)height, name, NULL, NULL);
 			if (window == NULL) {

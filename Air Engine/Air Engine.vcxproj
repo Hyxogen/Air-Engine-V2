@@ -132,6 +132,10 @@
     <ClInclude Include="src\graphics\renderer\SimpleRenderer.h" />
     <ClInclude Include="src\io\File.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="res\shaders\SimpleFragmentShader.frag" />
+    <None Include="res\shaders\SimpleVertexShader.vert" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
