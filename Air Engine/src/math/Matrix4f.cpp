@@ -14,7 +14,7 @@ namespace engine {
 			mElements[3 + 3 * 4] = diagonal;
 		}
 
-		Matrix4f identity() {
+		Matrix4f Matrix4f::identity() {
 			return Matrix4f(1.0f);
 		}
 
@@ -41,7 +41,7 @@ namespace engine {
 			return out;
 		}
 
-		Matrix4f rotation(const Vector3f& axis, float angle) {
+		Matrix4f Matrix4f::rotation(const Vector3f& axis, float angle) {
 			Matrix4f out(1.0f);
 
 			float s = sin(angle);
@@ -67,7 +67,8 @@ namespace engine {
 			return out;
 		}
 
-		Matrix4f perspective(float ar, float fov, float near, float far) {
+		/*
+		Matrix4f Matrix4f::perspective(float ar, float fov, float near, float far) {
 			Matrix4f out;
 			float tanHalf = tan(degToRad(fov) / 2.0f);
 
@@ -80,8 +81,23 @@ namespace engine {
 
 			return out;
 		}
+		*/
 
-		Matrix4f orthographic(float near, float far, float top, float bottom, float left, float right) {
+		Matrix4f Matrix4f::perspective(float ar, float fov, float near, float far) {
+			Matrix4f out(1.0f);
+			float tanHalf = (float)tanh(fov / 2.0f);
+
+			out.mElements[0 + 0 * 4] = 1.0f / (tanHalf * ar);
+			out.mElements[1 + 1 * 4] = 1.0f / tanHalf;
+			out.mElements[2 + 2 * 4] = -(far + near) / (far - near);
+			out.mElements[3 + 2 * 4] = -1.0f;
+			out.mElements[2 + 3 * 4] = -(2.0f * far * near) / (far - near);
+			out.mElements[3 + 3 * 4] = 0.0f;
+
+			return out;
+		}
+
+		Matrix4f Matrix4f::orthographic(float near, float far, float top, float bottom, float left, float right) {
 			Matrix4f out(1.0f);
 
 			out.mElements[0 + 0 * 4] = 2.0f / (right - left);
@@ -92,11 +108,13 @@ namespace engine {
 
 			out.mElements[2 + 2 * 4] = -2.0f / (far - near);
 			out.mElements[3 + 2 * 4] = -((far + near) / (far - near));
+			
+			out.mElements[3 + 3 * 4] = 1.0f;
 
 			return out;
 		}
 
-		Matrix4f translation(const Vector3f& position) {
+		Matrix4f Matrix4f::translation(const Vector3f& position) {
 			Matrix4f out(1.0f);
 
 			out.mElements[3 + 0 * 4] = position.x;
@@ -106,7 +124,7 @@ namespace engine {
 			return out;
 		}
 
-		Matrix4f scale(const Vector3f& scale) {
+		Matrix4f Matrix4f::scale(const Vector3f& scale) {
 			Matrix4f out(1.0f);
 
 			out.mElements[0 + 0 * 4] = scale.x;
@@ -116,7 +134,7 @@ namespace engine {
 			return out;
 		}
 
-		Matrix4f transformation(const Matrix4f& translation, const Matrix4f& rotation, const Matrix4f& scale) {
+		Matrix4f Matrix4f::transformation(const Matrix4f& translation, const Matrix4f& rotation, const Matrix4f& scale) {
 			return (scale.multiply(rotation)).multiply(translation);
 		}
 }}

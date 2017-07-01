@@ -5,6 +5,7 @@
 #include "graphics\renderer\SimpleRenderer.h"
 #include "io\File.h"
 #include "graphics\shader\Shader.h"
+#include "math\Math.h"
 
 int main() {
 	using namespace engine;
@@ -13,7 +14,7 @@ int main() {
 	using namespace renderer;
 	using namespace io;
 	using namespace math;
-	
+
 #ifdef MAT_MUL_DEBUG
 	Matrix4f matrix;
 	Matrix4f other;
@@ -24,7 +25,7 @@ int main() {
 	}
 
 	matrix.multiply(other);
-	
+
 	system("pause");
 #endif
 
@@ -40,9 +41,6 @@ int main() {
 	const char* fragmentSource = File::readFile("res/shaders/SimpleFragmentShader.glsl");
 
 	Shader* shader = new Shader(vertexSource, fragmentSource);
-	
-	shader->setMat4("projection", Matrix4f::orthographic(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f));
-	shader->setMat4("model", Matrix4f::identity());
 
 	std::vector<float> vertices = {
 		-0.5f, -0.5f, 0.0f,
@@ -54,9 +52,13 @@ int main() {
 	SimpleRenderer* renderer = new SimpleRenderer();
 
 	shader->bind();
-	while (!window->shouldClose()) {	
+	shader->setMat4("projection", Matrix4f::perspective(800.0f / 600.0f, 70.0f, 0.1f, 1000.0f));
+	//shader->setMat4("projection", Matrix4f::orthographic(0.1f, 500.0f, 2.0f, -2.0f, -2.0f, 1.0f));
+	//shader->setMat4("projection", Matrix4f::orthographic(0.1f, 100.0f, 600, 0.0f, 0.0f, 800.0f));
+	shader->setMat4("model", Matrix4f::translation(Vector3f(0.0f, 0.0f, 1.0f)));
+	while (!window->shouldClose()) {
 		renderer->prepareRender();
-		
+
 		renderer->render(vertexArray);
 		window->Update();
 	}
@@ -68,6 +70,6 @@ int main() {
 	delete shader;
 	delete renderer;
 	delete window;
-	
+
 	return 0;
 }
