@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\CCompilerTest.c">
+      <Filter>unit</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\code\Version.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\AssimpAPITest.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utBlendImportAreaLight.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utBlendImportMaterials.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utColladaExportCamera.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utColladaExportLight.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utFastAtof.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utFindDegenerates.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utFindInvalidData.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utFixInfacingNormals.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utGenNormals.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utImporter.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utImproveCacheLocality.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utIOSystem.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utIssues.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utJoinVertices.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utLimitBoneWeights.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utMaterialSystem.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utMatrix3x3.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utMatrix4x4.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utPretransformVertices.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utRemoveComments.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utRemoveComponent.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utRemoveRedundantMaterials.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utScenePreprocessor.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utSharedPPData.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utStringUtils.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utSortByPType.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utSplitLargeMeshes.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utTargetAnimation.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utTextureTransform.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utTriangulate.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utVertexTriangleAdjacency.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{38AFBA7A-B981-3336-B140-C5CA3DE1B2CC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="unit">
+      <UniqueIdentifier>{E41699AC-1F1B-336E-A712-6DE239BE9EA1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests">
+      <UniqueIdentifier>{9B11097A-58EA-38ED-BB18-0642329C7064}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,3 +1,18 @@
-﻿  Main.cpp
+﻿  glad.c
+g:\onedrive\documenten\visual studio 2017\projects\air engine\dependencies\glad\src\glad.c(737): warning C4090: 'function': different 'const' qualifiers
+  Vector4f.cpp
+  Vector3f.cpp
+  Vector2f.cpp
+  Matrix4f.cpp
+  Main.cpp
+  File.cpp
+g:\onedrive\documenten\visual studio 2017\projects\air engine\air engine\src\io\file.cpp(21): warning C4244: 'initializing': conversion from 'std::streamoff' to 'unsigned int', possible loss of data
+g:\onedrive\documenten\visual studio 2017\projects\air engine\air engine\src\io\file.cpp(22): warning C4244: 'argument': conversion from 'std::streamoff' to '::size_t', possible loss of data
+  Window.cpp
+  Shader.cpp
+  SimpleRenderer.cpp
+  VertexArray.cpp
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   Air Engine.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Debug\Air Engine.exe
   Air Engine.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Debug\Air Engine.pdb (Partial PDB)

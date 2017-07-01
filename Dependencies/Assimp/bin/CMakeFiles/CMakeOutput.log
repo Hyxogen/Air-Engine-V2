@@ -1,0 +1,452 @@
+The system is: Windows - 10.0.14393 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler:  
+Build flags: 
+Id flags: 
+
+The output was:
+0
+Microsoft (R) Build Engine version 15.1.1012.6693
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 1-7-2017 22:09:43.
+Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\3.7.1\CompilerIdC\CompilerIdC.vcxproj" on node 1 (default targets).
+PrepareForBuild:
+  Creating directory "Debug\".
+  Creating directory "Debug\CompilerIdC.tlog\".
+InitializeBuildStatus:
+  Creating "Debug\CompilerIdC.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+ClCompile:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\CL.exe /c /nologo /W0 /WX- /diagnostics:classic /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc141.pdb" /Gd /TC /analyze- /errorReport:queue CMakeCCompilerId.c
+  CMakeCCompilerId.c
+Link:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdC.lib" /MACHINE:X86 /SAFESEH Debug\CMakeCCompilerId.obj
+  CompilerIdC.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\3.7.1\CompilerIdC\.\CompilerIdC.exe
+PostBuildEvent:
+  for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+  :VCEnd
+  CMAKE_C_COMPILER=G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\cl.exe
+FinalizeBuildStatus:
+  Deleting file "Debug\CompilerIdC.tlog\unsuccessfulbuild".
+  Touching "Debug\CompilerIdC.tlog\CompilerIdC.lastbuildstate".
+Done Building Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\3.7.1\CompilerIdC\CompilerIdC.vcxproj" (default targets).
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:02.62
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+
+The C compiler identification is MSVC, found in "G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/3.7.1/CompilerIdC/CompilerIdC.exe"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler:  
+Build flags: 
+Id flags: 
+
+The output was:
+0
+Microsoft (R) Build Engine version 15.1.1012.6693
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 1-7-2017 22:09:46.
+Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\3.7.1\CompilerIdCXX\CompilerIdCXX.vcxproj" on node 1 (default targets).
+PrepareForBuild:
+  Creating directory "Debug\".
+  Creating directory "Debug\CompilerIdCXX.tlog\".
+InitializeBuildStatus:
+  Creating "Debug\CompilerIdCXX.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+ClCompile:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\CL.exe /c /nologo /W0 /WX- /diagnostics:classic /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue CMakeCXXCompilerId.cpp
+  CMakeCXXCompilerId.cpp
+Link:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdCXX.lib" /MACHINE:X86 /SAFESEH Debug\CMakeCXXCompilerId.obj
+  CompilerIdCXX.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\3.7.1\CompilerIdCXX\.\CompilerIdCXX.exe
+PostBuildEvent:
+  for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
+  :VCEnd
+  CMAKE_CXX_COMPILER=G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\cl.exe
+FinalizeBuildStatus:
+  Deleting file "Debug\CompilerIdCXX.tlog\unsuccessfulbuild".
+  Touching "Debug\CompilerIdCXX.tlog\CompilerIdCXX.lastbuildstate".
+Done Building Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\3.7.1\CompilerIdCXX\CompilerIdCXX.vcxproj" (default targets).
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.71
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+
+The CXX compiler identification is MSVC, found in "G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/3.7.1/CompilerIdCXX/CompilerIdCXX.exe"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"G:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_eea86.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+Microsoft (R) Build Engine version 15.1.1012.6693
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 1-7-2017 22:09:49.
+Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\cmTC_eea86.vcxproj" on node 1 (default targets).
+PrepareForBuild:
+  Creating directory "cmTC_eea86.dir\Debug\".
+  Creating directory "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\Debug\".
+  Creating directory "cmTC_eea86.dir\Debug\cmTC_eea86.tlog\".
+InitializeBuildStatus:
+  Creating "cmTC_eea86.dir\Debug\cmTC_eea86.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+ClCompile:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_eea86.dir\Debug\\" /Fd"cmTC_eea86.dir\Debug\vc141.pdb" /Gd /TC /analyze- /errorReport:queue "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\testCCompiler.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.10.25019 for x86
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_eea86.dir\Debug\\" /Fd"cmTC_eea86.dir\Debug\vc141.pdb" /Gd /TC /analyze- /errorReport:queue "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\testCCompiler.c"
+  testCCompiler.c
+  
+Link:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:"G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\Debug\cmTC_eea86.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/CMakeTmp/Debug/cmTC_eea86.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/CMakeTmp/Debug/cmTC_eea86.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_eea86.dir\Debug\testCCompiler.obj
+  cmTC_eea86.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\Debug\cmTC_eea86.exe
+FinalizeBuildStatus:
+  Deleting file "cmTC_eea86.dir\Debug\cmTC_eea86.tlog\unsuccessfulbuild".
+  Touching "cmTC_eea86.dir\Debug\cmTC_eea86.tlog\cmTC_eea86.lastbuildstate".
+Done Building Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\cmTC_eea86.vcxproj" (default targets).
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.93
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"G:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_82baf.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+Microsoft (R) Build Engine version 15.1.1012.6693
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 1-7-2017 22:09:51.
+Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\cmTC_82baf.vcxproj" on node 1 (default targets).
+PrepareForBuild:
+  Creating directory "cmTC_82baf.dir\Debug\".
+  Creating directory "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\Debug\".
+  Creating directory "cmTC_82baf.dir\Debug\cmTC_82baf.tlog\".
+InitializeBuildStatus:
+  Creating "cmTC_82baf.dir\Debug\cmTC_82baf.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+ClCompile:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_82baf.dir\Debug\\" /Fd"cmTC_82baf.dir\Debug\vc141.pdb" /Gd /TC /analyze- /errorReport:queue "G:\program files\CMake\share\cmake-3.7\Modules\CMakeCCompilerABI.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.10.25019 for x86
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_82baf.dir\Debug\\" /Fd"cmTC_82baf.dir\Debug\vc141.pdb" /Gd /TC /analyze- /errorReport:queue "G:\program files\CMake\share\cmake-3.7\Modules\CMakeCCompilerABI.c"
+  CMakeCCompilerABI.c
+  
+Link:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:"G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\Debug\cmTC_82baf.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/CMakeTmp/Debug/cmTC_82baf.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/CMakeTmp/Debug/cmTC_82baf.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_82baf.dir\Debug\CMakeCCompilerABI.obj
+  cmTC_82baf.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\Debug\cmTC_82baf.exe
+FinalizeBuildStatus:
+  Deleting file "cmTC_82baf.dir\Debug\cmTC_82baf.tlog\unsuccessfulbuild".
+  Touching "cmTC_82baf.dir\Debug\cmTC_82baf.tlog\cmTC_82baf.lastbuildstate".
+Done Building Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\cmTC_82baf.vcxproj" (default targets).
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.80
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"G:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_ad49a.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+Microsoft (R) Build Engine version 15.1.1012.6693
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 1-7-2017 22:09:53.
+Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\cmTC_ad49a.vcxproj" on node 1 (default targets).
+PrepareForBuild:
+  Creating directory "cmTC_ad49a.dir\Debug\".
+  Creating directory "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\Debug\".
+  Creating directory "cmTC_ad49a.dir\Debug\cmTC_ad49a.tlog\".
+InitializeBuildStatus:
+  Creating "cmTC_ad49a.dir\Debug\cmTC_ad49a.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+ClCompile:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_ad49a.dir\Debug\\" /Fd"cmTC_ad49a.dir\Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\testCXXCompiler.cxx"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.10.25019 for x86
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_ad49a.dir\Debug\\" /Fd"cmTC_ad49a.dir\Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\testCXXCompiler.cxx"
+  testCXXCompiler.cxx
+  
+Link:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:"G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\Debug\cmTC_ad49a.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/CMakeTmp/Debug/cmTC_ad49a.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/CMakeTmp/Debug/cmTC_ad49a.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_ad49a.dir\Debug\testCXXCompiler.obj
+  cmTC_ad49a.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\Debug\cmTC_ad49a.exe
+FinalizeBuildStatus:
+  Deleting file "cmTC_ad49a.dir\Debug\cmTC_ad49a.tlog\unsuccessfulbuild".
+  Touching "cmTC_ad49a.dir\Debug\cmTC_ad49a.tlog\cmTC_ad49a.lastbuildstate".
+Done Building Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\cmTC_ad49a.vcxproj" (default targets).
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.70
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"G:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_c5c7b.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+Microsoft (R) Build Engine version 15.1.1012.6693
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 1-7-2017 22:09:55.
+Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\cmTC_c5c7b.vcxproj" on node 1 (default targets).
+PrepareForBuild:
+  Creating directory "cmTC_c5c7b.dir\Debug\".
+  Creating directory "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\Debug\".
+  Creating directory "cmTC_c5c7b.dir\Debug\cmTC_c5c7b.tlog\".
+InitializeBuildStatus:
+  Creating "cmTC_c5c7b.dir\Debug\cmTC_c5c7b.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+ClCompile:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_c5c7b.dir\Debug\\" /Fd"cmTC_c5c7b.dir\Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "G:\program files\CMake\share\cmake-3.7\Modules\CMakeCXXCompilerABI.cpp"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.10.25019 for x86
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_c5c7b.dir\Debug\\" /Fd"cmTC_c5c7b.dir\Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "G:\program files\CMake\share\cmake-3.7\Modules\CMakeCXXCompilerABI.cpp"
+  CMakeCXXCompilerABI.cpp
+  
+Link:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:"G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\Debug\cmTC_c5c7b.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/CMakeTmp/Debug/cmTC_c5c7b.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/CMakeTmp/Debug/cmTC_c5c7b.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_c5c7b.dir\Debug\CMakeCXXCompilerABI.obj
+  cmTC_c5c7b.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\Debug\cmTC_c5c7b.exe
+FinalizeBuildStatus:
+  Deleting file "cmTC_c5c7b.dir\Debug\cmTC_c5c7b.tlog\unsuccessfulbuild".
+  Touching "cmTC_c5c7b.dir\Debug\cmTC_c5c7b.tlog\cmTC_c5c7b.lastbuildstate".
+Done Building Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\cmTC_c5c7b.vcxproj" (default targets).
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.63
+
+
+
+
+Detecting CXX [] compiler features compiled with the following output:
+Change Dir: G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"G:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_efd57.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+Microsoft (R) Build Engine version 15.1.1012.6693
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 1-7-2017 22:09:57.
+Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\cmTC_efd57.vcxproj" on node 1 (default targets).
+PrepareForBuild:
+  Creating directory "cmTC_efd57.dir\Debug\".
+  Creating directory "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\Debug\".
+  Creating directory "cmTC_efd57.dir\Debug\cmTC_efd57.tlog\".
+InitializeBuildStatus:
+  Creating "cmTC_efd57.dir\Debug\cmTC_efd57.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+ClCompile:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_efd57.dir\Debug\\" /Fd"cmTC_efd57.dir\Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\feature_tests.cxx"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.10.25019 for x86
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_efd57.dir\Debug\\" /Fd"cmTC_efd57.dir\Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\feature_tests.cxx"
+  feature_tests.cxx
+  
+Link:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:"G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\Debug\cmTC_efd57.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/CMakeTmp/Debug/cmTC_efd57.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/CMakeTmp/Debug/cmTC_efd57.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_efd57.dir\Debug\feature_tests.obj
+  cmTC_efd57.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\Debug\cmTC_efd57.exe
+FinalizeBuildStatus:
+  Deleting file "cmTC_efd57.dir\Debug\cmTC_efd57.tlog\unsuccessfulbuild".
+  Touching "cmTC_efd57.dir\Debug\cmTC_efd57.tlog\cmTC_efd57.lastbuildstate".
+Done Building Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\cmTC_efd57.vcxproj" (default targets).
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.75
+
+
+    Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"G:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_fabc2.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+Microsoft (R) Build Engine version 15.1.1012.6693
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 1-7-2017 22:10:00.
+Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\cmTC_fabc2.vcxproj" on node 1 (default targets).
+PrepareForBuild:
+  Creating directory "cmTC_fabc2.dir\Debug\".
+  Creating directory "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\Debug\".
+  Creating directory "cmTC_fabc2.dir\Debug\cmTC_fabc2.tlog\".
+InitializeBuildStatus:
+  Creating "cmTC_fabc2.dir\Debug\cmTC_fabc2.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+ClCompile:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_fabc2.dir\Debug\\" /Fd"cmTC_fabc2.dir\Debug\vc141.pdb" /Gd /TC /analyze- /errorReport:queue "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.10.25019 for x86
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_fabc2.dir\Debug\\" /Fd"cmTC_fabc2.dir\Debug\vc141.pdb" /Gd /TC /analyze- /errorReport:queue "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+  CheckIncludeFile.c
+  
+Link:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:"G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\Debug\cmTC_fabc2.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/CMakeTmp/Debug/cmTC_fabc2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/CMakeTmp/Debug/cmTC_fabc2.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_fabc2.dir\Debug\CheckIncludeFile.obj
+  cmTC_fabc2.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\Debug\cmTC_fabc2.exe
+FinalizeBuildStatus:
+  Deleting file "cmTC_fabc2.dir\Debug\cmTC_fabc2.tlog\unsuccessfulbuild".
+  Touching "cmTC_fabc2.dir\Debug\cmTC_fabc2.tlog\cmTC_fabc2.lastbuildstate".
+Done Building Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\cmTC_fabc2.vcxproj" (default targets).
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.65
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"G:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_9ff9c.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+Microsoft (R) Build Engine version 15.1.1012.6693
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 1-7-2017 22:10:02.
+Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\cmTC_9ff9c.vcxproj" on node 1 (default targets).
+PrepareForBuild:
+  Creating directory "cmTC_9ff9c.dir\Debug\".
+  Creating directory "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\Debug\".
+  Creating directory "cmTC_9ff9c.dir\Debug\cmTC_9ff9c.tlog\".
+InitializeBuildStatus:
+  Creating "cmTC_9ff9c.dir\Debug\cmTC_9ff9c.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+ClCompile:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_9ff9c.dir\Debug\\" /Fd"cmTC_9ff9c.dir\Debug\vc141.pdb" /Gd /TC /analyze- /errorReport:queue "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.10.25019 for x86
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_9ff9c.dir\Debug\\" /Fd"cmTC_9ff9c.dir\Debug\vc141.pdb" /Gd /TC /analyze- /errorReport:queue "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+  CheckIncludeFile.c
+  
+Link:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:"G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\Debug\cmTC_9ff9c.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/CMakeTmp/Debug/cmTC_9ff9c.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/CMakeTmp/Debug/cmTC_9ff9c.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_9ff9c.dir\Debug\CheckIncludeFile.obj
+  cmTC_9ff9c.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\Debug\cmTC_9ff9c.exe
+FinalizeBuildStatus:
+  Deleting file "cmTC_9ff9c.dir\Debug\cmTC_9ff9c.tlog\unsuccessfulbuild".
+  Touching "cmTC_9ff9c.dir\Debug\cmTC_9ff9c.tlog\cmTC_9ff9c.lastbuildstate".
+Done Building Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\cmTC_9ff9c.vcxproj" (default targets).
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.73
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"G:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_aa6bd.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+Microsoft (R) Build Engine version 15.1.1012.6693
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 1-7-2017 22:10:04.
+Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\cmTC_aa6bd.vcxproj" on node 1 (default targets).
+PrepareForBuild:
+  Creating directory "cmTC_aa6bd.dir\Debug\".
+  Creating directory "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\Debug\".
+  Creating directory "cmTC_aa6bd.dir\Debug\cmTC_aa6bd.tlog\".
+InitializeBuildStatus:
+  Creating "cmTC_aa6bd.dir\Debug\cmTC_aa6bd.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+ClCompile:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_aa6bd.dir\Debug\\" /Fd"cmTC_aa6bd.dir\Debug\vc141.pdb" /Gd /TC /analyze- /errorReport:queue "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.10.25019 for x86
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_aa6bd.dir\Debug\\" /Fd"cmTC_aa6bd.dir\Debug\vc141.pdb" /Gd /TC /analyze- /errorReport:queue "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+  CheckIncludeFile.c
+  
+Link:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:"G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\Debug\cmTC_aa6bd.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/CMakeTmp/Debug/cmTC_aa6bd.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/CMakeTmp/Debug/cmTC_aa6bd.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_aa6bd.dir\Debug\CheckIncludeFile.obj
+  cmTC_aa6bd.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\Debug\cmTC_aa6bd.exe
+FinalizeBuildStatus:
+  Deleting file "cmTC_aa6bd.dir\Debug\cmTC_aa6bd.tlog\unsuccessfulbuild".
+  Touching "cmTC_aa6bd.dir\Debug\cmTC_aa6bd.tlog\cmTC_aa6bd.lastbuildstate".
+Done Building Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CMakeTmp\cmTC_aa6bd.vcxproj" (default targets).
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.86
+
+

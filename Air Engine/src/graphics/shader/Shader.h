@@ -29,9 +29,9 @@ namespace engine {
 			void setMat4(const char* name, const math::Matrix4f& matrix);
 
 		private:
-			const GLuint& getUniformLocation(const char* name);
+			const GLuint getUniformLocation(const char* name);
 
-			const GLuint& compileShader(const char* source, GLenum type);
+			const GLuint compileShader(const char* source, GLenum type);
 		};
 
 } }

@@ -1,0 +1,44 @@
+﻿  Building Custom Rule G:/Downloads/assimp-3.3.1 (1)/assimp-3.3.1/test/CMakeLists.txt
+  CMake does not need to re-run because G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\CMakeFiles\generate.stamp is up-to-date.
+  CCompilerTest.c
+  Main.cpp
+  Version.cpp
+  AssimpAPITest.cpp
+  utBlendImportAreaLight.cpp
+  utBlendImportMaterials.cpp
+  utColladaExportCamera.cpp
+  utColladaExportLight.cpp
+  utFastAtof.cpp
+  utFindDegenerates.cpp
+  utFindInvalidData.cpp
+  utFixInfacingNormals.cpp
+  utGenNormals.cpp
+  utImporter.cpp
+  utImproveCacheLocality.cpp
+  utIOSystem.cpp
+  utIssues.cpp
+  utJoinVertices.cpp
+  utLimitBoneWeights.cpp
+  utMaterialSystem.cpp
+  utMatrix3x3.cpp
+  utMatrix4x4.cpp
+  utPretransformVertices.cpp
+  utRemoveComments.cpp
+  utRemoveComponent.cpp
+G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utRemoveComments.cpp(60): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.14393.0\ucrt\string.h(335): note: see declaration of 'strncpy'
+G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utRemoveComments.cpp(90): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.14393.0\ucrt\string.h(335): note: see declaration of 'strncpy'
+G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\test\unit\utPretransformVertices.cpp(68): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.14393.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+  utRemoveRedundantMaterials.cpp
+  utScenePreprocessor.cpp
+  utSharedPPData.cpp
+  utStringUtils.cpp
+  utSortByPType.cpp
+  utSplitLargeMeshes.cpp
+  utTargetAnimation.cpp
+  utTextureTransform.cpp
+  utTriangulate.cpp
+  utVertexTriangleAdjacency.cpp
+  unit.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\Release\unit.exe

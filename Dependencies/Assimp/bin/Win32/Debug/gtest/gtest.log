@@ -1,0 +1,14 @@
+﻿  Building Custom Rule G:/Downloads/assimp-3.3.1 (1)/assimp-3.3.1/test/CMakeLists.txt
+  CMake does not need to re-run because G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\CMakeFiles\generate.stamp is up-to-date.
+  Creating directories for 'gtest'
+  Performing download step (git clone) for 'gtest'
+  -- gtest download command succeeded.  See also G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/test/gtest/src/gtest-stamp/gtest-download-*.log
+  Performing update step for 'gtest'
+  Current branch master is up to date.
+  No patch step for 'gtest'
+  Performing configure step for 'gtest'
+  -- gtest configure command succeeded.  See also G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/test/gtest/src/gtest-stamp/gtest-configure-*.log
+  Performing build step for 'gtest'
+  -- gtest build command succeeded.  See also G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/test/gtest/src/gtest-stamp/gtest-build-*.log
+  No install step for 'gtest'
+  Completed 'gtest'

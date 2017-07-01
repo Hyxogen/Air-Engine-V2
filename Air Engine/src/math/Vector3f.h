@@ -20,7 +20,7 @@ namespace engine {
 
 			Vector3f normalize() const;
 
-			const float magnitude() const;
+			float magnitude() const;
 
 			Vector3f invert() const;
 

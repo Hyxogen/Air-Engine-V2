@@ -1,0 +1,26 @@
+# CMake generation dependency list for this directory.
+G:/Downloads/assimp-3.3.1 (1)/assimp-3.3.1/test/CMakeLists.txt
+G:/Downloads/assimp-3.3.1 (1)/assimp-3.3.1/cmake-modules/AddGTest.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/FindThreads.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/CheckLibraryExists.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/CheckSymbolExists.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/CheckIncludeFile.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/CheckIncludeFile.c.in
+G:/program files/CMake/share/cmake-3.7/Modules/FindPackageHandleStandardArgs.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/FindPackageMessage.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/CMakeParseArguments.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/ExternalProject.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/FindGit.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/FindPackageHandleStandardArgs.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/FindPackageMessage.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/CMakeParseArguments.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/FindGit.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/FindPackageHandleStandardArgs.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/FindPackageMessage.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/CMakeParseArguments.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/RepositoryInfo.txt.in
+G:/program files/CMake/share/cmake-3.7/Modules/FindGit.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/FindPackageHandleStandardArgs.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/FindPackageMessage.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/CMakeParseArguments.cmake
+G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/test/gtest/tmp/gtest-cfgcmd.txt.in

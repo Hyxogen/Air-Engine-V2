@@ -22,8 +22,8 @@ namespace engine {
 			return Vector2f(xx, yy);
 		}
 
-		const float Vector2f::magnitude() const {
-			return sqrt((x * x) + (y * y));
+		float Vector2f::magnitude() const {
+			return (float) sqrt((x * x) + (y * y));
 		}
 
 		Vector2f Vector2f::invert() const {

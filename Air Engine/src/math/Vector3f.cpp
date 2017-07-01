@@ -25,8 +25,8 @@ namespace engine {
 			return out;
 		}
 
-		const float Vector3f::magnitude() const {
-			return sqrt(((x * x) + (z * z)) + (z + z));
+		float Vector3f::magnitude() const {
+			return (float) sqrt(((x * x) + (z * z)) + (z + z));
 		}
 
 		Vector3f Vector3f::invert() const {

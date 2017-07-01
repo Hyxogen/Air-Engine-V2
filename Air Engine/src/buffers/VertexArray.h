@@ -10,10 +10,11 @@ namespace engine {
 		class VertexArray {
 
 			std::vector<float> mData;
+			std::vector<unsigned int> mIndices;
 			GLuint VAO = 0, VBO = 0, EBO = 0;
 
 		public:
-			VertexArray(std::vector<float>&& data);
+			VertexArray(std::vector<float>&& data, std::vector<unsigned int>&& indices);
 
 			~VertexArray();
 
@@ -25,6 +26,7 @@ namespace engine {
 
 			inline const std::vector<float>& getData() const { return mData; }
 
+			inline const std::vector<unsigned int>& getIndices() const { return mIndices; }
 		};
 
 	}

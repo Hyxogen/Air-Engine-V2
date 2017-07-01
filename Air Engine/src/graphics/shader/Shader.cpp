@@ -59,7 +59,7 @@ namespace engine {
 			glUniformMatrix4fv(getUniformLocation(name), 1, GL_FALSE, matrix.mElements);
 		}
 
-		const GLuint& Shader::getUniformLocation(const char* name) {
+		const GLuint Shader::getUniformLocation(const char* name) {
 			if (mCached.find(name) == mCached.end()) {
 				GLuint location = glGetUniformLocation(mProgramID, name);
 				mCached.emplace(name, location);
@@ -68,7 +68,7 @@ namespace engine {
 			return mCached[name];
 		}
 
-		const GLuint& Shader::compileShader(const char* source, GLenum type) {
+		const GLuint Shader::compileShader(const char* source, GLenum type) {
 			GLuint shaderID = glCreateShader(type);;
 
 			glShaderSource(shaderID, 1, &source, NULL);

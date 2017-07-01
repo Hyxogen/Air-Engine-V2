@@ -44,8 +44,8 @@ namespace engine {
 		Matrix4f Matrix4f::rotation(const Vector3f& axis, float angle) {
 			Matrix4f out(1.0f);
 
-			float s = sin(angle);
-			float c = cos(angle);
+			float s = (float) sin(degToRad(angle));
+			float c = (float) cos(degToRad(angle));
 			float omc = 1 - c;
 
 			float x = axis.x;
@@ -67,35 +67,39 @@ namespace engine {
 			return out;
 		}
 
-		/*
 		Matrix4f Matrix4f::perspective(float ar, float fov, float near, float far) {
 			Matrix4f out;
-			float tanHalf = tan(degToRad(fov) / 2.0f);
+			float tanHalf = (float) tan(degToRad(fov) / 2.0f);
 
 			out.mElements[0 + 0 * 4] = 1.0f / (ar * tanHalf);
 			out.mElements[1 + 1 * 4] = 1.0f / tanHalf;
-			out.mElements[2 + 2 * 4] = -((far + near) / (far - near));
-			out.mElements[3 + 2 * 4] = -((2 * far * near) / (far - near));
 
-			out.mElements[2 + 3 * 4] = -1.0f;
+			out.mElements[2 + 2 * 4] = -((far + near) / (far - near));
+			out.mElements[2 + 3 * 4] = -((2.0f * far * near) / (far - near));
+
+			out.mElements[3 + 2 * 4] = -1.0f;
 
 			return out;
 		}
-		*/
-
-		Matrix4f Matrix4f::perspective(float ar, float fov, float near, float far) {
+		
+		/*
+		Matrix4f Matrix4f::perspective(float aspect, float fov, float near, float far) {
 			Matrix4f out(1.0f);
-			float tanHalf = (float)tanh(fov / 2.0f);
+			//If not working use: tanh, instead of: tan
+			float tanHalf = (float)tan(fov / 2.0f);
 
-			out.mElements[0 + 0 * 4] = 1.0f / (tanHalf * ar);
+			out.mElements[0 + 0 * 4] = 1.0f / (tanHalf * aspect);
 			out.mElements[1 + 1 * 4] = 1.0f / tanHalf;
+
 			out.mElements[2 + 2 * 4] = -(far + near) / (far - near);
-			out.mElements[3 + 2 * 4] = -1.0f;
 			out.mElements[2 + 3 * 4] = -(2.0f * far * near) / (far - near);
+
+			out.mElements[3 + 2 * 4] = -1.0f;
 			out.mElements[3 + 3 * 4] = 0.0f;
 
 			return out;
 		}
+		*/
 
 		Matrix4f Matrix4f::orthographic(float near, float far, float top, float bottom, float left, float right) {
 			Matrix4f out(1.0f);
@@ -113,13 +117,14 @@ namespace engine {
 
 			return out;
 		}
+		
 
 		Matrix4f Matrix4f::translation(const Vector3f& position) {
 			Matrix4f out(1.0f);
 
-			out.mElements[3 + 0 * 4] = position.x;
-			out.mElements[3 + 1 * 4] = position.y;
-			out.mElements[3 + 2 * 4] = position.z;
+			out.mElements[0 + 3 * 4] = position.x;
+			out.mElements[1 + 3 * 4] = position.y;
+			out.mElements[2 + 3 * 4] = position.z;
 
 			return out;
 		}

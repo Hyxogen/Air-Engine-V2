@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGUID>{81E3A1AA-334A-38EE-A9FD-969A09306251}</ProjectGUID>
+    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>zlibstatic</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+    <PropertyGroup>
+      <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib\Debug\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">zlibstatic.dir\Debug\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">zlibstaticd</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.lib</TargetExt>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib\Release\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">zlibstatic.dir\Release\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">zlibstatic</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.lib</TargetExt>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib\MinSizeRel\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">zlibstatic.dir\MinSizeRel\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">zlibstatic</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.lib</TargetExt>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib\RelWithDebInfo\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">zlibstatic.dir\RelWithDebInfo\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">zlibstatic</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.lib</TargetExt>
+    </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\.;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\include;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsC</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;OPENDDL_NO_USE_CPP11;NO_FSEEKO;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;OPENDDL_NO_USE_CPP11;NO_FSEEKO;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\.;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\include;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\.;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\include;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions> /machine:X86 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\.;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\include;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OPENDDL_NO_USE_CPP11;NO_FSEEKO;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat></DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OPENDDL_NO_USE_CPP11;NO_FSEEKO;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\.;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\include;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\.;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\include;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions> /machine:X86 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\.;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\include;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OPENDDL_NO_USE_CPP11;NO_FSEEKO;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat></DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OPENDDL_NO_USE_CPP11;NO_FSEEKO;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\.;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\include;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\.;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\include;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions> /machine:X86 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\.;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\include;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OPENDDL_NO_USE_CPP11;NO_FSEEKO;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OPENDDL_NO_USE_CPP11;NO_FSEEKO;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\.;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\include;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\.;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\include;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions> /machine:X86 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule G:/Downloads/assimp-3.3.1 (1)/assimp-3.3.1/contrib/zlib/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"G:\program files\CMake\bin\cmake.exe" "-HG:/Downloads/assimp-3.3.1 (1)/assimp-3.3.1" "-BG:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin" --check-stamp-file "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib\CMakeFiles\generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">G:/Downloads/assimp-3.3.1 (1)/assimp-3.3.1/contrib/zlib/CMakeLists.txt;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\CMakeLists.txt;G:\program files\CMake\share\cmake-3.7\Modules\CheckTypeSize.cmake;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFile.cmake;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFileCXX.cmake;G:\program files\CMake\share\cmake-3.7\Modules\CheckFunctionExists.cmake;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFile.cmake;G:\program files\CMake\share\cmake-3.7\Modules\CheckCSourceCompiles.cmake;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFile.c.in;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFile.c.in;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFile.c.in;G:\program files\CMake\share\cmake-3.7\Modules\CheckTypeSize.c.in;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CheckTypeSize\OFF64_T.c;G:\program files\CMake\share\cmake-3.7\Modules\CheckFunctionExists.c;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFile.c.in;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\zlib.pc.cmakein;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\zconf.h.cmakein;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule G:/Downloads/assimp-3.3.1 (1)/assimp-3.3.1/contrib/zlib/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"G:\program files\CMake\bin\cmake.exe" "-HG:/Downloads/assimp-3.3.1 (1)/assimp-3.3.1" "-BG:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin" --check-stamp-file "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib\CMakeFiles\generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">G:/Downloads/assimp-3.3.1 (1)/assimp-3.3.1/contrib/zlib/CMakeLists.txt;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\CMakeLists.txt;G:\program files\CMake\share\cmake-3.7\Modules\CheckTypeSize.cmake;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFile.cmake;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFileCXX.cmake;G:\program files\CMake\share\cmake-3.7\Modules\CheckFunctionExists.cmake;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFile.cmake;G:\program files\CMake\share\cmake-3.7\Modules\CheckCSourceCompiles.cmake;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFile.c.in;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFile.c.in;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFile.c.in;G:\program files\CMake\share\cmake-3.7\Modules\CheckTypeSize.c.in;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CheckTypeSize\OFF64_T.c;G:\program files\CMake\share\cmake-3.7\Modules\CheckFunctionExists.c;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFile.c.in;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\zlib.pc.cmakein;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\zconf.h.cmakein;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule G:/Downloads/assimp-3.3.1 (1)/assimp-3.3.1/contrib/zlib/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+"G:\program files\CMake\bin\cmake.exe" "-HG:/Downloads/assimp-3.3.1 (1)/assimp-3.3.1" "-BG:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin" --check-stamp-file "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib\CMakeFiles\generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">G:/Downloads/assimp-3.3.1 (1)/assimp-3.3.1/contrib/zlib/CMakeLists.txt;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\CMakeLists.txt;G:\program files\CMake\share\cmake-3.7\Modules\CheckTypeSize.cmake;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFile.cmake;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFileCXX.cmake;G:\program files\CMake\share\cmake-3.7\Modules\CheckFunctionExists.cmake;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFile.cmake;G:\program files\CMake\share\cmake-3.7\Modules\CheckCSourceCompiles.cmake;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFile.c.in;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFile.c.in;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFile.c.in;G:\program files\CMake\share\cmake-3.7\Modules\CheckTypeSize.c.in;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CheckTypeSize\OFF64_T.c;G:\program files\CMake\share\cmake-3.7\Modules\CheckFunctionExists.c;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFile.c.in;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\zlib.pc.cmakein;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\zconf.h.cmakein;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule G:/Downloads/assimp-3.3.1 (1)/assimp-3.3.1/contrib/zlib/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+"G:\program files\CMake\bin\cmake.exe" "-HG:/Downloads/assimp-3.3.1 (1)/assimp-3.3.1" "-BG:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin" --check-stamp-file "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib\CMakeFiles\generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">G:/Downloads/assimp-3.3.1 (1)/assimp-3.3.1/contrib/zlib/CMakeLists.txt;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\CMakeLists.txt;G:\program files\CMake\share\cmake-3.7\Modules\CheckTypeSize.cmake;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFile.cmake;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFileCXX.cmake;G:\program files\CMake\share\cmake-3.7\Modules\CheckFunctionExists.cmake;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFile.cmake;G:\program files\CMake\share\cmake-3.7\Modules\CheckCSourceCompiles.cmake;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFile.c.in;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFile.c.in;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFile.c.in;G:\program files\CMake\share\cmake-3.7\Modules\CheckTypeSize.c.in;G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\CMakeFiles\CheckTypeSize\OFF64_T.c;G:\program files\CMake\share\cmake-3.7\Modules\CheckFunctionExists.c;G:\program files\CMake\share\cmake-3.7\Modules\CheckIncludeFile.c.in;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\zlib.pc.cmakein;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\zconf.h.cmakein;G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib\zconf.h" />
+    <ClInclude Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\zlib.h" />
+    <ClInclude Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\crc32.h" />
+    <ClInclude Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\deflate.h" />
+    <ClInclude Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\gzguts.h" />
+    <ClInclude Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\inffast.h" />
+    <ClInclude Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\inffixed.h" />
+    <ClInclude Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\inflate.h" />
+    <ClInclude Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\inftrees.h" />
+    <ClInclude Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\trees.h" />
+    <ClInclude Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\zutil.h" />
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\adler32.c"  />
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\compress.c"  />
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\crc32.c"  />
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\deflate.c"  />
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\gzclose.c"  />
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\gzlib.c"  />
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\gzread.c"  />
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\gzwrite.c"  />
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\inflate.c"  />
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\infback.c"  />
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\inftrees.c"  />
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\inffast.c"  />
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\trees.c"  />
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\uncompr.c"  />
+    <ClCompile Include="G:\Downloads\assimp-3.3.1 (1)\assimp-3.3.1\contrib\zlib\zutil.c"  />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/ZERO_CHECK.vcxproj">
+      <Project>62C2E104-0654-33BA-B2BA-8E6523C163BA</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

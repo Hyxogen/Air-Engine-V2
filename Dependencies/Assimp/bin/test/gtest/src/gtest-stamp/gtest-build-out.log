@@ -1,0 +1,125 @@
+Microsoft (R) Build Engine version 15.1.1012.6693
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 1-7-2017 22:31:57.
+Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\ALL_BUILD.vcxproj" on node 1 (default targets).
+Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\ALL_BUILD.vcxproj" (1) is building "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\ZERO_CHECK.vcxproj" (2) on node 1 (default targets).
+PrepareForBuild:
+  Creating directory "Win32\Release\ZERO_CHECK\".
+  Creating directory "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\Release\".
+  Creating directory "Win32\Release\ZERO_CHECK\ZERO_CHECK.tlog\".
+InitializeBuildStatus:
+  Creating "Win32\Release\ZERO_CHECK\ZERO_CHECK.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+CustomBuild:
+  Checking Build System
+  CMake does not need to re-run because G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/test/gtest/src/gtest-build/CMakeFiles/generate.stamp is up-to-date.
+  CMake does not need to re-run because G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/test/gtest/src/gtest-build/googlemock/CMakeFiles/generate.stamp is up-to-date.
+  CMake does not need to re-run because G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/test/gtest/src/gtest-build/googlemock/gtest/CMakeFiles/generate.stamp is up-to-date.
+FinalizeBuildStatus:
+  Deleting file "Win32\Release\ZERO_CHECK\ZERO_CHECK.tlog\unsuccessfulbuild".
+  Touching "Win32\Release\ZERO_CHECK\ZERO_CHECK.tlog\ZERO_CHECK.lastbuildstate".
+Done Building Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\ZERO_CHECK.vcxproj" (default targets).
+Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\ALL_BUILD.vcxproj" (1) is building "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\googlemock\gmock.vcxproj" (3) on node 1 (default targets).
+PrepareForBuild:
+  Creating directory "gmock.dir\Release\".
+  Creating directory "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\googlemock\ReleaseLibs\".
+  Creating directory "gmock.dir\Release\gmock.tlog\".
+InitializeBuildStatus:
+  Creating "gmock.dir\Release\gmock.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+CustomBuild:
+  Building Custom Rule G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/test/gtest/src/gtest/googlemock/CMakeLists.txt
+  CMake does not need to re-run because G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\googlemock\CMakeFiles\generate.stamp is up-to-date.
+ClCompile:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\CL.exe /c /I"G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest\googlemock\include" /I"G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest\googlemock" /I"G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest\googletest\include" /I"G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest\googletest" /Zi /nologo /W4 /WX /diagnostics:classic /O2 /Ob2 /Oy- /D WIN32 /D _WINDOWS /D NDEBUG /D WIN32 /D _WINDOWS /D _UNICODE /D UNICODE /D WIN32 /D _WIN32 /D STRICT /D WIN32_LEAN_AND_MEAN /D GTEST_HAS_PTHREAD=0 /D _HAS_EXCEPTIONS=1 /D "CMAKE_INTDIR=\"Release\"" /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"gmock.dir\Release\\" /Fd"gmock.dir\Release\gmock.pdb" /Gd /TP /wd4251 /wd4275 /wd4702 /analyze- /errorReport:queue  -J "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest\googletest\src\gtest-all.cc" "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest\googlemock\src\gmock-all.cc"
+  gtest-all.cc
+  gmock-all.cc
+  Generating Code...
+Lib:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\Lib.exe /OUT:"G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\googlemock\ReleaseLibs\gmock.lib" /NOLOGO  /machine:X86 "gmock.dir\Release\gtest-all.obj"
+  "gmock.dir\Release\gmock-all.obj"
+  gmock.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\googlemock\ReleaseLibs\gmock.lib
+FinalizeBuildStatus:
+  Deleting file "gmock.dir\Release\gmock.tlog\unsuccessfulbuild".
+  Touching "gmock.dir\Release\gmock.tlog\gmock.lastbuildstate".
+Done Building Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\googlemock\gmock.vcxproj" (default targets).
+Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\ALL_BUILD.vcxproj" (1) is building "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\googlemock\gmock_main.vcxproj" (4) on node 1 (default targets).
+PrepareForBuild:
+  Creating directory "gmock_main.dir\Release\".
+  Creating directory "gmock_main.dir\Release\gmock_main.tlog\".
+InitializeBuildStatus:
+  Creating "gmock_main.dir\Release\gmock_main.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+CustomBuild:
+  Building Custom Rule G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/test/gtest/src/gtest/googlemock/CMakeLists.txt
+  CMake does not need to re-run because G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\googlemock\CMakeFiles\generate.stamp is up-to-date.
+ClCompile:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\CL.exe /c /I"G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest\googlemock\include" /I"G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest\googlemock" /I"G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest\googletest\include" /I"G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest\googletest" /Zi /nologo /W4 /WX /diagnostics:classic /O2 /Ob2 /Oy- /D WIN32 /D _WINDOWS /D NDEBUG /D WIN32 /D _WINDOWS /D _UNICODE /D UNICODE /D WIN32 /D _WIN32 /D STRICT /D WIN32_LEAN_AND_MEAN /D GTEST_HAS_PTHREAD=0 /D _HAS_EXCEPTIONS=1 /D "CMAKE_INTDIR=\"Release\"" /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"gmock_main.dir\Release\\" /Fd"gmock_main.dir\Release\gmock_main.pdb" /Gd /TP /wd4251 /wd4275 /wd4702 /analyze- /errorReport:queue  -J "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest\googletest\src\gtest-all.cc" "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest\googlemock\src\gmock-all.cc" "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest\googlemock\src\gmock_main.cc"
+  gtest-all.cc
+  gmock-all.cc
+  gmock_main.cc
+  Generating Code...
+Lib:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\Lib.exe /OUT:"G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\googlemock\ReleaseLibs\gmock_main.lib" /NOLOGO  /machine:X86 "gmock_main.dir\Release\gtest-all.obj"
+  "gmock_main.dir\Release\gmock-all.obj"
+  gmock_main.dir\Release\gmock_main.obj
+  gmock_main.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\googlemock\ReleaseLibs\gmock_main.lib
+FinalizeBuildStatus:
+  Deleting file "gmock_main.dir\Release\gmock_main.tlog\unsuccessfulbuild".
+  Touching "gmock_main.dir\Release\gmock_main.tlog\gmock_main.lastbuildstate".
+Done Building Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\googlemock\gmock_main.vcxproj" (default targets).
+Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\ALL_BUILD.vcxproj" (1) is building "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\googlemock\gtest\gtest.vcxproj" (5) on node 1 (default targets).
+PrepareForBuild:
+  Creating directory "gtest.dir\Release\".
+  Creating directory "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\googlemock\gtest\ReleaseLibs\".
+  Creating directory "gtest.dir\Release\gtest.tlog\".
+InitializeBuildStatus:
+  Creating "gtest.dir\Release\gtest.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+CustomBuild:
+  Building Custom Rule G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/test/gtest/src/gtest/googletest/CMakeLists.txt
+  CMake does not need to re-run because G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\googlemock\gtest\CMakeFiles\generate.stamp is up-to-date.
+ClCompile:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\CL.exe /c /I"G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest\googletest\include" /I"G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest\googletest" /Zi /nologo /W4 /WX /diagnostics:classic /O2 /Ob2 /Oy- /D WIN32 /D _WINDOWS /D NDEBUG /D WIN32 /D _WINDOWS /D _UNICODE /D UNICODE /D WIN32 /D _WIN32 /D STRICT /D WIN32_LEAN_AND_MEAN /D GTEST_HAS_PTHREAD=0 /D _HAS_EXCEPTIONS=1 /D "CMAKE_INTDIR=\"Release\"" /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"gtest.dir\Release\\" /Fd"gtest.dir\Release\gtest.pdb" /Gd /TP /wd4251 /wd4275 /wd4702 /analyze- /errorReport:queue  -J "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest\googletest\src\gtest-all.cc"
+  gtest-all.cc
+Lib:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\Lib.exe /OUT:"G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\googlemock\gtest\ReleaseLibs\gtest.lib" /NOLOGO  /machine:X86 "gtest.dir\Release\gtest-all.obj"
+  gtest.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\googlemock\gtest\ReleaseLibs\gtest.lib
+FinalizeBuildStatus:
+  Deleting file "gtest.dir\Release\gtest.tlog\unsuccessfulbuild".
+  Touching "gtest.dir\Release\gtest.tlog\gtest.lastbuildstate".
+Done Building Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\googlemock\gtest\gtest.vcxproj" (default targets).
+Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\ALL_BUILD.vcxproj" (1) is building "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\googlemock\gtest\gtest_main.vcxproj" (6) on node 1 (default targets).
+PrepareForBuild:
+  Creating directory "gtest_main.dir\Release\".
+  Creating directory "gtest_main.dir\Release\gtest_main.tlog\".
+InitializeBuildStatus:
+  Creating "gtest_main.dir\Release\gtest_main.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+CustomBuild:
+  Building Custom Rule G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/test/gtest/src/gtest/googletest/CMakeLists.txt
+  CMake does not need to re-run because G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\googlemock\gtest\CMakeFiles\generate.stamp is up-to-date.
+ClCompile:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\CL.exe /c /I"G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest\googletest\include" /I"G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest\googletest" /Zi /nologo /W4 /WX /diagnostics:classic /O2 /Ob2 /Oy- /D WIN32 /D _WINDOWS /D NDEBUG /D WIN32 /D _WINDOWS /D _UNICODE /D UNICODE /D WIN32 /D _WIN32 /D STRICT /D WIN32_LEAN_AND_MEAN /D GTEST_HAS_PTHREAD=0 /D _HAS_EXCEPTIONS=1 /D "CMAKE_INTDIR=\"Release\"" /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"gtest_main.dir\Release\\" /Fd"gtest_main.dir\Release\gtest_main.pdb" /Gd /TP /wd4251 /wd4275 /wd4702 /analyze- /errorReport:queue  -J "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest\googletest\src\gtest_main.cc"
+  gtest_main.cc
+Lib:
+  G:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\Lib.exe /OUT:"G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\googlemock\gtest\ReleaseLibs\gtest_main.lib" /NOLOGO  /machine:X86 gtest_main.dir\Release\gtest_main.obj
+  gtest_main.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\googlemock\gtest\ReleaseLibs\gtest_main.lib
+FinalizeBuildStatus:
+  Deleting file "gtest_main.dir\Release\gtest_main.tlog\unsuccessfulbuild".
+  Touching "gtest_main.dir\Release\gtest_main.tlog\gtest_main.lastbuildstate".
+Done Building Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\googlemock\gtest\gtest_main.vcxproj" (default targets).
+PrepareForBuild:
+  Creating directory "Win32\Release\ALL_BUILD\".
+  Creating directory "Win32\Release\ALL_BUILD\ALL_BUILD.tlog\".
+InitializeBuildStatus:
+  Creating "Win32\Release\ALL_BUILD\ALL_BUILD.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+CustomBuild:
+  Building Custom Rule G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/test/gtest/src/gtest/CMakeLists.txt
+  CMake does not need to re-run because G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\CMakeFiles\generate.stamp is up-to-date.
+FinalizeBuildStatus:
+  Deleting file "Win32\Release\ALL_BUILD\ALL_BUILD.tlog\unsuccessfulbuild".
+  Touching "Win32\Release\ALL_BUILD\ALL_BUILD.tlog\ALL_BUILD.lastbuildstate".
+Done Building Project "G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\test\gtest\src\gtest-build\ALL_BUILD.vcxproj" (default targets).
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:01:11.57

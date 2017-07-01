@@ -1,0 +1,55 @@
+
+{
+	"sources" : 
+	[
+		
+		{
+			"file" : "G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/test/CMakeFiles/gtest"
+		},
+		
+		{
+			"file" : "G:/Downloads/assimp-3.3.1 (1)/assimp-3.3.1/test/CMakeLists.txt"
+		},
+		
+		{
+			"file" : "G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/9906d81379ddf75d1fa2dc5c3ff44cc6/gtest.rule"
+		},
+		
+		{
+			"file" : "G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/f00dfded6d13c3135b552c03d2582cb3/gtest-complete.rule"
+		},
+		
+		{
+			"file" : "G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/1f32108a5d8975b0bd68bd2d354683e7/gtest-install.rule"
+		},
+		
+		{
+			"file" : "G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/1f32108a5d8975b0bd68bd2d354683e7/gtest-mkdir.rule"
+		},
+		
+		{
+			"file" : "G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/1f32108a5d8975b0bd68bd2d354683e7/gtest-download.rule"
+		},
+		
+		{
+			"file" : "G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/1f32108a5d8975b0bd68bd2d354683e7/gtest-update.rule"
+		},
+		
+		{
+			"file" : "G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/1f32108a5d8975b0bd68bd2d354683e7/gtest-patch.rule"
+		},
+		
+		{
+			"file" : "G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/1f32108a5d8975b0bd68bd2d354683e7/gtest-configure.rule"
+		},
+		
+		{
+			"file" : "G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/1f32108a5d8975b0bd68bd2d354683e7/gtest-build.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : [ "gtest" ],
+		"name" : "gtest"
+	}
+}

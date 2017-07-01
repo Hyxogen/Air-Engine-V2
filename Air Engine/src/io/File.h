@@ -29,9 +29,9 @@ namespace engine {
 
 			const char* readFile();
 
-			const std::vector<std::string>& readFileLines();
+			const std::vector<std::string> readFileLines();
 
-			const std::string& readLine();
+			const std::string readLine();
 
 			void write(const std::string& data);
 

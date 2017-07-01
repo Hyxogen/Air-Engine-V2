@@ -1,0 +1,23 @@
+# CMake generation dependency list for this directory.
+G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/test/gtest/src/gtest/CMakeLists.txt
+G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/test/gtest/src/gtest-build/CMakeFiles/3.7.1/CMakeSystem.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/CMakeSystemSpecificInitialize.cmake
+G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/test/gtest/src/gtest-build/CMakeFiles/3.7.1/CMakeCCompiler.cmake
+G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/test/gtest/src/gtest-build/CMakeFiles/3.7.1/CMakeCXXCompiler.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/CMakeSystemSpecificInformation.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/CMakeGenericSystem.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/Platform/Windows.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/Platform/WindowsPaths.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/CMakeCInformation.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/CMakeLanguageInformation.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/Platform/Windows-MSVC-C.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/Platform/Windows-MSVC.cmake
+G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/test/gtest/src/gtest-build/CMakeFiles/3.7.1/CMakeRCCompiler.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/CMakeRCInformation.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/CMakeCommonLanguageInclude.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/CMakeCXXInformation.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/CMakeLanguageInformation.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/Compiler/MSVC-CXX.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/Platform/Windows-MSVC-CXX.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/Platform/Windows-MSVC.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/CMakeCommonLanguageInclude.cmake

@@ -43,20 +43,31 @@ int main() {
 	Shader* shader = new Shader(vertexSource, fragmentSource);
 
 	std::vector<float> vertices = {
-		-0.5f, -0.5f, 0.0f,
-		0.5f, -0.5f, 0.0f,
-		0.0f,  0.5f, 0.0f
+		0.5f,  0.5f, 0.0f,  // top right
+		0.5f, -0.5f, 0.0f,  // bottom right
+		-0.5f, -0.5f, 0.0f,  // bottom left
+		-0.5f,  0.5f, 0.0f
 	};
 
-	VertexArray* vertexArray = new VertexArray(std::move(vertices));
+	std::vector<unsigned int> indices = {
+		0, 1, 3,   // first triangle
+		1, 2, 3    // second triangle
+	};
+
+	VertexArray* vertexArray = new VertexArray(std::move(vertices), std::move(indices));
 	SimpleRenderer* renderer = new SimpleRenderer();
 
 	shader->bind();
-	shader->setMat4("projection", Matrix4f::perspective(800.0f / 600.0f, 70.0f, 0.1f, 1000.0f));
+	shader->setMat4("projection", Matrix4f::perspective(800.0f / 600.0f, 70.0f, 0.1f, 100.0f));
 	//shader->setMat4("projection", Matrix4f::orthographic(0.1f, 500.0f, 2.0f, -2.0f, -2.0f, 1.0f));
 	//shader->setMat4("projection", Matrix4f::orthographic(0.1f, 100.0f, 600, 0.0f, 0.0f, 800.0f));
-	shader->setMat4("model", Matrix4f::translation(Vector3f(0.0f, 0.0f, 1.0f)));
+
+	//z = -1 // object visible(partially)
+	float f = 0.0f;
 	while (!window->shouldClose()) {
+		f -= 0.01f;
+		std::cout << f << std::endl;
+		shader->setMat4("model", Matrix4f::translation(Vector3f(0.0f, 0.0f, f)));
 		renderer->prepareRender();
 
 		renderer->render(vertexArray);

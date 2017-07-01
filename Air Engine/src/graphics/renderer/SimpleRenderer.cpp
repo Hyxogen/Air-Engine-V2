@@ -15,7 +15,7 @@ namespace engine {
 			glBindVertexArray(vertexArray->getVertexID());
 
 			glEnableVertexAttribArray(0);
-			glDrawArrays(GL_TRIANGLES, 0, 6);
+			glDrawElements(GL_TRIANGLES, vertexArray->getIndices().size(), GL_UNSIGNED_INT, 0);
 			glDisableVertexAttribArray(0);
 
 			glBindVertexArray(0);

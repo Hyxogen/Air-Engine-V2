@@ -1,0 +1,18 @@
+﻿  Building Custom Rule G:/Downloads/assimp-3.3.1 (1)/assimp-3.3.1/contrib/zlib/CMakeLists.txt
+  CMake does not need to re-run because G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib\CMakeFiles\generate.stamp is up-to-date.
+  adler32.c
+  compress.c
+  crc32.c
+  deflate.c
+  gzclose.c
+  gzlib.c
+  gzread.c
+  gzwrite.c
+  inflate.c
+  infback.c
+  inftrees.c
+  inffast.c
+  trees.c
+  uncompr.c
+  zutil.c
+  zlibstatic.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Dependencies\Assimp\bin\contrib\zlib\Release\zlibstatic.lib

@@ -1,0 +1,17 @@
+# CMake generation dependency list for this directory.
+G:/Downloads/assimp-3.3.1 (1)/assimp-3.3.1/contrib/zlib/CMakeLists.txt
+G:/program files/CMake/share/cmake-3.7/Modules/CheckTypeSize.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/CheckIncludeFile.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/CheckIncludeFileCXX.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/CheckFunctionExists.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/CheckIncludeFile.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/CheckCSourceCompiles.cmake
+G:/program files/CMake/share/cmake-3.7/Modules/CheckIncludeFile.c.in
+G:/program files/CMake/share/cmake-3.7/Modules/CheckIncludeFile.c.in
+G:/program files/CMake/share/cmake-3.7/Modules/CheckIncludeFile.c.in
+G:/program files/CMake/share/cmake-3.7/Modules/CheckTypeSize.c.in
+G:/Onedrive/Documenten/Visual Studio 2017/Projects/Air Engine/Dependencies/Assimp/bin/CMakeFiles/CheckTypeSize/OFF64_T.c
+G:/program files/CMake/share/cmake-3.7/Modules/CheckFunctionExists.c
+G:/program files/CMake/share/cmake-3.7/Modules/CheckIncludeFile.c.in
+G:/Downloads/assimp-3.3.1 (1)/assimp-3.3.1/contrib/zlib/zlib.pc.cmakein
+G:/Downloads/assimp-3.3.1 (1)/assimp-3.3.1/contrib/zlib/zconf.h.cmakein

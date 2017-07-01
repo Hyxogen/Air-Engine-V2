@@ -27,7 +27,7 @@ namespace engine {
 			return buffer;
 		}
 
-		const std::vector<std::string>& File::readFileLines() {
+		const std::vector<std::string> File::readFileLines() {
 			if (!mFile.is_open()) open(std::ios::in);
 			std::vector<std::string> out;
 			mFile.seekg(0, std::ios::beg);
@@ -56,7 +56,7 @@ namespace engine {
 			stream.close();
 		}
 
-		const std::string& File::readLine() {
+		const std::string File::readLine() {
 			if (!mFile.is_open()) open(std::ios::in);
 			std::string buffer;
 			std::getline(mFile, buffer);
