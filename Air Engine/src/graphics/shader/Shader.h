@@ -2,8 +2,10 @@
 #include <glad\glad.h>
 #include <iostream>
 #include <unordered_map>
+#include "../../math/Math.h"
 
 namespace engine {
+	
 	namespace graphics {
 
 		class Shader {
@@ -23,6 +25,8 @@ namespace engine {
 			void setInt(const char* name, GLint value);
 
 			void setUInt(const char* name, GLuint value);
+
+			void setMat4(const char* name, const math::Matrix4f& matrix);
 
 		private:
 			const GLuint& getUniformLocation(const char* name);

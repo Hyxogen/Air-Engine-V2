@@ -124,6 +124,10 @@
     <ClCompile Include="src\graphics\Window.cpp" />
     <ClCompile Include="src\io\File.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\math\Matrix4f.cpp" />
+    <ClCompile Include="src\math\Vector2f.cpp" />
+    <ClCompile Include="src\math\Vector3f.cpp" />
+    <ClCompile Include="src\math\Vector4f.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\graphics\shader\Shader.h" />
@@ -131,10 +135,16 @@
     <ClInclude Include="src\buffers\VertexArray.h" />
     <ClInclude Include="src\graphics\renderer\SimpleRenderer.h" />
     <ClInclude Include="src\io\File.h" />
+    <ClInclude Include="src\math\Math.h" />
+    <ClInclude Include="src\math\Mathf.h" />
+    <ClInclude Include="src\math\Matrix4f.h" />
+    <ClInclude Include="src\math\Vector2f.h" />
+    <ClInclude Include="src\math\Vector3f.h" />
+    <ClInclude Include="src\math\Vector4f.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shaders\SimpleFragmentShader.frag" />
-    <None Include="res\shaders\SimpleVertexShader.vert" />
+    <None Include="res\shaders\SimpleFragmentShader.glsl" />
+    <None Include="res\shaders\SimpleVertexShader.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

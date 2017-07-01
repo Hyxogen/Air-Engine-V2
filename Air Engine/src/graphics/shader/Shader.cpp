@@ -55,6 +55,10 @@ namespace engine {
 			glUniform1ui(getUniformLocation(name), value);
 		}
 
+		void Shader::setMat4(const char* name, const math::Matrix4f& matrix) {
+			glUniformMatrix4fv(getUniformLocation(name), 16, GL_TRUE, matrix.mElements);
+		}
+
 		const GLuint& Shader::getUniformLocation(const char* name) {
 			if (mCached.find(name) == mCached.end()) {
 				GLuint location = glGetUniformLocation(mProgramID, name);
