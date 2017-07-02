@@ -76,13 +76,14 @@ int main() {
 	}
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
+	glEnable(GL_STENCIL_TEST);
+
 	glCullFace(GL_BACK);
 	glFrontFace(GL_CCW);
-
 	glClearColor(0.0f, 0.5f, 0.5f, 1.0f);
 
-	const char* phongVertexSource = File::readFile("res/shaders/AttenuationVertexShader.glsl");
-	const char* phongFragmentSource = File::readFile("res/shaders/AttenuationFragmentShader.glsl");
+	const char* phongVertexSource = File::readFile("res/shaders/lighting/AttenuationVertexShader.glsl");
+	const char* phongFragmentSource = File::readFile("res/shaders/lighting/AttenuationFragmentShader.glsl");
 
 	Shader* shader = new Shader(phongVertexSource, phongFragmentSource);
 	
@@ -97,7 +98,7 @@ int main() {
 	shader->setVec3("material.specular", Vector3f(1.0f, 1.0f, 1.0f));
 	shader->setFloat("material.shininess", 32.0f);
 	
-	shader->setVec3("light.position", Vector3f(0.0f, 2.0f, 0.0f));
+	shader->setVec3("light.position", Vector3f(1.2f, 1.0f, 1.0f));
 	shader->setVec3("light.ambient", Vector3f(1.0f, 1.0f, 1.0f));
 	shader->setVec3("light.diffuse", Vector3f(1.0f, 1.0f, 1.0f));
 	shader->setVec3("light.specular", Vector3f(1.0f, 1.0f, 1.0f));
@@ -105,7 +106,7 @@ int main() {
 	shader->setFloat("light.quadratic", 0.000007f);
 
 	Vector3f viewPos, lightPos(1.2f, 1.0f, 1.0f);
-	shader->setVec3("lightPos", lightPos);
+	//shader->setVec3("lightPos", lightPos);
 	float speed = 5.0f;
 	float y = 0.0f;
 	while (!window->shouldClose()) {
