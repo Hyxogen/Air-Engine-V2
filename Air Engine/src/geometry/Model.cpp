@@ -7,6 +7,13 @@ namespace engine {
 			loadModel(path);
 		}
 
+		Model::~Model() {
+			for (unsigned int i = 0; i < mMeshes.size(); i++)
+				delete mMeshes[i];
+			for (unsigned int i = 0; i < mLoaded_textures.size(); i++)
+				delete mLoaded_textures[i];
+		}
+
 		void Model::loadModel(std::string path) {
 			Assimp::Importer importer;
 
@@ -31,10 +38,10 @@ namespace engine {
 				processNode(node->mChildren[i], scene);
 		}
 
-		Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene) {
+		Mesh* Model::processMesh(aiMesh* mesh, const aiScene* scene) {
 			std::vector<Vertex> vertices;
 			std::vector<unsigned int> indices;
-			std::vector<Texture> textures;
+			std::vector<MeshTexture*> textures;
 
 			for (unsigned int i = 0; i < mesh->mNumVertices; i++) {
 				Vertex vertex;
@@ -72,37 +79,38 @@ namespace engine {
 			if (mesh->mMaterialIndex >= 0) {
 				aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
 
-				std::vector<Texture> diffuseMaps = getTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
+				std::vector<MeshTexture*> diffuseMaps = getTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
 				textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
 
-				std::vector<Texture> specularMaps = getTextures(material, aiTextureType_SPECULAR, "texture_specular");
+				std::vector<MeshTexture*> specularMaps = getTextures(material, aiTextureType_SPECULAR, "texture_specular");
 				textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
 			}
 
-			return Mesh(vertices, indices, textures);
+			return new Mesh(vertices, indices, textures);
 		}
 
-		std::vector<Texture> Model::getTextures(aiMaterial* material, aiTextureType type, std::string typeName) {
-			std::vector<Texture> textures;
+		std::vector<MeshTexture*> Model::getTextures(aiMaterial* material, aiTextureType type, std::string typeName) {
+			std::vector<MeshTexture*> textures;
 			
 			for (unsigned int i = 0; i < material->GetTextureCount(type); i++) {
 				aiString str;
 				material->GetTexture(type, i, &str);
 				bool skip = false;
 				for (unsigned int j = 0; j < mLoaded_textures.size(); j++) {
-					if (std::strcmp(mLoaded_textures[j].path.C_Str(), str.C_Str()) == 0) {
+					if (std::strcmp(mLoaded_textures[j]->path.C_Str(), str.C_Str()) == 0) {
 						textures.push_back(mLoaded_textures[j]);
 						skip = true;
 						break;
 					}
 				}
 				if (!skip) {
-					Texture texture;
+					MeshTexture* texture = new MeshTexture();
 
+					std::string path = mDirectory + "/" + str.C_Str();
 					//TODO add texture loading
-					texture.id = -1;
-					texture.type = typeName;
-					texture.path = str;
+					texture->texture = new graphics::Texture(path.c_str());
+					texture->type = typeName;
+					texture->path = str;
 					textures.push_back(texture);
 					mLoaded_textures.push_back(texture);
 				}
@@ -111,8 +119,8 @@ namespace engine {
 			return textures;
 		}
 
-		void Model::draw(graphics::Shader shader) const {
+		void Model::draw(graphics::Shader& shader) const {
 			for (unsigned int i = 0; i < mMeshes.size(); i++)
-				mMeshes[i].draw(shader);
+				mMeshes[i]->draw(shader);
 		}
 } }

@@ -3,13 +3,14 @@
 #include <assimp\Importer.hpp>
 #include <assimp\postprocess.h>
 #include "Mesh.h"
+#include "..\graphics\Texture.h"
 
 namespace engine {
 	namespace geometry {
 
 		class Model {
-			std::vector<Mesh> mMeshes;
-			std::vector<Texture> mLoaded_textures;
+			std::vector<Mesh*> mMeshes;
+			std::vector<MeshTexture*> mLoaded_textures;
 			std::string mDirectory;
 
 		public:
@@ -17,14 +18,14 @@ namespace engine {
 
 			~Model();
 
-			void draw(graphics::Shader shader) const;
+			void draw(graphics::Shader& shader) const;
 		private:
 			void loadModel(std::string path);
 
 			void processNode(aiNode* node, const aiScene* scene);
 
-			Mesh processMesh(aiMesh* mesh, const aiScene* scene);
+			Mesh* processMesh(aiMesh* mesh, const aiScene* scene);
 			
-			std::vector<Texture> getTextures(aiMaterial* material, aiTextureType type, std::string typeName);
+			std::vector<MeshTexture*> getTextures(aiMaterial* material, aiTextureType type, std::string typeName);
 		};
 }}

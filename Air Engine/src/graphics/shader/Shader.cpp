@@ -31,8 +31,15 @@ namespace engine {
 				return;
 			}
 
+			loadUniforms();
+
 			glDeleteShader(mVertexShaderID);
 			glDeleteShader(mFragmentShaderID);
+		}
+
+		Shader::~Shader() {
+			//for (auto i = mCached.begin(); i != mCached.end(); i++)
+			//	delete i->first;
 		}
 
 		void Shader::bind() {
@@ -59,13 +66,42 @@ namespace engine {
 			glUniformMatrix4fv(getUniformLocation(name), 1, GL_FALSE, matrix.mElements);
 		}
 
-		const GLuint Shader::getUniformLocation(const char* name) {
+#ifdef LEGACY_UNIFORM
+		GLint Shader::getUniformLocation(std::string name) {
 			if (mCached.find(name) == mCached.end()) {
-				GLuint location = glGetUniformLocation(mProgramID, name);
+				GLint location = glGetUniformLocation(mProgramID, name.c_str());
 				mCached.emplace(name, location);
 				return location;
 			}
 			return mCached[name];
+		}
+#endif
+
+		GLint Shader::getUniformLocation(std::string name) {
+			if (mCached.find(name) == mCached.end())
+				return -1;
+			return mCached[name];
+		}
+
+		void Shader::loadUniforms() {
+			std::vector<char> stringbuffer;
+			int uniformCount, maxNameLength;
+
+			glGetProgramiv(mProgramID, GL_ACTIVE_UNIFORMS, &uniformCount);
+			glGetProgramiv(mProgramID, GL_ACTIVE_UNIFORM_MAX_LENGTH, &maxNameLength);
+			stringbuffer.resize(maxNameLength, 0);
+
+			for (int i = 0; i < uniformCount; i++) {
+				int nameLength = 0;
+				int size = 0;
+				GLenum type = 0;
+
+				glGetActiveUniform(mProgramID, i, maxNameLength, &nameLength, &size, &type, (GLchar*)stringbuffer.data());
+				std::string name = std::string(&stringbuffer[0]);
+
+				int location = glGetUniformLocation(mProgramID, name.c_str());
+				mCached[name] = location;
+			}
 		}
 
 		const GLuint Shader::compileShader(const char* source, GLenum type) {

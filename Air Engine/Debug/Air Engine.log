@@ -1,3 +1,9 @@
-﻿  Mesh.cpp
+﻿  InputHandler.cpp
+  Generating Code...
+  Compiling...
+  Window.cpp
+  Main.cpp
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   Air Engine.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Debug\Air Engine.exe
   Air Engine.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Debug\Air Engine.pdb (Partial PDB)

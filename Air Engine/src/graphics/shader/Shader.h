@@ -11,11 +11,13 @@ namespace engine {
 		class Shader {
 
 			GLuint mProgramID, mVertexShaderID, mFragmentShaderID;
-			std::unordered_map<const char*, GLuint> mCached;
+			std::unordered_map<std::string, GLint> mCached;
 
 		public:
 			Shader(const char* vertexShader, const char* fragmentShader);
 			
+			~Shader();
+
 			void bind();
 			
 			void unBind();
@@ -28,9 +30,10 @@ namespace engine {
 
 			void setMat4(const char* name, const math::Matrix4f& matrix);
 
+			GLint getUniformLocation(std::string name);
 		private:
-			const GLuint getUniformLocation(const char* name);
-
+			void loadUniforms();
+			
 			const GLuint compileShader(const char* source, GLenum type);
 		};
 

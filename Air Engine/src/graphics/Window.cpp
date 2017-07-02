@@ -11,33 +11,37 @@ namespace engine {
 
 			glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 			glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-			glfwWindowHint(GLFW_RESIZABLE, 0);
+			glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 			glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-			//glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+			//	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
-			this->window = glfwCreateWindow((int)width, (int)height, name, NULL, NULL);
-			if (window == NULL) {
+			this->mWindow = glfwCreateWindow((int)width, (int)height, name, NULL, NULL);
+			if (mWindow == NULL) {
 				std::cout << "Could not create window" << std::endl;
 				return;
 			}
+			glfwSetWindowUserPointer(mWindow, this);
 
 			glfwSwapInterval(1);
-			glfwMakeContextCurrent(window);
+			glfwMakeContextCurrent(mWindow);
 			glViewport(0, 0, width, height);
+
+			mInputHandler = new io::InputHandler(mWindow);
 		}
 
 		Window::~Window() {
-			glfwDestroyWindow(window);
+			delete mInputHandler;
+			glfwDestroyWindow(mWindow);
 			glfwTerminate();
 		}
 
 		void Window::Update() const {
-			glfwSwapBuffers(window);
+			glfwSwapBuffers(mWindow);
 			glfwPollEvents();
 		}
 
 		bool Window::shouldClose() const {
-			return glfwWindowShouldClose(window);
+			return glfwWindowShouldClose(mWindow);
 		}
 
 	}
