@@ -28,6 +28,8 @@ namespace engine {
 
 			void setUInt(const char* name, GLuint value);
 
+			void setVec3(const char* name, const math::Vector3f& vector);
+
 			void setMat4(const char* name, const math::Matrix4f& matrix);
 
 			GLint getUniformLocation(std::string name);

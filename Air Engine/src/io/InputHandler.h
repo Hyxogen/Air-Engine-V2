@@ -1,6 +1,6 @@
 #pragma once
 #include "..\graphics\Window.h"
-#define MAX_KEYS 128
+#define MAX_KEYS 300
 #define MAX_BUTTONS 3
 
 namespace engine {

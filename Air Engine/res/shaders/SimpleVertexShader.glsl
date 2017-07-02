@@ -12,7 +12,7 @@ out vec4 out_Color;
 out vec2 out_TexCoord;
 
 void main() {
-    gl_Position = projection * model * vec4(pos, 1.0);
+    gl_Position = projection * view * model * vec4(pos, 1.0);
     out_Color = vec4(0.0f, 0.0f, pos.z / 2.0, 1.0);
 	out_TexCoord = texCoord;
 }

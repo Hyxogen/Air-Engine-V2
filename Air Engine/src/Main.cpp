@@ -12,36 +12,36 @@
 #define CASE_STRING( CASE ) case CASE: return #CASE;
 
 const char* ErrorString(GLenum error) {
-    switch(error) {
-        CASE_STRING( GL_NO_ERROR );
-        CASE_STRING( GL_INVALID_ENUM );
-        CASE_STRING( GL_INVALID_VALUE );
-        CASE_STRING( GL_INVALID_OPERATION );
-        CASE_STRING( GL_INVALID_FRAMEBUFFER_OPERATION );
-        CASE_STRING( GL_OUT_OF_MEMORY );
+	switch (error) {
+		CASE_STRING(GL_NO_ERROR);
+		CASE_STRING(GL_INVALID_ENUM);
+		CASE_STRING(GL_INVALID_VALUE);
+		CASE_STRING(GL_INVALID_OPERATION);
+		CASE_STRING(GL_INVALID_FRAMEBUFFER_OPERATION);
+		CASE_STRING(GL_OUT_OF_MEMORY);
 
-        #ifndef FROSTCORE_MAC_OS
-        CASE_STRING( GL_STACK_OVERFLOW );
-        CASE_STRING( GL_STACK_UNDERFLOW );
-        #endif
+#ifndef FROSTCORE_MAC_OS
+		CASE_STRING(GL_STACK_OVERFLOW);
+		CASE_STRING(GL_STACK_UNDERFLOW);
+#endif
 
-        CASE_STRING( GL_FRAMEBUFFER_UNDEFINED );
-        CASE_STRING( GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT );
-        CASE_STRING( GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT );
+		CASE_STRING(GL_FRAMEBUFFER_UNDEFINED);
+		CASE_STRING(GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT);
+		CASE_STRING(GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT);
 
-        #ifdef FROST_GL
-        CASE_STRING( GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER );
-        CASE_STRING( GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER );
-        #endif
+#ifdef FROST_GL
+		CASE_STRING(GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER);
+		CASE_STRING(GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER);
+#endif
 
-        CASE_STRING( GL_FRAMEBUFFER_UNSUPPORTED );
-        CASE_STRING( GL_FRAMEBUFFER_INCOMPLETE_MULTISAMPLE );
+		CASE_STRING(GL_FRAMEBUFFER_UNSUPPORTED);
+		CASE_STRING(GL_FRAMEBUFFER_INCOMPLETE_MULTISAMPLE);
 
-        #ifdef FROST_GL
-        CASE_STRING( GL_FRAMEBUFFER_INCOMPLETE_LAYER_TARGETS );
-        #endif
-    }
-    return "";
+#ifdef FROST_GL
+		CASE_STRING(GL_FRAMEBUFFER_INCOMPLETE_LAYER_TARGETS);
+#endif
+	}
+	return "";
 }
 #undef CASE_STRING
 
@@ -68,68 +68,85 @@ int main() {
 	system("pause");
 #endif
 
-	Window* window = new Window("Engine", 800, 600);
+	Window* window = new Window("Engine", 1280, 720);
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
 		std::cout << "Failed to initialize GLAD" << std::endl;
 		return -1;
 	}
 	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
+	glFrontFace(GL_CCW);
+
 	glClearColor(0.0f, 0.5f, 0.5f, 1.0f);
 
-	const char* vertexSource = File::readFile("res/shaders/SimpleVertexShader.glsl");
-	const char* fragmentSource = File::readFile("res/shaders/SimpleFragmentShader.glsl");
+	const char* phongVertexSource = File::readFile("res/shaders/AttenuationVertexShader.glsl");
+	const char* phongFragmentSource = File::readFile("res/shaders/AttenuationFragmentShader.glsl");
 
-	Shader* shader = new Shader(vertexSource, fragmentSource);
-	graphics::Texture* texture = new graphics::Texture("res/textures/wall.jpg");
-	/*
-	std::vector<float> vertices = {
-		0.5f,  0.5f, 0.0f,  // top right
-		0.5f, -0.5f, 0.0f,  // bottom right
-		-0.5f, -0.5f, 0.0f,  // bottom left
-		-0.5f,  0.5f, 0.0f
-	};
+	Shader* shader = new Shader(phongVertexSource, phongFragmentSource);
+	
+	Model* model = new Model("res/models/sponza/sponza.obj");
 
-	std::vector<unsigned int> indices = {
-		0, 1, 3,   // first triangle
-		1, 2, 3    // second triangle
-	};
-
-	VertexArray* vertexArray = new VertexArray(std::move(vertices), std::move(indices));
-	*/
-
-	Model* model = new Model("res/models/nanosuit/nanosuit.obj");
 	SimpleRenderer* renderer = new SimpleRenderer();
 	InputHandler* input = window->getInputHandler();
 
 	shader->bind();
-	shader->setMat4("projection", Matrix4f::perspective(800.0f / 600.0f, 70.0f, 0.1f, 100.0f));
-	//shader->setMat4("projection", Matrix4f::orthographic(0.1f, 500.0f, 2.0f, -2.0f, -2.0f, 1.0f));
-	//shader->setMat4("projection", Matrix4f::orthographic(0.1f, 100.0f, 600, 0.0f, 0.0f, 800.0f));
+	shader->setMat4("projection", Matrix4f::perspective(1280.0f / 720.0f, 70.0f, 0.1f, 5000.0f));
 
-	//z = -1 // object visible(partially)
-	//glActiveTexture(GL_TEXTURE0);
-	//glBindTexture(GL_TEXTURE_2D, texture->getTextureID());
-	//shader->setInt("texture1", 0);
-	//float f = 0.0f;
-	shader->setMat4("model", Matrix4f::translation(Vector3f(0.0f, -9.0f, -15.0f)));
+	shader->setVec3("material.specular", Vector3f(1.0f, 1.0f, 1.0f));
+	shader->setFloat("material.shininess", 32.0f);
+	
+	shader->setVec3("light.position", Vector3f(0.0f, 2.0f, 0.0f));
+	shader->setVec3("light.ambient", Vector3f(1.0f, 1.0f, 1.0f));
+	shader->setVec3("light.diffuse", Vector3f(1.0f, 1.0f, 1.0f));
+	shader->setVec3("light.specular", Vector3f(1.0f, 1.0f, 1.0f));
+	shader->setFloat("light.linear", 0.0014f);
+	shader->setFloat("light.quadratic", 0.000007f);
+
+	Vector3f viewPos, lightPos(1.2f, 1.0f, 1.0f);
+	shader->setVec3("lightPos", lightPos);
+	float speed = 5.0f;
+	float y = 0.0f;
 	while (!window->shouldClose()) {
-	//	f -= 0.01f;
-		//std::cout << f << std::endl;
+		//	f -= 0.01f;
+			//std::cout << f << std::endl;
 		renderer->prepareRender();
-		
 
+		//shader->setMat4("model", Matrix4f::translation(Vector3f(0.0f, -9.0f, -15.0f)));
+		shader->setVec3("viewPos", viewPos);
+		shader->setMat4("model", Matrix4f::transformation(Matrix4f::translation(Vector3f(0.0f, 0.0f, -15.0f)),
+			Matrix4f::rotation(Vector3f(0.0f, 1.0f), y), Matrix4f::identity()));
+		shader->setMat4("view", Matrix4f::translation(viewPos));
 		model->draw(*shader);
 		//renderer->render(vertexArray);
+
+		if (input->keyDown(GLFW_KEY_W))
+			viewPos.z += speed;
+		if (input->keyDown(GLFW_KEY_S))
+			viewPos.z -= speed;
+		if (input->keyDown(GLFW_KEY_A))
+			viewPos.x += speed;
+		if (input->keyDown(GLFW_KEY_D))
+			viewPos.x -= speed;
+		if (input->keyDown(GLFW_KEY_E))
+			viewPos.y += speed;
+		if (input->keyDown(GLFW_KEY_Q))
+			viewPos.y -= speed;
+
+		if (input->keyDown(GLFW_KEY_RIGHT))
+			y += 2.0f;
+		if (input->keyDown(GLFW_KEY_LEFT))
+			y -= 2.0f;
+
+		if (input->keyDown(GLFW_KEY_ESCAPE))
+			break;
+
 		input->update();
 		window->Update();
 	}
 	shader->unBind();
-
-	//vertexArray->unBind();
-
-	//delete vertexArray;
-	delete texture;
+	
 	delete model;
 	delete shader;
 	delete renderer;

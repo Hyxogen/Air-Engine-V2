@@ -157,8 +157,16 @@
     <ClInclude Include="src\math\Vector4f.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\shaders\AmbientPhongFragmentShader.glsl" />
+    <None Include="res\shaders\AmbientPhongVertexShader.glsl" />
+    <None Include="res\shaders\AttenuationFragmentShader.glsl" />
+    <None Include="res\shaders\AttenuationVertexShader.glsl" />
+    <None Include="res\shaders\DirectionalVertexShader.glsl" />
     <None Include="res\shaders\SimpleFragmentShader.glsl" />
     <None Include="res\shaders\SimpleVertexShader.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="res\shaders\DirectionalFragmentShader.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

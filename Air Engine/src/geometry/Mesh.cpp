@@ -102,7 +102,7 @@ namespace engine {
 			//ss << 
 				number = ss.str();
 
-				std::string* combined = new std::string(name + number);
+				std::string* combined = new std::string("material." + name + number);
 
 				const char* ccombined = combined->c_str();
 

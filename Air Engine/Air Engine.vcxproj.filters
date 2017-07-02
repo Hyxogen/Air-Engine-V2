@@ -111,5 +111,13 @@
   <ItemGroup>
     <None Include="res\shaders\SimpleFragmentShader.glsl" />
     <None Include="res\shaders\SimpleVertexShader.glsl" />
+    <None Include="res\shaders\AmbientPhongFragmentShader.glsl" />
+    <None Include="res\shaders\AmbientPhongVertexShader.glsl" />
+    <None Include="res\shaders\DirectionalVertexShader.glsl" />
+    <None Include="res\shaders\AttenuationFragmentShader.glsl" />
+    <None Include="res\shaders\AttenuationVertexShader.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="res\shaders\DirectionalFragmentShader.glsl" />
   </ItemGroup>
 </Project>

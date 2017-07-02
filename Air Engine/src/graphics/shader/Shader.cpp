@@ -62,6 +62,10 @@ namespace engine {
 			glUniform1ui(getUniformLocation(name), value);
 		}
 
+		void Shader::setVec3(const char* name, const math::Vector3f& vector) {
+			glUniform3f(getUniformLocation(name), vector.x, vector.y, vector.z);
+		}
+
 		void Shader::setMat4(const char* name, const math::Matrix4f& matrix) {
 			glUniformMatrix4fv(getUniformLocation(name), 1, GL_FALSE, matrix.mElements);
 		}
