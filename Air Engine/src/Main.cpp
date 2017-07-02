@@ -6,6 +6,7 @@
 #include "io\File.h"
 #include "graphics\shader\Shader.h"
 #include "math\Math.h"
+#include "geometry\Model.h"
 
 int main() {
 	using namespace engine;
@@ -14,6 +15,7 @@ int main() {
 	using namespace renderer;
 	using namespace io;
 	using namespace math;
+	using namespace geometry;
 
 #ifdef MAT_MUL_DEBUG
 	Matrix4f matrix;
@@ -41,7 +43,7 @@ int main() {
 	const char* fragmentSource = File::readFile("res/shaders/SimpleFragmentShader.glsl");
 
 	Shader* shader = new Shader(vertexSource, fragmentSource);
-
+	/*
 	std::vector<float> vertices = {
 		0.5f,  0.5f, 0.0f,  // top right
 		0.5f, -0.5f, 0.0f,  // bottom right
@@ -55,6 +57,9 @@ int main() {
 	};
 
 	VertexArray* vertexArray = new VertexArray(std::move(vertices), std::move(indices));
+	*/
+
+	Model* model = new Model("res/models/nanosuit/nanosuit.obj");
 	SimpleRenderer* renderer = new SimpleRenderer();
 
 	shader->bind();
@@ -70,14 +75,15 @@ int main() {
 		shader->setMat4("model", Matrix4f::translation(Vector3f(0.0f, 0.0f, f)));
 		renderer->prepareRender();
 
-		renderer->render(vertexArray);
+		model->draw(*shader);
+		//renderer->render(vertexArray);
 		window->Update();
 	}
 	shader->unBind();
 
-	vertexArray->unBind();
+	//vertexArray->unBind();
 
-	delete vertexArray;
+	//delete vertexArray;
 	delete shader;
 	delete renderer;
 	delete window;

@@ -36,7 +36,7 @@ namespace engine {
 
 			Vector2f operator-();
 
-			Vector2f operator=(Vector2f&& vector);
+			//Vector2f operator=(Vector2f&& vector);
 
 			friend Vector2f operator+(Vector2f& a, Vector2f& b);
 
