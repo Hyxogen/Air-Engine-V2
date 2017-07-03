@@ -5,6 +5,7 @@ namespace engine {
 
 		RenderBuffer::RenderBuffer(GLenum storage, unsigned int width, unsigned int height) {
 			glGenRenderbuffers(1, &mRenderBufferID);
+
 			glBindRenderbuffer(GL_RENDERBUFFER, mRenderBufferID);
 
 			glRenderbufferStorage(GL_RENDERBUFFER, storage, width, height);

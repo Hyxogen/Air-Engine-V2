@@ -15,12 +15,14 @@ namespace engine {
 			glBindFramebuffer(GL_FRAMEBUFFER, mFrameBufferID);
 		}
 
+		//TODO add own types(targets etc)
 		void FrameBuffer::unBind() const {
 			glBindFramebuffer(GL_FRAMEBUFFER, 0);
 		}
-		//TODO add own types(targets etc)
+			
 		void FrameBuffer::addTextureBuffer(const graphics::Texture* texture, GLenum target) const {
 			bind();
+			//glDrawBuffer(target);
 			texture->bind();
 			glFramebufferTexture2D(GL_FRAMEBUFFER, target, GL_TEXTURE_2D, texture->getTextureID(), 0);
 		}
@@ -33,7 +35,6 @@ namespace engine {
 
 		bool FrameBuffer::isComplete() const {
 			bind();
-			std::cout << glCheckFramebufferStatus(GL_FRAMEBUFFER) << std::endl;
 			return glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE;
 		}
 } }

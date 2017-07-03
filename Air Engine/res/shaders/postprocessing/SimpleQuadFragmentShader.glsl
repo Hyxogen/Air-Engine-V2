@@ -21,17 +21,18 @@ void main() {
 		vec2(offset, -offset)
 	);
 
-	/*float kernel[9] = float[](
+	float kernel[9] = float[](
 		1.0 / 16.0, 2.0 / 16.0, 1.0 / 16.0,
 		2.0 / 16.0, 4.0 / 16.0, 2.0 / 16.0,
 		1.0 / 16.0, 2.0 / 16.0, 1.0 / 16.0
-	);*/
+	);
 
+	/*
 	float kernel[9] = float[](
 		1, 1, 1,
 		1, -8, 1,
 		1, 1, 1
-	);
+	);*/
 
 	vec3 sampleTex[9];
 	for (int i = 0; i < 9; i++) {

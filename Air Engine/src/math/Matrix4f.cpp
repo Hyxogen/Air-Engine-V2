@@ -158,5 +158,4 @@ namespace engine {
 		Matrix4f Matrix4f::transformation(const Matrix4f& translation, const Matrix4f& rotation, const Matrix4f& scale) {
 			return (scale.multiply(rotation)).multiply(translation);
 		}
-	}
-}
+} }

@@ -9,15 +9,6 @@
 #include "math\Math.h"
 #include "geometry\Model.h"
 #include "graphics\Texture.h"
-	/*
-	glGenFramebuffers(1, &framebuffer);
-	glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
-
-	glGenTextures(1, &texColorBuffer);
-	glBindTexture(GL_TEXTURE_2D, texColorBuffer);
-	
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, window->getWidth(), window->getHeight(), 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
-	*/
 
 int main() {
 	using namespace engine;
@@ -46,7 +37,7 @@ int main() {
 	//glStencilFunc(GL_EQUAL, 1, 0x00);
 	//glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
 	glClearColor(0.0f, 0.5f, 0.5f, 1.0f);
-
+	
 	const char* screenVertexSource = File::readFile("res/shaders/postprocessing/SimpleQuadVertexShader.glsl");
 	const char* screenFragmentSource = File::readFile("res/shaders/postprocessing/SimpleQuadFragmentShader.glsl");
 	
@@ -64,15 +55,11 @@ int main() {
 	colorBuffer->bind();
 	screenBuffer->addTextureBuffer(colorBuffer, GL_COLOR_ATTACHMENT0);
 	screenBuffer->bind();
-	
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 	renderBuffer->bind();
 	screenBuffer->addRenderBuffer(renderBuffer, GL_DEPTH_STENCIL_ATTACHMENT);
 
 	GLuint screenVAO, screenVBO;
-
 	if (!screenBuffer->isComplete())
 		std::cout << "ERROR: Framebuffer is incomplete!" << std::endl;
 	screenBuffer->unBind();
@@ -93,15 +80,17 @@ int main() {
 	screenShader->setInt("screenTexture", 0);
 	screenShader->unBind();
 
-	Model* model = new Model("res/models/nanosuit/nanosuit.obj");
+	Model* model = new Model("res/models/sponza/sponza.obj");
 	//Model* cube = new Model("res/models/plane/plane.obj");
 	Model* cube = new Model("res/models/cube/Cube.obj");
 
-	std::vector<float> screenQuad = {
+	std::vector<float> screenQuad = { // vertex attributes for a quad that fills the entire screen in Normalized Device Coordinates.
+									  // positions   // texCoords
 		-1.0f,  1.0f,  0.0f, 1.0f,
 		-1.0f, -1.0f,  0.0f, 0.0f,
 		1.0f, -1.0f,  1.0f, 0.0f,
 
+		-1.0f,  1.0f,  0.0f, 1.0f,
 		1.0f, -1.0f,  1.0f, 0.0f,
 		1.0f,  1.0f,  1.0f, 1.0f
 	};
@@ -162,8 +151,11 @@ int main() {
 	glBindBuffer(GL_ARRAY_BUFFER, screenVBO);
 
 	glBufferData(GL_ARRAY_BUFFER, screenQuad.size() * sizeof(float), (void*)&screenQuad[0], GL_STATIC_DRAW);
+
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 4, 0);
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)(2 * sizeof(float)));
 	
 	/*
 	glBindVertexArray(0);
@@ -219,6 +211,10 @@ int main() {
 	skyboxShader->setMat4("projection", projection);
 	skyboxShader->setInt("skybox", 0);
 
+	screenShader->bind();
+	screenShader->setInt("screenTexture", 0);
+	screenShader->unBind();
+
 	while (!window->shouldClose()) {
 		//glBindFramebuffer(GL_FRAMEBUFFER, 0);
 		glBindFramebuffer(GL_FRAMEBUFFER, screenBuffer->getFrameBufferID());
@@ -231,33 +227,33 @@ int main() {
 		normalShader->bind();
 
 		normalShader->setVec3("viewPos", viewPos);
-		normalShader->setMat4("model", Matrix4f::transformation(Matrix4f::translation(Vector3f(0.0f, 0.0f, -15.0f)),
-			Matrix4f::rotation(Vector3f(0.0f, 1.0f), y), Matrix4f::identity()));
+		normalShader->setMat4("model", Matrix4f::translation(Vector3f(0.0f, 0.0f, -15.0f)));
 
-		normalShader->setMat4("view", Matrix4f::translation(viewPos));
+		normalShader->setMat4("view", Matrix4f::rotation(Vector3f(0.0f, 1.0f), -y).multiply(Matrix4f::translation(viewPos)));
 
 		model->draw(*normalShader);
 		normalShader->unBind();
-		
+		/*
 		glDepthFunc(GL_LEQUAL);
 		skyboxShader->bind();
-		skyboxShader->setMat4("view", Matrix4f::translation(viewPos));
+		skyboxShader->setMat4("view", Matrix4f::rotation(Vector3f(0.0f, 1.0f), -y).multiply(Matrix4f::translation(viewPos)));
 		// skybox cube
 		glBindVertexArray(skyboxVAO);
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_CUBE_MAP, skybox->getTextureID());
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
 		glBindVertexArray(0);
 		glDepthFunc(GL_LESS);
-
+		*/
 
 		
 		//SKYBOX
+		
 		glDepthFunc(GL_LEQUAL);
 
 		skyboxShader->bind();
-		normalShader->setMat4("view", Matrix4f::translation(viewPos));
-		glBindTexture(GL_TEXTURE_CUBE_MAP, skybox->getTextureID());
+		skyboxShader->setMat4("view", Matrix4f::rotation(Vector3f(0.0f, 1.0f), -y));
+		glBindTexture(GL_TEXTURE_CUBE_MAP, skybox->getTextureID());		
 
 		cube->draw(*skyboxShader);
 		glDepthFunc(GL_LESS);
@@ -313,10 +309,11 @@ int main() {
 	delete cube;
 	delete skybox;
 	//delete windowPlane;
+	delete model;
 	delete colorBuffer;
 	delete renderBuffer;
+
 	delete screenBuffer;
-	delete model;
 	delete normalShader;
 	delete screenShader;
 	delete renderer;

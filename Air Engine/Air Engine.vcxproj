@@ -166,6 +166,8 @@
   <ItemGroup>
     <None Include="res\shaders\cubemap\CubemapFragmentShader.glsl" />
     <None Include="res\shaders\cubemap\CubemapVertexShader.glsl" />
+    <None Include="res\shaders\cubemap\ReflectiveFragmentShader.glsl" />
+    <None Include="res\shaders\cubemap\ReflectiveVertexShader.glsl" />
     <None Include="res\shaders\DepthFragmentShader.glsl" />
     <None Include="res\shaders\lighting\AmbientPhongFragmentShader.glsl" />
     <None Include="res\shaders\lighting\AmbientPhongVertexShader.glsl" />
