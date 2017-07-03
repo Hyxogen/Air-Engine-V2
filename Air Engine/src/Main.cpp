@@ -26,14 +26,14 @@ int main() {
 		return -1;
 	}
 	glEnable(GL_DEPTH_TEST);
-	//glEnable(GL_CULL_FACE);
+	glEnable(GL_CULL_FACE);
 	//glEnable(GL_STENCIL_TEST);
 	//glEnable(GL_BLEND);
 	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	//glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ZERO);
 
-	//glCullFace(GL_BACK);
-	//glFrontFace(GL_CCW);
+	glCullFace(GL_BACK);
+	glFrontFace(GL_CCW);
 	//glStencilFunc(GL_EQUAL, 1, 0x00);
 	//glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
 	glClearColor(0.0f, 0.5f, 0.5f, 1.0f);
@@ -59,7 +59,6 @@ int main() {
 	renderBuffer->bind();
 	screenBuffer->addRenderBuffer(renderBuffer, GL_DEPTH_STENCIL_ATTACHMENT);
 
-	GLuint screenVAO, screenVBO;
 	if (!screenBuffer->isComplete())
 		std::cout << "ERROR: Framebuffer is incomplete!" << std::endl;
 	screenBuffer->unBind();
@@ -145,21 +144,7 @@ int main() {
 	};
 	
 	VertexArray* screen = new VertexArray(std::move(screenQuad), std::move(screenIndices), 2);
-	/*
-	glGenVertexArrays(1, &screenVAO);
-	glGenBuffers(1, &screenVBO);
-	glBindVertexArray(screenVAO);
-	glBindBuffer(GL_ARRAY_BUFFER, screenVBO);
 
-	glBufferData(GL_ARRAY_BUFFER, screenQuad.size() * sizeof(float), (void*)&screenQuad[0], GL_STATIC_DRAW);
-
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)(2 * sizeof(float)));
-	
-	///*
-	*/
 	glBindVertexArray(0);
 	screen->bind();
 	glEnableVertexAttribArray(0);
@@ -168,15 +153,6 @@ int main() {
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 4, (void*)(2 * sizeof(float)));
 	screen->unBind();
 
-	unsigned int skyboxVAO, skyboxVBO;
-	glGenVertexArrays(1, &skyboxVAO);
-	glGenBuffers(1, &skyboxVBO);
-	glBindVertexArray(skyboxVAO);
-	glBindBuffer(GL_ARRAY_BUFFER, skyboxVBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(skyboxVertices) * skyboxVertices.size(), &skyboxVertices, GL_STATIC_DRAW);
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-	
 	std::vector < std::string> skyboxFaces = {
 		"res/textures/cubemaps/skybox/right.jpg",
 		"res/textures/cubemaps/skybox/left.jpg",
@@ -236,30 +212,19 @@ int main() {
 
 		model->draw(*normalShader);
 		normalShader->unBind();
-		/*
-		glDepthFunc(GL_LEQUAL);
-		skyboxShader->bind();
-		skyboxShader->setMat4("view", Matrix4f::rotation(Vector3f(0.0f, 1.0f), -y).multiply(Matrix4f::translation(viewPos)));
-		// skybox cube
-		glBindVertexArray(skyboxVAO);
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_CUBE_MAP, skybox->getTextureID());
-		glDrawArrays(GL_TRIANGLES, 0, 36);
-		glBindVertexArray(0);
-		glDepthFunc(GL_LESS);
-		*/
 
-		
 		//SKYBOX
 		
 		glDepthFunc(GL_LEQUAL);
+		glDisable(GL_CULL_FACE);
 
 		skyboxShader->bind();
 		skyboxShader->setMat4("view", Matrix4f::rotation(Vector3f(0.0f, 1.0f), -y));
 		glBindTexture(GL_TEXTURE_CUBE_MAP, skybox->getTextureID());		
-
+		
 		cube->draw(*skyboxShader);
 		glDepthFunc(GL_LESS);
+		glEnable(GL_CULL_FACE);
 		skyboxShader->unBind();
 		
 		//Frame buffer rendering
@@ -304,11 +269,6 @@ int main() {
 		window->Update();
 	}
 	normalShader->unBind();
-	
-	glDeleteBuffers(1, &screenVBO);
-	glDeleteBuffers(1, &skyboxVBO);
-	glDeleteVertexArrays(1, &screenVAO);
-	glDeleteVertexArrays(1, &skyboxVAO);
 
 	delete cube;
 	delete skybox;

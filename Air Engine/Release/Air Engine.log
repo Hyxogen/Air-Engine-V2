@@ -1,24 +1,6 @@
-﻿  glad.c
-..\Dependencies\GLAD\src\glad.c(737): warning C4090: 'function': different 'const' qualifiers
-  VertexArray.cpp
-  Mesh.cpp
-src\geometry\Mesh.cpp(91): warning C4018: '<': signed/unsigned mismatch
-  Model.cpp
-  SimpleRenderer.cpp
-  Shader.cpp
-  Texture.cpp
-  Window.cpp
-  File.cpp
-src\io\File.cpp(21): warning C4244: 'initializing': conversion from 'std::streamoff' to 'unsigned int', possible loss of data
-src\io\File.cpp(22): warning C4244: 'argument': conversion from 'std::streamoff' to '::size_t', possible loss of data
-  InputHandler.cpp
-  Main.cpp
-  Matrix4f.cpp
-  Vector2f.cpp
-  Vector3f.cpp
-  Vector4f.cpp
+﻿  Main.cpp
   Generating code
-  1602 of 1602 functions (100.0%) were compiled, the rest were copied from previous compilation.
+  1 of 1678 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
