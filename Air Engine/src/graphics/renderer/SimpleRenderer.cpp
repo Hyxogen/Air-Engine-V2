@@ -14,9 +14,7 @@ namespace engine {
 		void SimpleRenderer::render(const buffer::VertexArray* vertexArray) const {
 			glBindVertexArray(vertexArray->getVertexID());
 
-			glEnableVertexAttribArray(0);
 			glDrawElements(GL_TRIANGLES, vertexArray->getIndices().size(), GL_UNSIGNED_INT, 0);
-			glDisableVertexAttribArray(0);
 
 			glBindVertexArray(0);
 		}

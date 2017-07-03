@@ -10,22 +10,31 @@ namespace engine {
 
 		class Texture{
 
+			GLenum mType;
 			GLuint mTextureID;
 			int mWidth, mHeight, mColorChannels;
 			std::string mPath;
 
 		public:
+			Texture(unsigned int width, unsigned int height, GLenum target = GL_TEXTURE_2D, GLenum colorChannels = GL_RGB);
+
 			Texture(const std::string& path);
 
 			Texture(std::vector<std::string> faces);
 			
 			~Texture();
 
-			inline GLuint getTextureID() { return mTextureID; }
+			void bind() const;
 
-			inline unsigned int getWidth() { return mWidth; }
+			void unBind() const;
 
-			inline unsigned int getHeight() { return mHeight; }
+			inline GLuint getTextureID() const { return mTextureID; }
+
+			inline GLenum getType() const { return mType; }
+
+			inline unsigned int getWidth() const { return mWidth; }
+
+			inline unsigned int getHeight() const { return mHeight; }
 		};
 
 } }

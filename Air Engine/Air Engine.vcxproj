@@ -127,6 +127,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Dependencies\GLAD\src\glad.c" />
+    <ClCompile Include="src\buffers\FrameBuffer.cpp" />
+    <ClCompile Include="src\buffers\RenderBuffer.cpp" />
     <ClCompile Include="src\buffers\VertexArray.cpp" />
     <ClCompile Include="src\geometry\Mesh.cpp" />
     <ClCompile Include="src\geometry\Model.cpp" />
@@ -143,6 +145,8 @@
     <ClCompile Include="src\math\Vector4f.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\buffers\FrameBuffer.h" />
+    <ClInclude Include="src\buffers\RenderBuffer.h" />
     <ClInclude Include="src\geometry\Mesh.h" />
     <ClInclude Include="src\geometry\Model.h" />
     <ClInclude Include="src\graphics\shader\Shader.h" />

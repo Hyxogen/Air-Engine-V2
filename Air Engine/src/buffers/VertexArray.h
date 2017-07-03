@@ -7,7 +7,7 @@
 namespace engine {
 	namespace buffer {
 
-		class VertexArray {
+		struct VertexArray {
 
 			std::vector<float> mData;
 			std::vector<unsigned int> mIndices;

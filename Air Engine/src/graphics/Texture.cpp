@@ -3,10 +3,27 @@
 
 namespace engine {
 	namespace graphics {
+		//TODO add standard format
+		Texture::Texture(unsigned int width, unsigned int height, GLenum target, GLenum colorChannels) {
+			mWidth = width;
+			mHeight = height;
+			mType = target;
+
+			if (colorChannels == GL_RED)
+				mColorChannels = 1;
+			if (colorChannels == GL_RGB)
+				mColorChannels = 3;
+			if (colorChannels == GL_RGBA)
+				mColorChannels = 4;
+
+			glGenTextures(1, &mTextureID);
+			glTexImage2D(target, 0, colorChannels, width, height, 0, colorChannels, GL_UNSIGNED_BYTE, NULL);
+		}
 
 		Texture::Texture(const std::string& path) {
 			unsigned char* data = stbi_load(path.c_str(), &mWidth, &mHeight, &mColorChannels, 0);
 			mPath = path;
+			mType = GL_TEXTURE_2D;
 
 			if (data) {
 				glGenTextures(1, &mTextureID);
@@ -42,6 +59,8 @@ namespace engine {
 			glGenTextures(1, &mTextureID);
 			glBindTexture(GL_TEXTURE_CUBE_MAP, mTextureID);
 
+			mType = GL_TEXTURE_CUBE_MAP;
+
 			GLenum format;
 			for (unsigned int i = 0; i < faces.size(); i++) {
 				unsigned char* data = stbi_load(faces[i].c_str(), &mWidth, &mHeight, &mColorChannels, 0);
@@ -73,6 +92,14 @@ namespace engine {
 		Texture::~Texture() {
 			glDeleteTextures(1, &mTextureID);
 			std::cout << "Deleting texture " << mPath.c_str() << std::endl;
+		}
+
+		void Texture::bind() const {
+			glBindTexture(mType, mTextureID);
+		}
+
+		void Texture::unBind() const{
+			glBindTexture(mType, 0);
 		}
 	}
 }
