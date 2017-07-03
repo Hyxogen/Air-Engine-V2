@@ -102,6 +102,9 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <FloatingPointModel>Fast</FloatingPointModel>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -157,18 +160,24 @@
     <ClInclude Include="src\math\Vector4f.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\shaders\cubemap\CubemapFragmentShader.glsl" />
+    <None Include="res\shaders\cubemap\CubemapVertexShader.glsl" />
     <None Include="res\shaders\DepthFragmentShader.glsl" />
     <None Include="res\shaders\lighting\AmbientPhongFragmentShader.glsl" />
     <None Include="res\shaders\lighting\AmbientPhongVertexShader.glsl" />
     <None Include="res\shaders\lighting\AttenuationFragmentShader.glsl" />
     <None Include="res\shaders\lighting\AttenuationVertexShader.glsl" />
     <None Include="res\shaders\lighting\DirectionalVertexShader.glsl" />
+    <None Include="res\shaders\postprocessing\SimpleQuadFragmentShader.glsl" />
+    <None Include="res\shaders\postprocessing\SimpleQuadVertexShader.glsl" />
     <None Include="res\shaders\SimpleFragmentShader.glsl" />
     <None Include="res\shaders\SimpleVertexShader.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\shaders\DepthVertexShader.glsl" />
     <Text Include="res\shaders\lighting\DirectionalFragmentShader.glsl" />
+    <Text Include="res\shaders\stencil\ColorFragmentShader.glsl" />
+    <Text Include="res\shaders\stencil\ColorVertexShader.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

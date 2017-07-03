@@ -15,9 +15,10 @@ namespace engine {
 
 			GLFWwindow* mWindow;
 			io::InputHandler* mInputHandler;
+			unsigned int mWidth, mHeight;
 
 		public:
-			Window(const char* name, const GLsizei width, const GLsizei height);
+			Window(const char* name, const unsigned int width, const unsigned int height);
 
 			~Window();
 
@@ -26,6 +27,12 @@ namespace engine {
 			bool shouldClose() const;
 
 			inline io::InputHandler* getInputHandler() { return mInputHandler; }
+
+			inline unsigned int getWidth() { return mWidth; }
+
+			inline unsigned int getHeight() { return mHeight; }
+
+			inline float getAspectRatio() { return (float)mWidth / (float) mHeight; }
 		};
 
 	}

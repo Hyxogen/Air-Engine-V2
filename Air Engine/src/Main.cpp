@@ -9,42 +9,6 @@
 #include "geometry\Model.h"
 #include "graphics\Texture.h"
 
-#define CASE_STRING( CASE ) case CASE: return #CASE;
-
-const char* ErrorString(GLenum error) {
-	switch (error) {
-		CASE_STRING(GL_NO_ERROR);
-		CASE_STRING(GL_INVALID_ENUM);
-		CASE_STRING(GL_INVALID_VALUE);
-		CASE_STRING(GL_INVALID_OPERATION);
-		CASE_STRING(GL_INVALID_FRAMEBUFFER_OPERATION);
-		CASE_STRING(GL_OUT_OF_MEMORY);
-
-#ifndef FROSTCORE_MAC_OS
-		CASE_STRING(GL_STACK_OVERFLOW);
-		CASE_STRING(GL_STACK_UNDERFLOW);
-#endif
-
-		CASE_STRING(GL_FRAMEBUFFER_UNDEFINED);
-		CASE_STRING(GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT);
-		CASE_STRING(GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT);
-
-#ifdef FROST_GL
-		CASE_STRING(GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER);
-		CASE_STRING(GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER);
-#endif
-
-		CASE_STRING(GL_FRAMEBUFFER_UNSUPPORTED);
-		CASE_STRING(GL_FRAMEBUFFER_INCOMPLETE_MULTISAMPLE);
-
-#ifdef FROST_GL
-		CASE_STRING(GL_FRAMEBUFFER_INCOMPLETE_LAYER_TARGETS);
-#endif
-	}
-	return "";
-}
-#undef CASE_STRING
-
 int main() {
 	using namespace engine;
 	using namespace graphics;
@@ -54,20 +18,6 @@ int main() {
 	using namespace math;
 	using namespace geometry;
 
-#ifdef MAT_MUL_DEBUG
-	Matrix4f matrix;
-	Matrix4f other;
-
-	for (int i = 0; i < 16; i++) {
-		matrix.mElements[i] = i;
-		other.mElements[i] = 16 + i;
-	}
-
-	matrix.multiply(other);
-
-	system("pause");
-#endif
-
 	Window* window = new Window("Engine", 1280, 720);
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
@@ -75,53 +25,177 @@ int main() {
 		return -1;
 	}
 	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_CULL_FACE);
-	glEnable(GL_STENCIL_TEST);
+	//glEnable(GL_CULL_FACE);
+	//glEnable(GL_STENCIL_TEST);
+	//glEnable(GL_BLEND);
+	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	//glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ZERO);
 
-	glCullFace(GL_BACK);
-	glFrontFace(GL_CCW);
+	//glCullFace(GL_BACK);
+	//glFrontFace(GL_CCW);
+	//glStencilFunc(GL_EQUAL, 1, 0x00);
+	//glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
 	glClearColor(0.0f, 0.5f, 0.5f, 1.0f);
 
-	const char* phongVertexSource = File::readFile("res/shaders/lighting/AttenuationVertexShader.glsl");
-	const char* phongFragmentSource = File::readFile("res/shaders/lighting/AttenuationFragmentShader.glsl");
-
-	Shader* shader = new Shader(phongVertexSource, phongFragmentSource);
+	const char* screenVertexSource = File::readFile("res/shaders/postprocessing/SimpleQuadVertexShader.glsl");
+	const char* screenFragmentSource = File::readFile("res/shaders/postprocessing/SimpleQuadFragmentShader.glsl");
 	
-	Model* model = new Model("res/models/sponza/sponza.obj");
+	const char* normalVertexSource = File::readFile("res/shaders/lighting/AttenuationVertexShader.glsl");
+	const char* normalFragmentSource = File::readFile("res/shaders/lighting/AttenuationFragmentShader.glsl");
+
+	const char* skyboxVertexSource = File::readFile("res/shaders/cubemap/CubemapVertexShader.glsl");
+	const char* skyboxFragmentSource = File::readFile("res/shaders/cubemap/CubemapFragmentShader.glsl");
+
+	GLuint framebuffer, texColorBuffer, renderBuffer, vao, vbo;
+	glGenFramebuffers(1, &framebuffer);
+	glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+
+	glGenTextures(1, &texColorBuffer);
+	glBindTexture(GL_TEXTURE_2D, texColorBuffer);
+	
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, window->getWidth(), window->getHeight(), 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	//glBindTexture(GL_TEXTURE_2D, 0);
+
+	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texColorBuffer, 0);
+
+	glGenRenderbuffers(1, &renderBuffer);
+	glBindRenderbuffer(GL_RENDERBUFFER, renderBuffer);
+	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, window->getWidth(), window->getHeight());
+	//glBindRenderbuffer(GL_RENDERBUFFER, 0);
+
+	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, renderBuffer);
+	if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+		std::cout << "ERROR: Framebuffer is incomplete!" << std::endl;
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+	Shader* normalShader = new Shader(normalVertexSource, normalFragmentSource);
+	Shader* screenShader = new Shader(screenVertexSource, screenFragmentSource);
+	Shader* skyboxShader = new Shader(skyboxVertexSource, skyboxFragmentSource);
+	
+	delete[] normalVertexSource;
+	delete[] normalFragmentSource;
+	delete[] screenVertexSource;
+	delete[] screenFragmentSource;
+	delete[] skyboxVertexSource;
+	delete[] skyboxFragmentSource;
+
+	std::vector < std::string> skyboxFaces = {
+		"res/textures/cubemaps/skybox/right.jpg",
+		"res/textures/cubemaps/skybox/left.jpg",
+		"res/textures/cubemaps/skybox/top.jpg",
+		"res/textures/cubemaps/skybox/bottom.jpg",
+		"res/textures/cubemaps/skybox/back.jpg",
+		"res/textures/cubemaps/skybox/front.jpg"
+	};
+
+	//Texture* skybox = new Texture(skyboxFaces);
+
+	screenShader->bind();
+	screenShader->setInt("screenTexture", 0);
+	screenShader->unBind();
+
+	Model* model = new Model("res/models/nanosuit/nanosuit.obj");
+	//Model* cube = new Model("res/models/plane/plane.obj");
+	//Model* cube = new Model("res/models/nanosuit/nanosuit.obj");
+
+	std::vector<float> screenQuad = {
+		-1.0f,  1.0f,  0.0f, 1.0f,
+		-1.0f, -1.0f,  0.0f, 0.0f,
+		1.0f, -1.0f,  1.0f, 0.0f,
+
+		-1.0f,  1.0f,  0.0f, 1.0f,
+		1.0f, -1.0f,  1.0f, 0.0f,
+		1.0f,  1.0f,  1.0f, 1.0f
+	};
+	
+	std::vector<unsigned int> screenIndices = {
+		0, 1, 2, 3, 4, 5
+	};
+
+	glGenVertexArrays(1, &vao);
+	glGenBuffers(1, &vbo);
+	glBindVertexArray(vao);
+
+	glBufferData(GL_ARRAY_BUFFER, screenQuad.size() * sizeof(float), (void*)&screenQuad[0], GL_STATIC_DRAW);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 4, 0);
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 4, (void*) (2 * sizeof(float)));
+
+	glBindVertexArray(0);
 
 	SimpleRenderer* renderer = new SimpleRenderer();
 	InputHandler* input = window->getInputHandler();
-
-	shader->bind();
-	shader->setMat4("projection", Matrix4f::perspective(1280.0f / 720.0f, 70.0f, 0.1f, 5000.0f));
-
-	shader->setVec3("material.specular", Vector3f(1.0f, 1.0f, 1.0f));
-	shader->setFloat("material.shininess", 32.0f);
 	
-	shader->setVec3("light.position", Vector3f(1.2f, 1.0f, 1.0f));
-	shader->setVec3("light.ambient", Vector3f(1.0f, 1.0f, 1.0f));
-	shader->setVec3("light.diffuse", Vector3f(1.0f, 1.0f, 1.0f));
-	shader->setVec3("light.specular", Vector3f(1.0f, 1.0f, 1.0f));
-	shader->setFloat("light.linear", 0.0014f);
-	shader->setFloat("light.quadratic", 0.000007f);
+	Matrix4f projection = Matrix4f::perspective(window->getAspectRatio(), 70.0f, 0.1f, 5000.0f);
+
+	normalShader->bind();
+	normalShader->setMat4("projection", projection);
+
+	normalShader->setVec3("material.specular", Vector3f(1.0f, 1.0f, 1.0f));
+	normalShader->setFloat("material.shininess", 32.0f);
+	
+	normalShader->setVec3("light.position", Vector3f(1.2f, 1.0f, 1.0f));
+	normalShader->setVec3("light.ambient", Vector3f(1.0f, 1.0f, 1.0f));
+	normalShader->setVec3("light.diffuse", Vector3f(1.0f, 1.0f, 1.0f));
+	normalShader->setVec3("light.specular", Vector3f(1.0f, 1.0f, 1.0f));
+	normalShader->setFloat("light.linear", 0.0014f);
+	normalShader->setFloat("light.quadratic", 0.000007f);
 
 	Vector3f viewPos, lightPos(1.2f, 1.0f, 1.0f);
-	//shader->setVec3("lightPos", lightPos);
-	float speed = 5.0f;
+
+	float speed = 10.0f;
 	float y = 0.0f;
+
+	skyboxShader->unBind();
 	while (!window->shouldClose()) {
-		//	f -= 0.01f;
-			//std::cout << f << std::endl;
-		renderer->prepareRender();
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		//glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+		//glEnable(GL_DEPTH_TEST);
+		
+		//glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		//shader->setMat4("model", Matrix4f::translation(Vector3f(0.0f, -9.0f, -15.0f)));
-		shader->setVec3("viewPos", viewPos);
-		shader->setMat4("model", Matrix4f::transformation(Matrix4f::translation(Vector3f(0.0f, 0.0f, -15.0f)),
+		normalShader->bind();
+
+		normalShader->setVec3("viewPos", viewPos);
+		normalShader->setMat4("model", Matrix4f::transformation(Matrix4f::translation(Vector3f(0.0f, 0.0f, -15.0f)),
 			Matrix4f::rotation(Vector3f(0.0f, 1.0f), y), Matrix4f::identity()));
-		shader->setMat4("view", Matrix4f::translation(viewPos));
-		model->draw(*shader);
-		//renderer->render(vertexArray);
+		normalShader->setMat4("view", Matrix4f::translation(viewPos));
 
+		model->draw(*normalShader);
+		normalShader->unBind();
+		//cube->draw(*normalShader);
+		/*
+		//SKYBOX
+		glDepthFunc(GL_LEQUAL);
+
+		skyboxShader->bind();
+		normalShader->setMat4("view", Matrix4f::translation(viewPos));
+		glBindTexture(GL_TEXTURE_CUBE_MAP, skybox->getTextureID());
+
+		glDepthFunc(GL_LESS);
+		skyboxShader->unBind();
+		*/
+		//Frame buffer rendering
+		/*
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		screenShader->bind();
+		glDisable(GL_DEPTH_TEST);
+		
+		glBindVertexArray(vao);
+
+		glBindTexture(GL_TEXTURE_2D, texColorBuffer);
+		glDrawArrays(GL_TRIANGLES, 0, 6);
+
+		glBindVertexArray(0);
+		screenShader->unBind();
+		*/
 		if (input->keyDown(GLFW_KEY_W))
 			viewPos.z += speed;
 		if (input->keyDown(GLFW_KEY_S))
@@ -146,10 +220,20 @@ int main() {
 		input->update();
 		window->Update();
 	}
-	shader->unBind();
+	normalShader->unBind();
 	
+	glDeleteTextures(1, &texColorBuffer);
+	glDeleteRenderbuffers(1, &renderBuffer);
+	glDeleteFramebuffers(1, &framebuffer);
+	glDeleteBuffers(1, &vbo);
+	glDeleteVertexArrays(1, &vao);
+	
+	//delete cube;
+	//delete skybox;
+	//delete windowPlane;
 	delete model;
-	delete shader;
+	delete normalShader;
+	delete screenShader;
 	delete renderer;
 	delete window;
 

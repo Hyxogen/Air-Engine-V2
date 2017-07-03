@@ -117,9 +117,15 @@
     <None Include="res\shaders\lighting\AttenuationVertexShader.glsl" />
     <None Include="res\shaders\lighting\DirectionalVertexShader.glsl" />
     <None Include="res\shaders\DepthFragmentShader.glsl" />
+    <None Include="res\shaders\postprocessing\SimpleQuadVertexShader.glsl" />
+    <None Include="res\shaders\postprocessing\SimpleQuadFragmentShader.glsl" />
+    <None Include="res\shaders\cubemap\CubemapVertexShader.glsl" />
+    <None Include="res\shaders\cubemap\CubemapFragmentShader.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\shaders\lighting\DirectionalFragmentShader.glsl" />
     <Text Include="res\shaders\DepthVertexShader.glsl" />
+    <Text Include="res\shaders\stencil\ColorFragmentShader.glsl" />
+    <Text Include="res\shaders\stencil\ColorVertexShader.glsl" />
   </ItemGroup>
 </Project>

@@ -14,4 +14,5 @@ out vec4 color;
 void main() {
     //color = out_Color;
 	color = texture(texture_diffuse1, out_TexCoord);
+	//color = vec4(1.0, 0.0, 0.0, 1.0);
 }

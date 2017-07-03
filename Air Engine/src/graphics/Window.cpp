@@ -3,7 +3,9 @@
 namespace engine {
 	namespace graphics {
 
-		Window::Window(const char* name, const GLsizei width, const GLsizei height) {
+		Window::Window(const char* name, const unsigned int width, const unsigned int height) {
+			mWidth = width;
+			mHeight = height;
 			if (glfwInit() == NULL) {
 				std::cout << "An error ocurred whilst initializing GLFW" << std::endl;
 				return;

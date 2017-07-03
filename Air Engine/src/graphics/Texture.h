@@ -2,6 +2,8 @@
 #include <glad\glad.h>
 #include <iostream>
 #include <stb_image.h>
+#include <vector>
+#include <string>
 
 namespace engine {
 	namespace graphics {
@@ -13,7 +15,9 @@ namespace engine {
 			std::string mPath;
 
 		public:
-			Texture(const char* path);
+			Texture(const std::string& path);
+
+			Texture(std::vector<std::string> faces);
 			
 			~Texture();
 
