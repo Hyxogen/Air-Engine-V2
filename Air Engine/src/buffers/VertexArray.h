@@ -22,6 +22,8 @@ namespace engine {
 			
 			void unBind() const;
 
+			void assignAttribPointer(GLuint index, unsigned int size, GLenum dataType, bool normalized = false, GLuint stride = 0, void* offset = 0);
+
 			inline const GLuint getVertexID() const { return VAO; }
 
 			inline const std::vector<float>& getData() const { return mData; }

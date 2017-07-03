@@ -14,6 +14,7 @@ out vec3 out_Normal;
 out vec3 out_FragPos;
 
 void main() {
+	//What happend if we multiply the view matrix with a forward vector (0, 0 , 1)
 	gl_Position = projection * view * model * vec4(pos, 1.0);
 
 	out_Color = vec4(0.0f, 0.0f, pos.z / 2.0, 1.0);

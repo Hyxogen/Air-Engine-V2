@@ -36,6 +36,7 @@ namespace engine {
 		}
 
 		void Mesh::setupMesh() {
+			//TODO use VertexArray buffer
 			glGenVertexArrays(1, &mVAO);
 			glGenBuffers(1, &mVBO);
 			glGenBuffers(1, &mEBO);

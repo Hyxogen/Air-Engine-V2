@@ -195,14 +195,12 @@ int main() {
 	screenShader->unBind();
 
 	while (!window->shouldClose()) {
-		//glBindFramebuffer(GL_FRAMEBUFFER, 0);
 		glBindFramebuffer(GL_FRAMEBUFFER, screenBuffer->getFrameBufferID());
 		glEnable(GL_DEPTH_TEST);
 		
-		//glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-		//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		renderer->prepareRender();
 
+		//Models
 		normalShader->bind();
 
 		normalShader->setVec3("viewPos", viewPos);
@@ -213,8 +211,7 @@ int main() {
 		model->draw(*normalShader);
 		normalShader->unBind();
 
-		//SKYBOX
-		
+		//Skybox
 		glDepthFunc(GL_LEQUAL);
 		glDisable(GL_CULL_FACE);
 
@@ -234,14 +231,10 @@ int main() {
 
 		screenShader->bind();
 		glDisable(GL_DEPTH_TEST);
-		
-		//glBindVertexArray(screenVAO);
 
 		glBindTexture(GL_TEXTURE_2D, colorBuffer->getTextureID());
 		renderer->render(screen);
-		//glDrawArrays(GL_TRIANGLES, 0, 6);
-		//renderer->render(screen);
-		//glBindVertexArray(0);
+
 		screenShader->unBind();
 
 		if (input->keyDown(GLFW_KEY_W))
@@ -272,7 +265,6 @@ int main() {
 
 	delete cube;
 	delete skybox;
-	//delete windowPlane;
 	delete model;
 	delete colorBuffer;
 	delete renderBuffer;
