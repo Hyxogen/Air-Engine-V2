@@ -46,7 +46,8 @@ int main() {
 	const char* skyboxVertexSource = File::readFile("res/shaders/cubemap/CubemapVertexShader.glsl");
 	const char* skyboxFragmentSource = File::readFile("res/shaders/cubemap/CubemapFragmentShader.glsl");
 
-	GLuint framebuffer, texColorBuffer, renderBuffer, vao, vbo;
+	
+	GLuint framebuffer, texColorBuffer, renderBuffer, screenVAO, screenVBO;
 	glGenFramebuffers(1, &framebuffer);
 	glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
 
@@ -69,7 +70,7 @@ int main() {
 	if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 		std::cout << "ERROR: Framebuffer is incomplete!" << std::endl;
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
+	
 	Shader* normalShader = new Shader(normalVertexSource, normalFragmentSource);
 	Shader* screenShader = new Shader(screenVertexSource, screenFragmentSource);
 	Shader* skyboxShader = new Shader(skyboxVertexSource, skyboxFragmentSource);
@@ -81,24 +82,13 @@ int main() {
 	delete[] skyboxVertexSource;
 	delete[] skyboxFragmentSource;
 
-	std::vector < std::string> skyboxFaces = {
-		"res/textures/cubemaps/skybox/right.jpg",
-		"res/textures/cubemaps/skybox/left.jpg",
-		"res/textures/cubemaps/skybox/top.jpg",
-		"res/textures/cubemaps/skybox/bottom.jpg",
-		"res/textures/cubemaps/skybox/back.jpg",
-		"res/textures/cubemaps/skybox/front.jpg"
-	};
-
-	//Texture* skybox = new Texture(skyboxFaces);
-
 	screenShader->bind();
 	screenShader->setInt("screenTexture", 0);
 	screenShader->unBind();
 
 	Model* model = new Model("res/models/nanosuit/nanosuit.obj");
 	//Model* cube = new Model("res/models/plane/plane.obj");
-	//Model* cube = new Model("res/models/nanosuit/nanosuit.obj");
+	Model* cube = new Model("res/models/cube/Cube.obj");
 
 	std::vector<float> screenQuad = {
 		-1.0f,  1.0f,  0.0f, 1.0f,
@@ -110,13 +100,56 @@ int main() {
 		1.0f,  1.0f,  1.0f, 1.0f
 	};
 	
-	std::vector<unsigned int> screenIndices = {
-		0, 1, 2, 3, 4, 5
-	};
+	std::vector<float> skyboxVertices = {
+		// positions          
+		-1.0f,  1.0f, -1.0f,
+		-1.0f, -1.0f, -1.0f,
+		1.0f, -1.0f, -1.0f,
+		1.0f, -1.0f, -1.0f,
+		1.0f,  1.0f, -1.0f,
+		-1.0f,  1.0f, -1.0f,
 
-	glGenVertexArrays(1, &vao);
-	glGenBuffers(1, &vbo);
-	glBindVertexArray(vao);
+		-1.0f, -1.0f,  1.0f,
+		-1.0f, -1.0f, -1.0f,
+		-1.0f,  1.0f, -1.0f,
+		-1.0f,  1.0f, -1.0f,
+		-1.0f,  1.0f,  1.0f,
+		-1.0f, -1.0f,  1.0f,
+
+		1.0f, -1.0f, -1.0f,
+		1.0f, -1.0f,  1.0f,
+		1.0f,  1.0f,  1.0f,
+		1.0f,  1.0f,  1.0f,
+		1.0f,  1.0f, -1.0f,
+		1.0f, -1.0f, -1.0f,
+
+		-1.0f, -1.0f,  1.0f,
+		-1.0f,  1.0f,  1.0f,
+		1.0f,  1.0f,  1.0f,
+		1.0f,  1.0f,  1.0f,
+		1.0f, -1.0f,  1.0f,
+		-1.0f, -1.0f,  1.0f,
+
+		-1.0f,  1.0f, -1.0f,
+		1.0f,  1.0f, -1.0f,
+		1.0f,  1.0f,  1.0f,
+		1.0f,  1.0f,  1.0f,
+		-1.0f,  1.0f,  1.0f,
+		-1.0f,  1.0f, -1.0f,
+
+		-1.0f, -1.0f, -1.0f,
+		-1.0f, -1.0f,  1.0f,
+		1.0f, -1.0f, -1.0f,
+		1.0f, -1.0f, -1.0f,
+		-1.0f, -1.0f,  1.0f,
+		1.0f, -1.0f,  1.0f
+	};
+	
+	
+	glGenVertexArrays(1, &screenVAO);
+	glGenBuffers(1, &screenVBO);
+	glBindVertexArray(screenVAO);
+	glBindBuffer(GL_ARRAY_BUFFER, screenVBO);
 
 	glBufferData(GL_ARRAY_BUFFER, screenQuad.size() * sizeof(float), (void*)&screenQuad[0], GL_STATIC_DRAW);
 	glEnableVertexAttribArray(0);
@@ -125,6 +158,26 @@ int main() {
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 4, (void*) (2 * sizeof(float)));
 
 	glBindVertexArray(0);
+
+	unsigned int skyboxVAO, skyboxVBO;
+	glGenVertexArrays(1, &skyboxVAO);
+	glGenBuffers(1, &skyboxVBO);
+	glBindVertexArray(skyboxVAO);
+	glBindBuffer(GL_ARRAY_BUFFER, skyboxVBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(skyboxVertices), &skyboxVertices, GL_STATIC_DRAW);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	
+	std::vector < std::string> skyboxFaces = {
+		"res/textures/cubemaps/skybox/right.jpg",
+		"res/textures/cubemaps/skybox/left.jpg",
+		"res/textures/cubemaps/skybox/top.jpg",
+		"res/textures/cubemaps/skybox/bottom.jpg",
+		"res/textures/cubemaps/skybox/back.jpg",
+		"res/textures/cubemaps/skybox/front.jpg"
+	};
+
+	Texture* skybox = new Texture(skyboxFaces);
 
 	SimpleRenderer* renderer = new SimpleRenderer();
 	InputHandler* input = window->getInputHandler();
@@ -148,26 +201,42 @@ int main() {
 
 	float speed = 10.0f;
 	float y = 0.0f;
+	skyboxShader->bind();
+	skyboxShader->setMat4("projection", projection);
+	skyboxShader->setInt("skybox", 0);
 
-	skyboxShader->unBind();
 	while (!window->shouldClose()) {
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 		//glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
-		//glEnable(GL_DEPTH_TEST);
+		glEnable(GL_DEPTH_TEST);
 		
 		//glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		renderer->prepareRender();
 
 		normalShader->bind();
 
 		normalShader->setVec3("viewPos", viewPos);
 		normalShader->setMat4("model", Matrix4f::transformation(Matrix4f::translation(Vector3f(0.0f, 0.0f, -15.0f)),
 			Matrix4f::rotation(Vector3f(0.0f, 1.0f), y), Matrix4f::identity()));
+
 		normalShader->setMat4("view", Matrix4f::translation(viewPos));
 
 		model->draw(*normalShader);
 		normalShader->unBind();
-		//cube->draw(*normalShader);
+		
+		glDepthFunc(GL_LEQUAL);
+		skyboxShader->bind();
+		skyboxShader->setMat4("view", Matrix4f::translation(viewPos));
+		// skybox cube
+		glBindVertexArray(skyboxVAO);
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_CUBE_MAP, skybox->getTextureID());
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+		glBindVertexArray(0);
+		glDepthFunc(GL_LESS);
+
+
 		/*
 		//SKYBOX
 		glDepthFunc(GL_LEQUAL);
@@ -176,10 +245,12 @@ int main() {
 		normalShader->setMat4("view", Matrix4f::translation(viewPos));
 		glBindTexture(GL_TEXTURE_CUBE_MAP, skybox->getTextureID());
 
+		cube->draw(*skyboxShader);
 		glDepthFunc(GL_LESS);
 		skyboxShader->unBind();
-		*/
+		
 		//Frame buffer rendering
+		*/
 		/*
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -225,10 +296,13 @@ int main() {
 	glDeleteTextures(1, &texColorBuffer);
 	glDeleteRenderbuffers(1, &renderBuffer);
 	glDeleteFramebuffers(1, &framebuffer);
-	glDeleteBuffers(1, &vbo);
-	glDeleteVertexArrays(1, &vao);
+	glDeleteBuffers(1, &screenVBO);
+	glDeleteBuffers(1, &skyboxVBO);
+	glDeleteVertexArrays(1, &screenVAO);
+	glDeleteVertexArrays(1, &skyboxVAO);
+
 	
-	//delete cube;
+	delete cube;
 	//delete skybox;
 	//delete windowPlane;
 	delete model;
