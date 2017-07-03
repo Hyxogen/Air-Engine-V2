@@ -14,7 +14,7 @@ namespace engine {
 			GLuint VAO = 0, VBO = 0, EBO = 0;
 
 		public:
-			VertexArray(std::vector<float>&& data, std::vector<unsigned int>&& indices);
+			VertexArray(std::vector<float>&& data, std::vector<unsigned int>&& indices, int vertexSize = 3);
 
 			~VertexArray();
 

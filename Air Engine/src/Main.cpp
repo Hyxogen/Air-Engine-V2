@@ -84,8 +84,8 @@ int main() {
 	//Model* cube = new Model("res/models/plane/plane.obj");
 	Model* cube = new Model("res/models/cube/Cube.obj");
 
-	std::vector<float> screenQuad = { // vertex attributes for a quad that fills the entire screen in Normalized Device Coordinates.
-									  // positions   // texCoords
+	std::vector<float> screenQuad = {
+		// positions   // texCoords
 		-1.0f,  1.0f,  0.0f, 1.0f,
 		-1.0f, -1.0f,  0.0f, 0.0f,
 		1.0f, -1.0f,  1.0f, 0.0f,
@@ -96,7 +96,7 @@ int main() {
 	};
 	
 	std::vector<unsigned int> screenIndices = {
-		0, 1, 2, 0, 3, 4
+		0, 1, 2, 3, 4, 5
 	};
 
 	std::vector<float> skyboxVertices = {
@@ -144,7 +144,8 @@ int main() {
 		1.0f, -1.0f,  1.0f
 	};
 	
-	//VertexArray* screen = new VertexArray(std::move(screenQuad), std::move(screenIndices));
+	VertexArray* screen = new VertexArray(std::move(screenQuad), std::move(screenIndices), 2);
+	/*
 	glGenVertexArrays(1, &screenVAO);
 	glGenBuffers(1, &screenVBO);
 	glBindVertexArray(screenVAO);
@@ -157,13 +158,15 @@ int main() {
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)(2 * sizeof(float)));
 	
-	/*
+	///*
+	*/
 	glBindVertexArray(0);
 	screen->bind();
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 4, (void*)(2 * sizeof(float)));
 	screen->unBind();
-	*/
 
 	unsigned int skyboxVAO, skyboxVBO;
 	glGenVertexArrays(1, &skyboxVAO);
@@ -267,12 +270,13 @@ int main() {
 		screenShader->bind();
 		glDisable(GL_DEPTH_TEST);
 		
-		glBindVertexArray(screenVAO);
+		//glBindVertexArray(screenVAO);
 
 		glBindTexture(GL_TEXTURE_2D, colorBuffer->getTextureID());
-		glDrawArrays(GL_TRIANGLES, 0, 6);
+		renderer->render(screen);
+		//glDrawArrays(GL_TRIANGLES, 0, 6);
 		//renderer->render(screen);
-		glBindVertexArray(0);
+		//glBindVertexArray(0);
 		screenShader->unBind();
 
 		if (input->keyDown(GLFW_KEY_W))
