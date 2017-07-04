@@ -8,6 +8,7 @@
 #include "..\math\Vector2f.h"
 #include "..\graphics\shader\Shader.h"
 #include "..\buffers\Texture.h"
+#include "..\buffers\VertexArray.h"
 
 namespace engine {
 	namespace geometry {
@@ -34,7 +35,7 @@ namespace engine {
 			std::vector<unsigned int> mIndices;
 			std::vector<MeshTexture*> mTextures;
 
-			GLuint mVAO, mVBO, mEBO;
+			buffer::VertexArray* mVertexArray;
 
 		public:
 			GLuint indicesCount = 0;
@@ -47,11 +48,13 @@ namespace engine {
 
 			void drawInstanced(graphics::Shader& shader, unsigned int count) const;
 
-			inline GLuint getVaoID() const { return mVAO; }
+			inline GLuint getVaoID() const { return mVertexArray->getBufferID(); }
 
-			inline GLuint getVboID() const { return mVBO; }
+			inline GLuint getVboID() const { return mVertexArray->getVertexBuffer()->getBufferID(); }
 
-			inline GLuint getEboID() const { return mEBO; }
+			inline GLuint getEboID() const { return mVertexArray->getElementBuffer()->getBufferID(); }
+
+			inline buffer::VertexArray* getVertexArray() const { return mVertexArray; }
 		private:
 			void setupMesh();
 		};

@@ -175,32 +175,25 @@ int main() {
 	}
 
 	BufferObject* bufferObject = new BufferObject(GL_ARRAY_BUFFER, &modelMatrices[0], amount * sizeof(Matrix4f));
-	//bufferObject->bind();
+	bufferObject->bind();
 	for (unsigned int i = 0; i < rock->mMeshes.size(); i++) {
 		GLuint VAO = rock->mMeshes[i]->getVaoID();
+		VertexArray* vertexArray = rock->mMeshes[i]->getVertexArray();
 
-		glBindVertexArray(VAO);
+		vertexArray->bind();
 
 		GLsizei vec4Size = sizeof(Vector4f);
+		vertexArray->assignAttribPointer(3, 4, GL_FLOAT, sizeof(Matrix4f), (void*) 0);
+		vertexArray->assignAttribPointer(4, 4, GL_FLOAT, sizeof(Matrix4f), (void*) vec4Size);
+		vertexArray->assignAttribPointer(5, 4, GL_FLOAT, sizeof(Matrix4f), (void*) (2 * vec4Size));
+		vertexArray->assignAttribPointer(6, 4, GL_FLOAT, sizeof(Matrix4f), (void*) (3 * vec4Size));
 
-		glEnableVertexAttribArray(3);
-		glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, sizeof(Matrix4f), (void*)0);
+		vertexArray->setAttribDivisor(3, 1);
+		vertexArray->setAttribDivisor(4, 1);
+		vertexArray->setAttribDivisor(5, 1);
+		vertexArray->setAttribDivisor(6, 1);
 
-		glEnableVertexAttribArray(4);
-		glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, sizeof(Matrix4f), (void*)(vec4Size));
-
-		glEnableVertexAttribArray(5);
-		glVertexAttribPointer(5, 4, GL_FLOAT, GL_FALSE, sizeof(Matrix4f), (void*)(2 * vec4Size));
-
-		glEnableVertexAttribArray(6);
-		glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(Matrix4f), (void*)(3 *vec4Size));
-
-		glVertexAttribDivisor(3, 1);
-		glVertexAttribDivisor(4, 1);
-		glVertexAttribDivisor(5, 1);
-		glVertexAttribDivisor(6, 1);
-
-		glBindVertexArray(0);
+		vertexArray->unBind();
 	}
 
 	std::vector < std::string> skyboxFaces = {

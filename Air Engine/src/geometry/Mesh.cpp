@@ -31,35 +31,18 @@ namespace engine {
 
 		Mesh::~Mesh() {
 			std::cout << "Mesh get's deleted" << std::endl;
-			glDeleteVertexArrays(1, &mVAO);
-			glDeleteBuffers(1, &mVBO);
-			glDeleteBuffers(1, &mEBO);
+			delete mVertexArray;
 		}
 
 		void Mesh::setupMesh() {
-			//TODO use VertexArray buffer	
-			glGenVertexArrays(1, &mVAO);
-			glGenBuffers(1, &mVBO);
-			glGenBuffers(1, &mEBO);
+			mVertexArray = new buffer::VertexArray((void*)mVertices.data(), mVertices.size() * sizeof(Vertex), mIndices);
 
-			glBindVertexArray(mVAO);
+			mVertexArray->getVertexBuffer()->bind();
 
-			glBindBuffer(GL_ARRAY_BUFFER, mVBO);
-			glBufferData(GL_ARRAY_BUFFER, mVertices.size() * sizeof(Vertex), (void*)mVertices.data(), GL_STATIC_DRAW);
-
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mEBO);
-			//If not working use void cast on: vector[0] everywhere
-			glBufferData(GL_ELEMENT_ARRAY_BUFFER, mIndices.size() * sizeof(unsigned int), (void*)mIndices.data(), GL_STATIC_DRAW);
-
-			glEnableVertexAttribArray(0);
-			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
-
-			glEnableVertexAttribArray(1);
-			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, mNormal));
-
-			glEnableVertexAttribArray(2);
-			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, mTexCoord));
-
+			mVertexArray->assignAttribPointer(0, 3, GL_FLOAT, sizeof(Vertex), (void*)0);
+			mVertexArray->assignAttribPointer(1, 3, GL_FLOAT, sizeof(Vertex), (void*)offsetof(Vertex, mNormal));
+			mVertexArray->assignAttribPointer(2, 2, GL_FLOAT, sizeof(Vertex), (void*)offsetof(Vertex, mTexCoord));
+			
 			glBindVertexArray(0);
 		}
 
@@ -92,7 +75,7 @@ namespace engine {
 			}
 			
 
-			glBindVertexArray(mVAO);
+			glBindVertexArray(mVertexArray->getBufferID());
 			glDrawElements(GL_TRIANGLES, mIndices.size(), GL_UNSIGNED_INT, 0);
 			glBindVertexArray(0);
 			glActiveTexture(GL_TEXTURE0);
@@ -127,7 +110,7 @@ namespace engine {
 			}
 
 
-			glBindVertexArray(mVAO);
+			glBindVertexArray(mVertexArray->getBufferID());
 			glDrawElementsInstanced(GL_TRIANGLES, mIndices.size(), GL_UNSIGNED_INT, 0, count);
 			glBindVertexArray(0);
 			glActiveTexture(GL_TEXTURE0);

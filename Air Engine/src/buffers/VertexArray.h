@@ -10,12 +10,12 @@ namespace engine {
 
 		class VertexArray : public Buffer {
 
-			std::vector<float> mData;
-			std::vector<unsigned int> mIndices;
-			GLuint VBO = 0, EBO = 0;
+			BufferObject* mElementBuffer, *mVertexBuffer;
 
 		public:
-			VertexArray(std::vector<float>&& data, std::vector<unsigned int>&& indices, int vertexSize = 3);
+			VertexArray(std::vector<float> data, std::vector<unsigned int> indices);
+
+			VertexArray(const void* data, GLuint size, std::vector<unsigned int> indices);
 
 			~VertexArray();
 
@@ -23,14 +23,18 @@ namespace engine {
 			
 			void unBind() const;
 
-			void assignAttribPointer(GLuint index, unsigned int size, GLenum dataType, bool normalized = false, GLuint stride = 0,
-				void* offset = 0, const BufferObject* bufferObject = nullptr);
+			void assignAttribPointer(GLuint index, unsigned int size, GLenum dataType, GLuint stride = 0,
+				void* offset = 0, const BufferObject* bufferObject = nullptr, GLboolean normalized = GL_FALSE);
 
 			void setAttribDivisor(GLuint index, GLuint value) const;
 
-			inline const std::vector<float>& getData() const { return mData; }
+			inline unsigned int getVertexCount() const { return mVertexBuffer->getSize() / sizeof(float); }
 
-			inline const std::vector<unsigned int>& getIndices() const { return mIndices; }
+			inline unsigned int getIndicesCount() const { return mElementBuffer->getSize() / sizeof(unsigned int); }
+
+			inline const BufferObject* const getElementBuffer() const { return mElementBuffer; }
+
+			inline const BufferObject* const getVertexBuffer() const { return mVertexBuffer; }
 		};
 
 	}
