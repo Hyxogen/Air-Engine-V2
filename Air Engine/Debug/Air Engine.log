@@ -1,4 +1,4 @@
 ﻿  Main.cpp
-g:\onedrive\documenten\visual studio 2017\projects\air engine\air engine\src\main.cpp(176): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+g:\onedrive\documenten\visual studio 2017\projects\air engine\air engine\src\main.cpp(169): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
   Air Engine.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Debug\Air Engine.exe
   Air Engine.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Debug\Air Engine.pdb (Partial PDB)

@@ -18,8 +18,8 @@ namespace engine {
 			std::streampos length = file_size();
 			mFile.seekg(0, std::ios::beg);
 
-			char* buffer = new char[length];
-			memset(buffer, 0, length);
+			char* buffer = new char[(int)length];
+			memset(buffer, 0, (int) length);
 			//buffer[length] = 0;
 
 			mFile.read(buffer, length);

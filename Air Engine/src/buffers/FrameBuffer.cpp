@@ -20,7 +20,7 @@ namespace engine {
 			glBindFramebuffer(GL_FRAMEBUFFER, 0);
 		}
 			
-		void FrameBuffer::addTextureBuffer(const graphics::Texture* texture, GLenum target) const {
+		void FrameBuffer::addTextureBuffer(const Texture* texture, GLenum target) const {
 			bind();
 			//glDrawBuffer(target);
 			texture->bind();

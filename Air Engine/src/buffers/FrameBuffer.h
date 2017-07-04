@@ -1,6 +1,6 @@
 #pragma once
 #include <glad\glad.h>
-#include "..\graphics\Texture.h"
+#include "Texture.h"
 #include "RenderBuffer.h"
 
 namespace engine {
@@ -22,7 +22,7 @@ namespace engine {
 
 			bool isComplete() const;
 
-			void addTextureBuffer(const graphics::Texture* texture, GLenum type) const;
+			void addTextureBuffer(const Texture* texture, GLenum type) const;
 
 			void addRenderBuffer(const RenderBuffer* renderBuffer, GLenum type) const;
 

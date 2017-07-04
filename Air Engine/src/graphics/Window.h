@@ -26,6 +26,10 @@ namespace engine {
 
 			bool shouldClose() const;
 
+			void setTitle(std::string name);
+
+			static inline double getTime() { return glfwGetTime(); }
+
 			inline io::InputHandler* getInputHandler() { return mInputHandler; }
 
 			inline unsigned int getWidth() { return mWidth; }

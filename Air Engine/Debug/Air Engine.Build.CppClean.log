@@ -1,6 +1,9 @@
 g:\onedrive\documenten\visual studio 2017\projects\air engine\air engine\debug\vc141.pdb
 g:\onedrive\documenten\visual studio 2017\projects\air engine\air engine\debug\vc141.idb
 g:\onedrive\documenten\visual studio 2017\projects\air engine\air engine\debug\glad.obj
+g:\onedrive\documenten\visual studio 2017\projects\air engine\air engine\debug\bufferobject.obj
+g:\onedrive\documenten\visual studio 2017\projects\air engine\air engine\debug\framebuffer.obj
+g:\onedrive\documenten\visual studio 2017\projects\air engine\air engine\debug\renderbuffer.obj
 g:\onedrive\documenten\visual studio 2017\projects\air engine\air engine\debug\vertexarray.obj
 g:\onedrive\documenten\visual studio 2017\projects\air engine\air engine\debug\mesh.obj
 g:\onedrive\documenten\visual studio 2017\projects\air engine\air engine\debug\model.obj
@@ -9,6 +12,7 @@ g:\onedrive\documenten\visual studio 2017\projects\air engine\air engine\debug\s
 g:\onedrive\documenten\visual studio 2017\projects\air engine\air engine\debug\texture.obj
 g:\onedrive\documenten\visual studio 2017\projects\air engine\air engine\debug\window.obj
 g:\onedrive\documenten\visual studio 2017\projects\air engine\air engine\debug\file.obj
+g:\onedrive\documenten\visual studio 2017\projects\air engine\air engine\debug\inputhandler.obj
 g:\onedrive\documenten\visual studio 2017\projects\air engine\air engine\debug\main.obj
 g:\onedrive\documenten\visual studio 2017\projects\air engine\air engine\debug\matrix4f.obj
 g:\onedrive\documenten\visual studio 2017\projects\air engine\air engine\debug\vector2f.obj

@@ -23,6 +23,7 @@ namespace engine {
 			mVertices = vertices;
 			mIndices = indices;
 			mTextures = textures;
+			indicesCount = indices.size();
 
 			//TODO check if vector ins't null
 			setupMesh();
@@ -63,33 +64,11 @@ namespace engine {
 		}
 
 		void Mesh::draw(graphics::Shader& shader) const {
-			/*
-#ifdef TEXTURE_RENDER1
+			
 			unsigned int diffuseTexCount = 1;
 			unsigned int specularTexCount = 1;
 
-			for (int i = 0; i < mTextures.size(); i++) {
-				std::string name, number;
-
-				name = mTextures[i].type;
-
-				if(name == "texture_diffuse")
-					number = std::to_string(diffuseTexCount++);
-				else if(name == "texture_specular")
-					number = std::to_string(specularTexCount++);
-
-				const char* test = (name + number).c_str();
-
-				glActiveTexture(GL_TEXTURE0 + i);
-				shader.setFloat((name + number).c_str(), i);
-				glBindTexture(GL_TEXTURE_2D, mTextures[i].id);
-			}
-			glActiveTexture(GL_TEXTURE0);
-#endif*/
-			unsigned int diffuseTexCount = 1;
-			unsigned int specularTexCount = 1;
-
-			for (int i = 0; i < mTextures.size(); i++) {
+			for (unsigned int i = 0; i < mTextures.size(); i++) {
 				glActiveTexture(GL_TEXTURE0 + i);
 				std::stringstream ss;
 				std::string number;
@@ -111,12 +90,46 @@ namespace engine {
 				glBindTexture(GL_TEXTURE_2D, mTextures[i]->texture->getTextureID());
 				delete combined;
 			}
-
+			
 
 			glBindVertexArray(mVAO);
 			glDrawElements(GL_TRIANGLES, mIndices.size(), GL_UNSIGNED_INT, 0);
 			glBindVertexArray(0);
 			glActiveTexture(GL_TEXTURE0);
 		}
-	}
-}
+
+		void Mesh::drawInstanced(graphics::Shader& shader, unsigned int count) const {
+
+			unsigned int diffuseTexCount = 1;
+			unsigned int specularTexCount = 1;
+
+			for (unsigned int i = 0; i < mTextures.size(); i++) {
+				glActiveTexture(GL_TEXTURE0 + i);
+				std::stringstream ss;
+				std::string number;
+				std::string name = mTextures[i]->type;
+
+				if (name == "texture_diffuse")
+					ss << diffuseTexCount++;
+				else if (name == "texture_specular")
+					ss << specularTexCount++;
+				//continue;
+				//ss << 
+				number = ss.str();
+
+				std::string* combined = new std::string("material." + name + number);
+
+				const char* ccombined = combined->c_str();
+
+				shader.setInt(ccombined, i);
+				glBindTexture(GL_TEXTURE_2D, mTextures[i]->texture->getTextureID());
+				delete combined;
+			}
+
+
+			glBindVertexArray(mVAO);
+			glDrawElementsInstanced(GL_TRIANGLES, mIndices.size(), GL_UNSIGNED_INT, 0, count);
+			glBindVertexArray(0);
+			glActiveTexture(GL_TEXTURE0);
+		}
+} }

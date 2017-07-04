@@ -15,6 +15,7 @@ namespace engine {
 			glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 			glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 			glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+			
 			//	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
 			this->mWindow = glfwCreateWindow((int)width, (int)height, name, NULL, NULL);
@@ -24,7 +25,8 @@ namespace engine {
 			}
 			glfwSetWindowUserPointer(mWindow, this);
 
-			glfwSwapInterval(1);
+			glfwSwapInterval(0);
+			
 			glfwMakeContextCurrent(mWindow);
 			glViewport(0, 0, width, height);
 
@@ -35,6 +37,10 @@ namespace engine {
 			delete mInputHandler;
 			glfwDestroyWindow(mWindow);
 			glfwTerminate();
+		}
+
+		void Window::setTitle(std::string name) {
+			glfwSetWindowTitle(mWindow, name.c_str());
 		}
 
 		void Window::Update() const {

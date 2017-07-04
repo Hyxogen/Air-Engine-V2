@@ -127,6 +127,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Dependencies\GLAD\src\glad.c" />
+    <ClCompile Include="src\buffers\BufferObject.cpp" />
     <ClCompile Include="src\buffers\FrameBuffer.cpp" />
     <ClCompile Include="src\buffers\RenderBuffer.cpp" />
     <ClCompile Include="src\buffers\VertexArray.cpp" />
@@ -134,7 +135,7 @@
     <ClCompile Include="src\geometry\Model.cpp" />
     <ClCompile Include="src\graphics\renderer\SimpleRenderer.cpp" />
     <ClCompile Include="src\graphics\shader\Shader.cpp" />
-    <ClCompile Include="src\graphics\Texture.cpp" />
+    <ClCompile Include="src\buffers\Texture.cpp" />
     <ClCompile Include="src\graphics\Window.cpp" />
     <ClCompile Include="src\io\File.cpp" />
     <ClCompile Include="src\io\InputHandler.cpp" />
@@ -145,12 +146,13 @@
     <ClCompile Include="src\math\Vector4f.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\buffers\BufferObject.h" />
     <ClInclude Include="src\buffers\FrameBuffer.h" />
     <ClInclude Include="src\buffers\RenderBuffer.h" />
     <ClInclude Include="src\geometry\Mesh.h" />
     <ClInclude Include="src\geometry\Model.h" />
     <ClInclude Include="src\graphics\shader\Shader.h" />
-    <ClInclude Include="src\graphics\Texture.h" />
+    <ClInclude Include="src\buffers\Texture.h" />
     <ClInclude Include="src\graphics\Window.h" />
     <ClInclude Include="src\buffers\VertexArray.h" />
     <ClInclude Include="src\graphics\renderer\SimpleRenderer.h" />
@@ -169,6 +171,11 @@
     <None Include="res\shaders\cubemap\ReflectiveFragmentShader.glsl" />
     <None Include="res\shaders\cubemap\ReflectiveVertexShader.glsl" />
     <None Include="res\shaders\DepthFragmentShader.glsl" />
+    <None Include="res\shaders\geometry\NormalFragmentShader.glsl" />
+    <None Include="res\shaders\geometry\NormalGeometryShader.glsl" />
+    <None Include="res\shaders\geometry\NormalVertexShader.glsl" />
+    <None Include="res\shaders\instanced\IAttenuationFragmentShader.glsl" />
+    <None Include="res\shaders\instanced\IAttenuationVertexShader.glsl" />
     <None Include="res\shaders\lighting\AmbientPhongFragmentShader.glsl" />
     <None Include="res\shaders\lighting\AmbientPhongVertexShader.glsl" />
     <None Include="res\shaders\lighting\AttenuationFragmentShader.glsl" />

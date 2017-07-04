@@ -108,7 +108,7 @@ namespace engine {
 
 					std::string path = mDirectory + "/" + str.C_Str();
 					//TODO add texture loading
-					texture->texture = new graphics::Texture(path.c_str());
+					texture->texture = new buffer::Texture(path.c_str());
 					texture->type = typeName;
 					texture->path = str;
 					textures.push_back(texture);
@@ -122,5 +122,10 @@ namespace engine {
 		void Model::draw(graphics::Shader& shader) const {
 			for (unsigned int i = 0; i < mMeshes.size(); i++)
 				mMeshes[i]->draw(shader);
+		}
+
+		void Model::drawInstanced(graphics::Shader& shader, unsigned int count) const {
+			for (unsigned int i = 0; i < mMeshes.size(); i++)
+				mMeshes[i]->drawInstanced(shader, count);
 		}
 } }
