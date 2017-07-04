@@ -135,6 +135,7 @@
     <None Include="res\shaders\cubemap\CubemapFragmentShader.glsl" />
     <None Include="res\shaders\cubemap\ReflectiveVertexShader.glsl" />
     <None Include="res\shaders\cubemap\ReflectiveFragmentShader.glsl" />
+    <None Include="res\shaders\SimpleGeometryShader.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\shaders\lighting\DirectionalFragmentShader.glsl" />

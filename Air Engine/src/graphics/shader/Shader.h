@@ -10,11 +10,11 @@ namespace engine {
 
 		class Shader {
 
-			GLuint mProgramID, mVertexShaderID, mFragmentShaderID;
+			GLuint mProgramID, mVertexShaderID, mFragmentShaderID, mGeometryShaderID;
 			std::unordered_map<std::string, GLint> mCached;
 
 		public:
-			Shader(const char* vertexShader, const char* fragmentShader);
+			Shader(const char* vertexShader, const char* fragmentShader, const char* geometrySource = nullptr);
 			
 			~Shader();
 

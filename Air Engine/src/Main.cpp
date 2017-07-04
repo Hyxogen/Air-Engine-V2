@@ -10,6 +10,8 @@
 #include "geometry\Model.h"
 #include "graphics\Texture.h"
 
+//#define POST_PROCESS
+
 int main() {
 	using namespace engine;
 	using namespace graphics;
@@ -38,17 +40,20 @@ int main() {
 	//glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
 	glClearColor(0.0f, 0.5f, 0.5f, 1.0f);
 	
+#ifdef POST_PROCESS
 	const char* screenVertexSource = File::readFile("res/shaders/postprocessing/SimpleQuadVertexShader.glsl");
 	const char* screenFragmentSource = File::readFile("res/shaders/postprocessing/SimpleQuadFragmentShader.glsl");
-	
+#endif
 	const char* normalVertexSource = File::readFile("res/shaders/lighting/AttenuationVertexShader.glsl");
 	const char* normalFragmentSource = File::readFile("res/shaders/lighting/AttenuationFragmentShader.glsl");
+	const char* normalGeometrySource = File::readFile("res/shaders/SimpleGeometryShader.glsl");
 
 	const char* skyboxVertexSource = File::readFile("res/shaders/cubemap/CubemapVertexShader.glsl");
 	const char* skyboxFragmentSource = File::readFile("res/shaders/cubemap/CubemapFragmentShader.glsl");
 
 	unsigned int width = window->getWidth(), height = window->getHeight();
 	
+#ifdef POST_PROCESS
 	FrameBuffer* screenBuffer = new FrameBuffer();
 	Texture* colorBuffer = new Texture(width, height);
 	RenderBuffer* renderBuffer = new RenderBuffer(GL_DEPTH24_STENCIL8, width, height);
@@ -62,27 +67,34 @@ int main() {
 	if (!screenBuffer->isComplete())
 		std::cout << "ERROR: Framebuffer is incomplete!" << std::endl;
 	screenBuffer->unBind();
-	
+#endif;
 	
 	Shader* normalShader = new Shader(normalVertexSource, normalFragmentSource);
-	Shader* screenShader = new Shader(screenVertexSource, screenFragmentSource);
 	Shader* skyboxShader = new Shader(skyboxVertexSource, skyboxFragmentSource);
+#ifdef POST_PROCESS
+	Shader* screenShader = new Shader(screenVertexSource, screenFragmentSource);
+#endif
 	
 	delete[] normalVertexSource;
 	delete[] normalFragmentSource;
-	delete[] screenVertexSource;
-	delete[] screenFragmentSource;
+	delete[] normalGeometrySource;
 	delete[] skyboxVertexSource;
 	delete[] skyboxFragmentSource;
+
+#ifdef POST_PROCESS
+	delete[] screenVertexSource;
+	delete[] screenFragmentSource;
 
 	screenShader->bind();
 	screenShader->setInt("screenTexture", 0);
 	screenShader->unBind();
+#endif
 
-	Model* model = new Model("res/models/sponza/sponza.obj");
+	Model* model = new Model("res/models/nanosuit/nanosuit.obj");
 	//Model* cube = new Model("res/models/plane/plane.obj");
 	Model* cube = new Model("res/models/cube/Cube.obj");
 
+#ifdef POST_PROCESS
 	std::vector<float> screenQuad = {
 		// positions   // texCoords
 		-1.0f,  1.0f,  0.0f, 1.0f,
@@ -97,51 +109,6 @@ int main() {
 	std::vector<unsigned int> screenIndices = {
 		0, 1, 2, 3, 4, 5
 	};
-
-	std::vector<float> skyboxVertices = {
-		// positions          
-		-1.0f,  1.0f, -1.0f,
-		-1.0f, -1.0f, -1.0f,
-		1.0f, -1.0f, -1.0f,
-		1.0f, -1.0f, -1.0f,
-		1.0f,  1.0f, -1.0f,
-		-1.0f,  1.0f, -1.0f,
-
-		-1.0f, -1.0f,  1.0f,
-		-1.0f, -1.0f, -1.0f,
-		-1.0f,  1.0f, -1.0f,
-		-1.0f,  1.0f, -1.0f,
-		-1.0f,  1.0f,  1.0f,
-		-1.0f, -1.0f,  1.0f,
-
-		1.0f, -1.0f, -1.0f,
-		1.0f, -1.0f,  1.0f,
-		1.0f,  1.0f,  1.0f,
-		1.0f,  1.0f,  1.0f,
-		1.0f,  1.0f, -1.0f,
-		1.0f, -1.0f, -1.0f,
-
-		-1.0f, -1.0f,  1.0f,
-		-1.0f,  1.0f,  1.0f,
-		1.0f,  1.0f,  1.0f,
-		1.0f,  1.0f,  1.0f,
-		1.0f, -1.0f,  1.0f,
-		-1.0f, -1.0f,  1.0f,
-
-		-1.0f,  1.0f, -1.0f,
-		1.0f,  1.0f, -1.0f,
-		1.0f,  1.0f,  1.0f,
-		1.0f,  1.0f,  1.0f,
-		-1.0f,  1.0f,  1.0f,
-		-1.0f,  1.0f, -1.0f,
-
-		-1.0f, -1.0f, -1.0f,
-		-1.0f, -1.0f,  1.0f,
-		1.0f, -1.0f, -1.0f,
-		1.0f, -1.0f, -1.0f,
-		-1.0f, -1.0f,  1.0f,
-		1.0f, -1.0f,  1.0f
-	};
 	
 	VertexArray* screen = new VertexArray(std::move(screenQuad), std::move(screenIndices), 2);
 
@@ -152,6 +119,7 @@ int main() {
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 4, (void*)(2 * sizeof(float)));
 	screen->unBind();
+#endif;
 
 	std::vector < std::string> skyboxFaces = {
 		"res/textures/cubemaps/skybox/right.jpg",
@@ -190,18 +158,22 @@ int main() {
 	skyboxShader->setMat4("projection", projection);
 	skyboxShader->setInt("skybox", 0);
 
+#ifdef POST_PROCESS
 	screenShader->bind();
 	screenShader->setInt("screenTexture", 0);
 	screenShader->unBind();
-
+#endif
 	while (!window->shouldClose()) {
+#ifdef POST_PROCESS
 		glBindFramebuffer(GL_FRAMEBUFFER, screenBuffer->getFrameBufferID());
+#endif
 		glEnable(GL_DEPTH_TEST);
 		
 		renderer->prepareRender();
 
 		//Models
 		normalShader->bind();
+		normalShader->setFloat("time", glfwGetTime());
 
 		normalShader->setVec3("viewPos", viewPos);
 		normalShader->setMat4("model", Matrix4f::translation(Vector3f(0.0f, 0.0f, -15.0f)));
@@ -225,6 +197,7 @@ int main() {
 		skyboxShader->unBind();
 		
 		//Frame buffer rendering
+#ifdef POST_PROCESS
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
@@ -236,6 +209,7 @@ int main() {
 		renderer->render(screen);
 
 		screenShader->unBind();
+#endif
 
 		if (input->keyDown(GLFW_KEY_W))
 			viewPos.z += speed;
@@ -266,12 +240,13 @@ int main() {
 	delete cube;
 	delete skybox;
 	delete model;
+#ifdef POST_PROCESS
 	delete colorBuffer;
 	delete renderBuffer;
-
 	delete screenBuffer;
-	delete normalShader;
 	delete screenShader;
+#endif
+	delete normalShader;
 	delete renderer;
 	delete window;
 

@@ -8,6 +8,10 @@ uniform mat4 projection;
 uniform mat4 view;
 uniform mat4 model;
 
+out VS_OUT{
+	vec2 texCoords;
+} vs_out;
+
 out vec4 out_Color;
 out vec2 out_TexCoord;
 out vec3 out_Normal;
@@ -20,6 +24,7 @@ void main() {
 	out_Color = vec4(0.0f, 0.0f, pos.z / 2.0, 1.0);
 	out_FragPos = vec3(model * vec4(pos, 1.0));
 	out_TexCoord = texCoord;
+	//vs_out.texCoords = texCoord;
 	out_Normal = mat3(model) * normal;
 	//out_Normal = mat3(transpose(inverse(model)) * normal;
 }

@@ -3,14 +3,18 @@
 namespace engine {
 	namespace graphics {
 
-		Shader::Shader(const char* vertexShader, const char* fragmentShader) {
+		Shader::Shader(const char* vertexShader, const char* fragmentShader, const char* geometrySource) {
 			mProgramID = glCreateProgram();
 
 			mVertexShaderID = compileShader(vertexShader, GL_VERTEX_SHADER);
 			mFragmentShaderID = compileShader(fragmentShader, GL_FRAGMENT_SHADER);
+			if (geometrySource != nullptr)
+				mGeometryShaderID = compileShader(geometrySource, GL_GEOMETRY_SHADER);
 
 			glAttachShader(mProgramID, mVertexShaderID);
 			glAttachShader(mProgramID, mFragmentShaderID);
+			if (geometrySource != nullptr)
+				glAttachShader(mProgramID, mGeometryShaderID);
 
 			glLinkProgram(mProgramID);
 			glValidateProgram(mProgramID);
@@ -35,6 +39,8 @@ namespace engine {
 
 			glDeleteShader(mVertexShaderID);
 			glDeleteShader(mFragmentShaderID);
+			if (geometrySource != nullptr)
+				glDeleteShader(mGeometryShaderID);
 		}
 
 		Shader::~Shader() {
@@ -125,7 +131,17 @@ namespace engine {
 
 				glGetShaderInfoLog(shaderID, length, 0, buffer);
 				
-				std::cout << "An error ocurred whilst compiling " << ((type == GL_VERTEX_SHADER) ? "vertex shader" : "fragment shader") << std::endl;
+				std::string typeName;
+				if (type == GL_VERTEX_SHADER)
+					typeName = "vertex shader";
+				else if (type == GL_FRAGMENT_SHADER)
+					typeName = "fragment shader";
+				else if (type == GL_GEOMETRY_SHADER)
+					typeName = "geometry shader";
+				else
+					typeName = "SHADER TYPE NOT FOUND";
+
+				std::cout << "An error ocurred whilst compiling " << typeName.c_str() << std::endl;
 				std::cout << buffer << std::endl;
 				delete[] buffer;
 				return 0;

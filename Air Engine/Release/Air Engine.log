@@ -1,7 +1,12 @@
 ﻿  Main.cpp
+src\Main.cpp(176): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+  Mesh.cpp
+src\geometry\Mesh.cpp(92): warning C4018: '<': signed/unsigned mismatch
+  Model.cpp
+  Shader.cpp
   Generating code
-  1 of 1678 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+  55 of 1556 functions ( 3.5%) were compiled, the rest were copied from previous compilation.
+    2 functions were new in current compilation
+    75 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Air Engine.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Release\Air Engine.exe
