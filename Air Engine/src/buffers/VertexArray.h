@@ -2,16 +2,17 @@
 #include <glad/glad.h>
 #include <vector>
 #include <algorithm>
-
+#include "BufferObject.h"
+#include "Buffer.h"
 
 namespace engine {
 	namespace buffer {
 
-		struct VertexArray {
+		class VertexArray : public Buffer {
 
 			std::vector<float> mData;
 			std::vector<unsigned int> mIndices;
-			GLuint VAO = 0, VBO = 0, EBO = 0;
+			GLuint VBO = 0, EBO = 0;
 
 		public:
 			VertexArray(std::vector<float>&& data, std::vector<unsigned int>&& indices, int vertexSize = 3);
@@ -22,9 +23,10 @@ namespace engine {
 			
 			void unBind() const;
 
-			void assignAttribPointer(GLuint index, unsigned int size, GLenum dataType, bool normalized = false, GLuint stride = 0, void* offset = 0);
+			void assignAttribPointer(GLuint index, unsigned int size, GLenum dataType, bool normalized = false, GLuint stride = 0,
+				void* offset = 0, const BufferObject* bufferObject = nullptr);
 
-			inline const GLuint getVertexID() const { return VAO; }
+			void setAttribDivisor(GLuint index, GLuint value) const;
 
 			inline const std::vector<float>& getData() const { return mData; }
 

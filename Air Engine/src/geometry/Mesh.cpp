@@ -87,7 +87,7 @@ namespace engine {
 				const char* ccombined = combined->c_str();
 
 				shader.setInt(ccombined, i);
-				glBindTexture(GL_TEXTURE_2D, mTextures[i]->texture->getTextureID());
+				glBindTexture(GL_TEXTURE_2D, mTextures[i]->texture->getBufferID());
 				delete combined;
 			}
 			
@@ -122,7 +122,7 @@ namespace engine {
 				const char* ccombined = combined->c_str();
 
 				shader.setInt(ccombined, i);
-				glBindTexture(GL_TEXTURE_2D, mTextures[i]->texture->getTextureID());
+				glBindTexture(GL_TEXTURE_2D, mTextures[i]->texture->getBufferID());
 				delete combined;
 			}
 

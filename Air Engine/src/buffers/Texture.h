@@ -4,14 +4,12 @@
 #include <stb_image.h>
 #include <vector>
 #include <string>
+#include "Buffer.h"
 
-namespace engine {
-	namespace buffer {
+namespace engine { namespace buffer {
 
-		class Texture{
+		class Texture : public Buffer {
 
-			GLenum mType;
-			GLuint mTextureID;
 			int mWidth, mHeight, mColorChannels;
 			std::string mPath;
 
@@ -27,10 +25,6 @@ namespace engine {
 			void bind() const;
 
 			void unBind() const;
-
-			inline GLuint getTextureID() const { return mTextureID; }
-
-			inline GLenum getType() const { return mType; }
 
 			inline unsigned int getWidth() const { return mWidth; }
 

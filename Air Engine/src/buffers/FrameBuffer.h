@@ -3,14 +3,9 @@
 #include "Texture.h"
 #include "RenderBuffer.h"
 
-namespace engine {
-	namespace buffer {
+namespace engine { namespace buffer {
 
-		struct FrameBuffer {
-		private:
-
-			GLuint mFrameBufferID;
-
+		struct FrameBuffer : public Buffer {
 		public:
 			FrameBuffer();
 
@@ -25,8 +20,6 @@ namespace engine {
 			void addTextureBuffer(const Texture* texture, GLenum type) const;
 
 			void addRenderBuffer(const RenderBuffer* renderBuffer, GLenum type) const;
-
-			inline GLuint getFrameBufferID() { return mFrameBufferID; }
 		};
 
 } }

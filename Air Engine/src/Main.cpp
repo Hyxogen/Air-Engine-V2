@@ -9,6 +9,7 @@
 #include "math\Math.h"
 #include "geometry\Model.h"
 #include "buffers\Texture.h"
+#include "buffers\BufferObject.h"
 
 //#define POST_PROCESS
 
@@ -173,11 +174,8 @@ int main() {
 		modelMatrices[i] = model;
 	}
 
-	GLuint buffer;
-	glGenBuffers(1, &buffer);
-	glBindBuffer(GL_ARRAY_BUFFER, buffer);
-	glBufferData(GL_ARRAY_BUFFER, amount * sizeof(Matrix4f), &modelMatrices[0], GL_STATIC_DRAW);
-	std::cout << sizeof(Matrix4f) << " MATRIX SIZE" << std::endl;
+	BufferObject* bufferObject = new BufferObject(GL_ARRAY_BUFFER, &modelMatrices[0], amount * sizeof(Matrix4f));
+	//bufferObject->bind();
 	for (unsigned int i = 0; i < rock->mMeshes.size(); i++) {
 		GLuint VAO = rock->mMeshes[i]->getVaoID();
 
@@ -390,6 +388,7 @@ int main() {
 	delete screenShader;
 #endif
 
+	delete bufferObject;
 	delete normalShader;
 	delete defaultShader;
 	delete renderer;

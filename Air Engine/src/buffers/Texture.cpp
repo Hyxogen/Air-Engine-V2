@@ -1,9 +1,9 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "Texture.h"
 
-namespace engine {
-	namespace buffer {
-		//TODO add standard format
+namespace engine { namespace buffer {
+
+		//TODO add standard format like: uint32 etc.
 		Texture::Texture(unsigned int width, unsigned int height, GLenum target, GLenum colorChannels) {
 			mWidth = width;
 			mHeight = height;
@@ -16,8 +16,8 @@ namespace engine {
 			if (colorChannels == GL_RGBA)
 				mColorChannels = 4;
 
-			glGenTextures(1, &mTextureID);
-			glBindTexture(GL_TEXTURE_2D, mTextureID);
+			glGenTextures(1, &mBufferID);
+			glBindTexture(GL_TEXTURE_2D, mBufferID);
 			glTexImage2D(target, 0, colorChannels, width, height, 0, colorChannels, GL_UNSIGNED_BYTE, NULL);
 
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -32,8 +32,8 @@ namespace engine {
 			mType = GL_TEXTURE_2D;
 
 			if (data) {
-				glGenTextures(1, &mTextureID);
-				glBindTexture(GL_TEXTURE_2D, mTextureID);
+				glGenTextures(1, &mBufferID);
+				glBindTexture(GL_TEXTURE_2D, mBufferID);
 
 				GLenum format = 0;
 				if (mColorChannels == 1)
@@ -62,8 +62,8 @@ namespace engine {
 		}
 
 		Texture::Texture(std::vector<std::string> faces) {
-			glGenTextures(1, &mTextureID);
-			glBindTexture(GL_TEXTURE_CUBE_MAP, mTextureID);
+			glGenTextures(1, &mBufferID);
+			glBindTexture(GL_TEXTURE_CUBE_MAP, mBufferID);
 
 			mType = GL_TEXTURE_CUBE_MAP;
 
@@ -96,16 +96,17 @@ namespace engine {
 		}
 
 		Texture::~Texture() {
-			glDeleteTextures(1, &mTextureID);
+			glDeleteTextures(1, &mBufferID);
 			std::cout << "Deleting texture " << mPath.c_str() << std::endl;
 		}
 
 		void Texture::bind() const {
-			glBindTexture(mType, mTextureID);
+			glBindTexture(mType, mBufferID);
+			boundBuffers[mType] = mBufferID;
 		}
 
 		void Texture::unBind() const{
 			glBindTexture(mType, 0);
+			boundBuffers[mType] = 0;
 		}
-	}
-}
+} }

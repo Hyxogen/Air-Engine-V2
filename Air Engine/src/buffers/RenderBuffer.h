@@ -1,14 +1,10 @@
 #pragma once
 #include <glad\glad.h>
+#include "Buffer.h"
 
-namespace engine {
-	namespace buffer {
+namespace engine { namespace buffer {
 
-		struct RenderBuffer {
-		private:
-			GLuint mRenderBufferID;
-
-
+		class RenderBuffer : public Buffer {
 		public:
 			RenderBuffer(GLenum storage, unsigned int width, unsigned int height);
 
@@ -17,8 +13,6 @@ namespace engine {
 			void bind() const;
 
 			void unBind() const;
-
-			inline GLuint getRenderBufferID() const { return mRenderBufferID; }
 		};
 
 } }

@@ -1,14 +1,14 @@
 #pragma once
 #include <glad\glad.h>
 #include <iostream>
+#include "Buffer.h"
 
 namespace engine {
 	namespace buffer {
 
-		struct BufferObject {
+		struct BufferObject : public Buffer {
 		private:
-			GLuint mBufferID;
-			GLenum mType, mUsage, mSize;
+			GLenum mUsage, mSize;
 
 		public:
 			BufferObject(GLenum type, const void* data, unsigned int size, GLenum usage = GL_STATIC_DRAW);
@@ -24,10 +24,6 @@ namespace engine {
 			void* mapBuffer(GLenum action);
 
 			void unMapBuffer() const;
-
-			inline GLuint getBufferID() const { return mBufferID; }
-
-			inline GLenum getType() const { return mType; }
 
 			inline GLenum getSize() const { return mSize; }
 		};
