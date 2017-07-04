@@ -38,7 +38,7 @@ namespace engine {
 			glDeleteVertexArrays(1, &mBufferID);
 		}
 
-		void VertexArray::assignAttribPointer(GLuint index, unsigned int size, GLenum dataType, GLuint stride,
+		void VertexArray::assignAttribPointer(GLuint index, unsigned int size, uint32 dataType, GLuint stride,
 			void* offset, const BufferObject* bufferObject, GLboolean normalized) {
 
 			bind();

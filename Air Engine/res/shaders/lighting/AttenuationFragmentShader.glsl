@@ -22,6 +22,7 @@ struct Material {
 	float shininess;
 };
 
+uniform int phong = 0;
 uniform vec3 viewPos;
 uniform Material material;
 uniform Light light;
@@ -37,7 +38,9 @@ void main() {
 	vec3 lightColor = vec3(1.0, 1.0, 1.0);
 	//color = out_Color;
 	float distance = length(light.position - out_FragPos);
-	float attenuation = 1.0 / (1.0 + light.linear * distance + light.quadratic * (distance * distance));
+	//float attenuation = 1.0 / (1.0 + light.linear * distance + light.quadratic * (distance * distance));
+	float attenuation = 1.0 / (1.0 + light.linear * distance + light.quadratic * (distance));
+	//float attenuation = 1.0 / distance;
 
 	vec3 normal = normalize(out_Normal);
 	vec3 lightDir = normalize(light.position - out_FragPos);
@@ -48,8 +51,17 @@ void main() {
 
 	float specularStrength = 0.5;
 	vec3 viewDir = normalize(viewPos - out_FragPos);
+
+	vec3 halfwayDir = normalize(viewDir + lightDir);
 	vec3 reflectDir = reflect(-lightDir, normal);
-	float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
+	
+	
+	float spec = 0.0f;
+	if(phong == 1)//Phong
+		spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess / 4.0);
+	else//Blinn phong
+		float spec = pow(max(dot(out_Normal, halfwayDir), 0.0), material.shininess);
+	
 	vec3 specular = spec * vec3(texture(material.texture_specular1, out_TexCoord)) * light.specular;
 	specular *= attenuation;
 

@@ -151,6 +151,7 @@
     <ClInclude Include="src\buffers\BufferObject.h" />
     <ClInclude Include="src\buffers\FrameBuffer.h" />
     <ClInclude Include="src\buffers\RenderBuffer.h" />
+    <ClInclude Include="src\DataTypes.h" />
     <ClInclude Include="src\geometry\Mesh.h" />
     <ClInclude Include="src\geometry\Model.h" />
     <ClInclude Include="src\graphics\shader\Shader.h" />

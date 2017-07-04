@@ -8,10 +8,10 @@ namespace engine {
 
 		struct BufferObject : public Buffer {
 		private:
-			GLenum mUsage, mSize;
+			uint32 mUsage, mSize;
 
 		public:
-			BufferObject(GLenum type, const void* data, unsigned int size, GLenum usage = GL_STATIC_DRAW);
+			BufferObject(uint32 type, const void* data, unsigned int size, uint32 usage = GL_STATIC_DRAW);
 
 			~BufferObject();
 
@@ -19,13 +19,13 @@ namespace engine {
 
 			void unBind() const;
 
-			void writeData(const void* data, GLuint size, GLuint offset = 0);
+			void writeData(const void* data, uint32 size, uint32 offset = 0);
 
-			void* mapBuffer(GLenum action);
+			void* mapBuffer(uint32 action);
 
 			void unMapBuffer() const;
 
-			inline GLenum getSize() const { return mSize; }
+			inline uint32 getSize() const { return mSize; }
 		};
 
 } }

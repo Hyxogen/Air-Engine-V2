@@ -91,7 +91,7 @@ namespace engine {
 				std::stringstream ss;
 				std::string number;
 				std::string name = mTextures[i]->type;
-
+				//TODO optimize string stream
 				if (name == "texture_diffuse")
 					ss << diffuseTexCount++;
 				else if (name == "texture_specular")

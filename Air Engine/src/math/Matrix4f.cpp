@@ -18,31 +18,6 @@ namespace engine {
 			return Matrix4f(1.0f);
 		}
 
-		/*
-		Matrix4f Matrix4f::multiply(const Matrix4f& other) const {
-			Matrix4f out;
-
-			for (int z = 0; z < 4; z++) {
-				for (int y = 0; y < 4; y++) {
-					for (int x = 0; x < 4; x++) {
-						out.mElements[z + y * 4] += mElements[x + z * 4] * other.mElements[y + x * 4];
-#ifdef MAT_MUL_DEBUG
-						std::cout << "(" << mElements[x + z * 4] << " , " << other.mElements[y + x * 4] << ") + ";
-#endif
-					}
-#ifdef MAT_MUL_DEBUG
-					std::cout << " || ";
-#endif
-				}
-#ifdef MAT_MUL_DEBUG
-				std::cout << "\n" << std::endl;
-#endif
-			}
-
-			return out;
-		}
-		*/
-
 		Matrix4f Matrix4f::multiply(const Matrix4f& other) const {
 			Matrix4f out;
 			for (int y = 0; y < 4; y++) {
@@ -85,6 +60,7 @@ namespace engine {
 
 		Matrix4f Matrix4f::perspective(float ar, float fov, float near, float far) {
 			Matrix4f out;
+			//tanh or tan
 			float tanHalf = (float)tan(degToRad(fov) / 2.0f);
 
 			out.mElements[0 + 0 * 4] = 1.0f / (ar * tanHalf);
@@ -97,25 +73,6 @@ namespace engine {
 
 			return out;
 		}
-
-		/*
-		Matrix4f Matrix4f::perspective(float aspect, float fov, float near, float far) {
-			Matrix4f out(1.0f);
-			//If not working use: tanh, instead of: tan
-			float tanHalf = (float)tan(fov / 2.0f);
-
-			out.mElements[0 + 0 * 4] = 1.0f / (tanHalf * aspect);
-			out.mElements[1 + 1 * 4] = 1.0f / tanHalf;
-
-			out.mElements[2 + 2 * 4] = -(far + near) / (far - near);
-			out.mElements[2 + 3 * 4] = -(2.0f * far * near) / (far - near);
-
-			out.mElements[3 + 2 * 4] = -1.0f;
-			out.mElements[3 + 3 * 4] = 0.0f;
-
-			return out;
-		}
-		*/
 
 		Matrix4f Matrix4f::orthographic(float near, float far, float top, float bottom, float left, float right) {
 			Matrix4f out(1.0f);
@@ -156,6 +113,10 @@ namespace engine {
 		}
 
 		Matrix4f Matrix4f::transformation(const Matrix4f& translation, const Matrix4f& rotation, const Matrix4f& scale) {
-			return (scale.multiply(rotation)).multiply(translation);
+			return (scale * rotation) * translation;
+		}
+
+		Matrix4f operator*(const Matrix4f& a, const Matrix4f& b) {
+			return a.multiply(b);
 		}
 } }

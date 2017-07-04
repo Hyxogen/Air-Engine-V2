@@ -1,15 +1,16 @@
 #pragma once
 #include <glad\glad.h>
 #include <unordered_map>
+#include "..\DataTypes.h"
 
 namespace engine {
 	namespace buffer {
 
 		class Buffer {
 		protected:
-			static std::unordered_map<GLuint, GLuint> boundBuffers;
+			static std::unordered_map<uint32, uint32> boundBuffers;
 
-			GLuint mBufferID, mType;
+			uint32 mBufferID, mType;
 			
 		public:
 			virtual ~Buffer() = 0;
@@ -18,10 +19,14 @@ namespace engine {
 
 			virtual void unBind() const = 0;
 
+			virtual void bindTarget(uint32 target) const;
+
+			virtual void unBindTarget(uint32 target) const;
+
 			inline GLuint getBufferID() const { return mBufferID; }
 
 			inline GLuint getType() const { return mType; }
 
-			static inline bool isBound(GLuint target) { return boundBuffers[target] != 0; }
+			static inline bool isBound(uint32 target) { return boundBuffers[target] != 0; }
 		};
 } }

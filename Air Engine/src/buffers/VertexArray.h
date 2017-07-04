@@ -23,7 +23,7 @@ namespace engine {
 			
 			void unBind() const;
 
-			void assignAttribPointer(GLuint index, unsigned int size, GLenum dataType, GLuint stride = 0,
+			void assignAttribPointer(GLuint index, unsigned int size, uint32 dataType, GLuint stride = 0,
 				void* offset = 0, const BufferObject* bufferObject = nullptr, GLboolean normalized = GL_FALSE);
 
 			void setAttribDivisor(GLuint index, GLuint value) const;

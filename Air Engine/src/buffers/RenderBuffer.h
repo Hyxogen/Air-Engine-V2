@@ -6,7 +6,9 @@ namespace engine { namespace buffer {
 
 		class RenderBuffer : public Buffer {
 		public:
-			RenderBuffer(GLenum storage, unsigned int width, unsigned int height);
+			RenderBuffer(unsigned int width, unsigned int height, uint32 storage);
+
+			RenderBuffer(unsigned int width, unsigned int height, unsigned int samples, uint32 storage);
 
 			~RenderBuffer();
 

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <unordered_map>
 #include "../../math/Math.h"
+#include "..\..\DataTypes.h"
 
 namespace engine {
 	
@@ -36,7 +37,7 @@ namespace engine {
 		private:
 			void loadUniforms();
 			
-			const GLuint compileShader(const char* source, GLenum type);
+			const GLuint compileShader(const char* source, uint32 type);
 		};
 
 } }

@@ -14,7 +14,10 @@ namespace engine { namespace buffer {
 			std::string mPath;
 
 		public:
-			Texture(unsigned int width, unsigned int height, GLenum target = GL_TEXTURE_2D, GLenum colorChannels = GL_RGB);
+			Texture(unsigned int width, unsigned int height, uint32 target = GL_TEXTURE_2D, uint32 colorChannels = GL_RGB,
+				const void* data = NULL);
+
+			Texture(unsigned int width, unsigned int height, short numSamples);
 
 			Texture(const std::string& path);
 

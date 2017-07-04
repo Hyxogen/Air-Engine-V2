@@ -38,6 +38,8 @@ namespace engine {
 			static Matrix4f scale(const Vector3f& scale);
 
 			static Matrix4f transformation(const Matrix4f& translation, const Matrix4f& rotation, const Matrix4f& scale);
+
+			friend Matrix4f operator*(const Matrix4f& a, const Matrix4f& b);
 		};
 
 	}

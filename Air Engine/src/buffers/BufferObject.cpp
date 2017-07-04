@@ -3,7 +3,7 @@
 namespace engine {
 	namespace buffer {
 
-		BufferObject::BufferObject(GLenum type, const void* data, unsigned int size, GLenum usage) {
+		BufferObject::BufferObject(uint32 type, const void* data, unsigned int size, uint32 usage) {
 			mType = type;
 			mUsage = usage;
 			mSize = size;
@@ -28,7 +28,7 @@ namespace engine {
 			boundBuffers[mType] = 0;
 		}
 
-		void BufferObject::writeData(const void* data, GLuint size, GLuint offset) {
+		void BufferObject::writeData(const void* data, uint32 size, uint32 offset) {
 			if (mUsage = GL_STATIC_DRAW)
 				std::cout << "WARNING: writing to a buffer with GL_STATIC_DRAW is highly discouraged please use GL_DYNAMIC DRAW instead" 
 				<< std::endl;
@@ -38,7 +38,7 @@ namespace engine {
 			glBufferSubData(mType, offset, size, data);
 		}
 
-		void* BufferObject::mapBuffer(GLenum action) {
+		void* BufferObject::mapBuffer(uint32 action) {
 			bind();
 			return glMapBuffer(mType, action);
 		}

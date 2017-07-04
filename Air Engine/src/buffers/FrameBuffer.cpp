@@ -22,18 +22,34 @@ namespace engine {
 			glBindFramebuffer(mType, 0);
 			boundBuffers[mType] = 0;
 		}
-			
-		void FrameBuffer::addTextureBuffer(const Texture* texture, GLenum target) const {
+		
+		void FrameBuffer::bindTarget(uint32 target) const {
+			glBindFramebuffer(target, mBufferID);
+			boundBuffers[target] = mBufferID;
+		}
+
+		//TODO auto detect target
+		void FrameBuffer::unBindTarget(uint32 target) const {
+			glBindFramebuffer(target, 0);
+			boundBuffers[target] = 0;
+		}
+
+		void FrameBuffer::addTextureBuffer(const Texture* texture, uint32 target) const {
 			bind();
 			//glDrawBuffer(target);
 			texture->bind();
-			glFramebufferTexture2D(GL_FRAMEBUFFER, target, GL_TEXTURE_2D, texture->getBufferID(), 0);
+			glFramebufferTexture2D(GL_FRAMEBUFFER, target, texture->getType(), texture->getBufferID(), 0);
 		}
 
-		void FrameBuffer::addRenderBuffer(const RenderBuffer* renderBuffer, GLenum type) const {
+		void FrameBuffer::addRenderBuffer(const RenderBuffer* renderBuffer, uint32 type) const {
 			bind();
 			renderBuffer->bind();
 			glFramebufferRenderbuffer(GL_FRAMEBUFFER, type, GL_RENDERBUFFER, renderBuffer->getBufferID());
+		}
+
+		void FrameBuffer::blitBuffer(math::Vector4f srcBounds, math::Vector4f dstBounds, uint32 target, uint32 filter) {
+			glBlitFramebuffer(srcBounds.x, srcBounds.y, srcBounds.z, srcBounds.w, dstBounds.x, dstBounds.y, dstBounds.z, dstBounds.w,
+				target, filter);
 		}
 
 		bool FrameBuffer::isComplete() const {

@@ -11,8 +11,10 @@
 #include "buffers\Texture.h"
 #include "buffers\BufferObject.h"
 
-//#define POST_PROCESS
-
+#define POST_PROCESS
+//#define CUSTOM_MULTISAMPLE;
+//#define INSTANCED
+//TODO Replace all data types with custom data types
 int main() {
 	using namespace engine;
 	using namespace graphics;
@@ -30,6 +32,7 @@ int main() {
 	}
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
+	glEnable(GL_MULTISAMPLE);
 	//glEnable(GL_STENCIL_TEST);
 	//glEnable(GL_BLEND);
 	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -48,9 +51,11 @@ int main() {
 	const char* defaultVertexSource = File::readFile("res/shaders/lighting/AttenuationVertexShader.glsl");
 	const char* defaultFragmentSource = File::readFile("res/shaders/lighting/AttenuationFragmentShader.glsl");
 	const char* defaultGeometrySource = File::readFile("res/shaders/SimpleGeometryShader.glsl");
-
+	
+#ifdef INSTANCED
 	const char* instancedVertexSource = File::readFile("res/shaders/instanced/IAttenuationVertexShader.glsl");
 	const char* instancedFragmentSource = File::readFile("res/shaders/instanced/IAttenuationFragmentShader.glsl");
+#endif
 
 	const char* skyboxVertexSource = File::readFile("res/shaders/cubemap/CubemapVertexShader.glsl");
 	const char* skyboxFragmentSource = File::readFile("res/shaders/cubemap/CubemapFragmentShader.glsl");
@@ -65,7 +70,7 @@ int main() {
 #ifdef POST_PROCESS
 	FrameBuffer* screenBuffer = new FrameBuffer();
 	Texture* colorBuffer = new Texture(width, height);
-	RenderBuffer* renderBuffer = new RenderBuffer(GL_DEPTH24_STENCIL8, width, height);
+	RenderBuffer* renderBuffer = new RenderBuffer(width, height, GL_DEPTH24_STENCIL8);
 	colorBuffer->bind();
 	screenBuffer->addTextureBuffer(colorBuffer, GL_COLOR_ATTACHMENT0);
 	screenBuffer->bind();
@@ -74,14 +79,30 @@ int main() {
 	screenBuffer->addRenderBuffer(renderBuffer, GL_DEPTH_STENCIL_ATTACHMENT);
 
 	if (!screenBuffer->isComplete())
-		std::cout << "ERROR: Framebuffer is incomplete!" << std::endl;
+		std::cout << "ERROR: Screenbuffer is incomplete!" << std::endl;
 	screenBuffer->unBind();
 #endif;
+
+#ifdef CUSTOM_MULTISAMPLE
+	FrameBuffer* sampleFrameBuffer = new FrameBuffer();
+
+	Texture* sampleTexture = new Texture(width, height, (short) 4);
+	RenderBuffer* sampleRenderBuffer = new RenderBuffer(width, height, 4, GL_DEPTH24_STENCIL8);
+
+	sampleFrameBuffer->addTextureBuffer(sampleTexture, GL_COLOR_ATTACHMENT0);
+	sampleFrameBuffer->addRenderBuffer(sampleRenderBuffer, GL_DEPTH_STENCIL_ATTACHMENT);
+
+	if (!sampleFrameBuffer->isComplete())
+		std::cout << "ERROR: Sample Framebuffer is incomplete!" << std::endl;
+	sampleFrameBuffer->unBind();
+#endif
 
 	Shader* defaultShader = new Shader(defaultVertexSource, defaultFragmentSource);
 	Shader* skyboxShader = new Shader(skyboxVertexSource, skyboxFragmentSource);
 	Shader* normalShader = new Shader(normalVertexSource, normalFragmentSource, normalGeometrySource);
+#ifdef INSTANCED
 	Shader* instancedShader = new Shader(instancedVertexSource, instancedFragmentSource);
+#endif
 #ifdef POST_PROCESS
 	Shader* screenShader = new Shader(screenVertexSource, screenFragmentSource);
 #endif
@@ -90,8 +111,10 @@ int main() {
 	delete[] defaultFragmentSource;
 	delete[] defaultGeometrySource;
 
+#ifdef INSTANCED
 	delete[] instancedVertexSource;
 	delete[] instancedFragmentSource;
+#endif
 
 	delete[] skyboxVertexSource;
 	delete[] skyboxFragmentSource;
@@ -109,8 +132,10 @@ int main() {
 	screenShader->unBind();
 #endif
 
-	Model* model = new Model("res/models/planet/planet.obj");
+	Model* model = new Model("res/models/sponza/sponza.obj");
+#ifdef INSTANCED
 	Model* rock = new Model("res/models/rock/rock.obj");
+#endif
 	//Model* cube = new Model("res/models/plane/plane.obj");
 	Model* cube = new Model("res/models/cube/Cube.obj");
 
@@ -130,17 +155,15 @@ int main() {
 		0, 1, 2, 3, 4, 5
 	};
 
-	VertexArray* screen = new VertexArray(std::move(screenQuad), std::move(screenIndices), 2);
+	VertexArray* screen = new VertexArray(screenQuad, screenIndices);
 
-	glBindVertexArray(0);
 	screen->bind();
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 4, (void*)(2 * sizeof(float)));
+	screen->assignAttribPointer(0, 2, GL_FLOAT, 4 * sizeof(float));
+	screen->assignAttribPointer(1, 2, GL_FLOAT, 4 * sizeof(float), (void*)(2 * sizeof(float)));
 	screen->unBind();
-#endif;
 
+#endif;
+#ifdef INSTANCED
 	unsigned int amount = 100000;
 	float radius = 50.0f;
 	float offset = 2.5f;
@@ -195,6 +218,7 @@ int main() {
 
 		vertexArray->unBind();
 	}
+#endif
 
 	std::vector < std::string> skyboxFaces = {
 		"res/textures/cubemaps/skybox/right.jpg",
@@ -216,7 +240,7 @@ int main() {
 	defaultShader->setMat4("projection", projection);
 
 	defaultShader->setVec3("material.specular", Vector3f(1.0f, 1.0f, 1.0f));
-	defaultShader->setFloat("material.shininess", 32.0f);
+	defaultShader->setFloat("material.shininess", 32.0f * 4.0f);
 
 	defaultShader->setVec3("light.position", Vector3f(1.2f, 1.0f, 1.0f));
 	defaultShader->setVec3("light.ambient", Vector3f(1.0f, 1.0f, 1.0f));
@@ -235,10 +259,11 @@ int main() {
 
 	normalShader->bind();
 	normalShader->setMat4("projection", projection);
-
+#ifdef INSTANCED
 	instancedShader->bind();
 	instancedShader->setMat4("projection", projection);
 	instancedShader->unBind();
+#endif
 
 #ifdef POST_PROCESS
 	screenShader->bind();
@@ -246,14 +271,24 @@ int main() {
 	screenShader->unBind();
 #endif
 
+	int phong = 0;
+	bool gammaCorrect = false;
 	float lastTime = (float)Window::getTime();
 	float deltaSum = 0;
 	unsigned int numFrames = 0, numUpdates = 0;
 
 	while (!window->shouldClose()) {
+#ifndef CUSTOM_MULTISAMPLE
 #ifdef POST_PROCESS
-		glBindFramebuffer(GL_FRAMEBUFFER, screenBuffer->getFrameBufferID());
+		screenBuffer->bind();
+		//glBindFramebuffer(GL_FRAMEBUFFER, screenBuffer->getBufferID());
 #endif
+#else // !CUSTOM_CUSTOM_MULTISAMPLE
+		sampleFrameBuffer->bind();
+#endif
+		glDisable(GL_FRAMEBUFFER_SRGB);
+		
+
 		float currentTime = (float)Window::getTime();
 		float deltaTime = currentTime - lastTime;
 		lastTime = currentTime;
@@ -282,7 +317,7 @@ int main() {
 
 		model->draw(*defaultShader);
 		defaultShader->unBind();
-		
+#ifdef INSTANCED
 		instancedShader->bind();
 		instancedShader->setVec3("viewPos", viewPos);
 		instancedShader->setMat4("model", Matrix4f::translation(Vector3f(0.0f, 0.0f, -15.0f)));
@@ -292,6 +327,7 @@ int main() {
 		
 
 		instancedShader->unBind();
+#endif
 
 		/*
 		normalShader->bind();
@@ -316,6 +352,15 @@ int main() {
 		glEnable(GL_CULL_FACE);
 		skyboxShader->unBind();
 
+#ifdef CUSTOM_MULTISAMPLE
+		sampleFrameBuffer->bindTarget(GL_READ_FRAMEBUFFER);
+	    screenBuffer->bindTarget(GL_DRAW_FRAMEBUFFER);
+		sampleFrameBuffer->blitBuffer(Vector4f(0.0f, 0.0f, width, height), Vector4f(0.0f, 0.0f, width, height), GL_COLOR_BUFFER_BIT);
+#endif // CUSTOM_MULTISAMPLE
+
+		if (gammaCorrect)
+			glEnable(GL_FRAMEBUFFER_SRGB);
+
 		//Frame buffer rendering
 #ifdef POST_PROCESS
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -325,7 +370,7 @@ int main() {
 		screenShader->bind();
 		glDisable(GL_DEPTH_TEST);
 
-		glBindTexture(GL_TEXTURE_2D, colorBuffer->getTextureID());
+		glBindTexture(GL_TEXTURE_2D, colorBuffer->getBufferID());
 		renderer->render(screen);
 
 		screenShader->unBind();
@@ -357,6 +402,16 @@ int main() {
 		if (input->keyDown(GLFW_KEY_ESCAPE))
 			break;
 
+		if (input->keyPressed(GLFW_KEY_B)) {
+			phong = !phong;
+			defaultShader->bind();
+			defaultShader->setInt("phong", phong);
+			defaultShader->unBind();
+		}
+
+		if (input->keyPressed(GLFW_KEY_C))
+			gammaCorrect = !gammaCorrect;
+
 		if (deltaSum >= numUpdates / 60.0) {
 			input->update();
 			numUpdates++;
@@ -370,7 +425,6 @@ int main() {
 	}
 	defaultShader->unBind();
 
-	delete rock;
 	delete cube;
 	delete skybox;
 	delete model;
@@ -380,8 +434,16 @@ int main() {
 	delete screenBuffer;
 	delete screenShader;
 #endif
+#ifdef CUSTOM_MULTISAMPLE
+	delete sampleFrameBuffer;
+	delete sampleTexture;
+	delete sampleRenderBuffer;
+#endif
 
+#ifdef INSTANCED
+	delete rock;
 	delete bufferObject;
+#endif
 	delete normalShader;
 	delete defaultShader;
 	delete renderer;

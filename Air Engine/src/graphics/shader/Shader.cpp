@@ -104,7 +104,7 @@ namespace engine {
 			for (int i = 0; i < uniformCount; i++) {
 				int nameLength = 0;
 				int size = 0;
-				GLenum type = 0;
+				uint32 type = 0;
 
 				glGetActiveUniform(mProgramID, i, maxNameLength, &nameLength, &size, &type, (GLchar*)stringbuffer.data());
 				std::string name = std::string(&stringbuffer[0]);
@@ -114,7 +114,7 @@ namespace engine {
 			}
 		}
 
-		const GLuint Shader::compileShader(const char* source, GLenum type) {
+		const GLuint Shader::compileShader(const char* source, uint32 type) {
 			GLuint shaderID = glCreateShader(type);;
 
 			glShaderSource(shaderID, 1, &source, NULL);

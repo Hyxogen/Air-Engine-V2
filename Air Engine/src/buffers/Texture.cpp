@@ -4,7 +4,7 @@
 namespace engine { namespace buffer {
 
 		//TODO add standard format like: uint32 etc.
-		Texture::Texture(unsigned int width, unsigned int height, GLenum target, GLenum colorChannels) {
+		Texture::Texture(unsigned int width, unsigned int height, uint32 target, uint32 colorChannels, const void* data) {
 			mWidth = width;
 			mHeight = height;
 			mType = target;
@@ -17,13 +17,29 @@ namespace engine { namespace buffer {
 				mColorChannels = 4;
 
 			glGenTextures(1, &mBufferID);
-			glBindTexture(GL_TEXTURE_2D, mBufferID);
-			glTexImage2D(target, 0, colorChannels, width, height, 0, colorChannels, GL_UNSIGNED_BYTE, NULL);
+			bind();
+
+			glTexImage2D(target, 0, colorChannels, width, height, 0, colorChannels, GL_UNSIGNED_BYTE, data);
 
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-			glBindTexture(GL_TEXTURE_2D, 0);
+			//unBind();
+		}
+
+		Texture::Texture(unsigned int width, unsigned int height, short numSamples) {
+			mWidth = width;
+			mHeight = height;
+			mType = GL_TEXTURE_2D_MULTISAMPLE;
+
+			mColorChannels = 3; //GL_RGB
+
+			glGenTextures(1, &mBufferID);
+			bind();
+
+			glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, numSamples, GL_RGB, width, height, GL_TRUE);
+
+			//glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, 0);
 		}
 
 		Texture::Texture(const std::string& path) {
@@ -33,9 +49,9 @@ namespace engine { namespace buffer {
 
 			if (data) {
 				glGenTextures(1, &mBufferID);
-				glBindTexture(GL_TEXTURE_2D, mBufferID);
+				bind();
 
-				GLenum format = 0;
+				uint32 format = 0;
 				if (mColorChannels == 1)
 					format = GL_RED;
 				else if (mColorChannels == 3)
@@ -53,7 +69,7 @@ namespace engine { namespace buffer {
 				glTexImage2D(GL_TEXTURE_2D, 0, format, mWidth, mHeight, 0, format, GL_UNSIGNED_BYTE, data);
 				glGenerateMipmap(GL_TEXTURE_2D);
 
-				glBindTexture(GL_TEXTURE_2D, 0);
+				//unBind();
 				std::cout << "Loaded texture: " << path << std::endl;
 			}
 			else
@@ -63,11 +79,10 @@ namespace engine { namespace buffer {
 
 		Texture::Texture(std::vector<std::string> faces) {
 			glGenTextures(1, &mBufferID);
-			glBindTexture(GL_TEXTURE_CUBE_MAP, mBufferID);
-
 			mType = GL_TEXTURE_CUBE_MAP;
+			bind();
 
-			GLenum format = 0;
+			uint32 format = 0;
 			for (unsigned int i = 0; i < faces.size(); i++) {
 				unsigned char* data = stbi_load(faces[i].c_str(), &mWidth, &mHeight, &mColorChannels, 0);
 

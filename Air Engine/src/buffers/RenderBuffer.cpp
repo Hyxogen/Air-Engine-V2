@@ -3,14 +3,20 @@
 namespace engine {
 	namespace buffer {
 
-		RenderBuffer::RenderBuffer(GLenum storage, unsigned int width, unsigned int height) {
+		RenderBuffer::RenderBuffer(unsigned int width, unsigned int height, uint32 storage) {
 			mType = GL_RENDERBUFFER;
 			glGenRenderbuffers(1, &mBufferID);
 
-			glBindRenderbuffer(GL_RENDERBUFFER, mBufferID);
+			bind();
 			glRenderbufferStorage(GL_RENDERBUFFER, storage, width, height);
+		}
 
-			glBindRenderbuffer(GL_RENDERBUFFER, 0);
+		RenderBuffer::RenderBuffer(unsigned int width, unsigned int height, unsigned int samples, uint32 storage) {
+			mType = GL_RENDERBUFFER;
+			glGenRenderbuffers(1, &mBufferID);
+			bind();
+
+			glRenderbufferStorageMultisample(GL_RENDERBUFFER, samples, storage, width, height);
 		}
 
 		RenderBuffer::~RenderBuffer() {
