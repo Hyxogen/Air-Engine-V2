@@ -1,10 +1,7 @@
-﻿  Mesh.cpp
-  Model.cpp
-  Shader.cpp
-  Main.cpp
+﻿  Matrix4f.cpp
   Generating code
-  5 of 1984 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
-    4 functions were new in current compilation
-    28 functions had inline decision re-evaluated but remain unchanged
+  0 of 1896 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    10 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Air Engine.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Release\Air Engine.exe

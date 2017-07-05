@@ -11,7 +11,7 @@
 #include "buffers\Texture.h"
 #include "buffers\BufferObject.h"
 
-#define POST_PROCESS
+//#define POST_PROCESS
 //#define CUSTOM_MULTISAMPLE;
 //#define INSTANCED
 int main() {
@@ -95,6 +95,23 @@ int main() {
 		std::cout << "ERROR: Sample Framebuffer is incomplete!" << std::endl;
 	sampleFrameBuffer->unBind();
 #endif
+
+	const uint32 SHADOW_WIDTH = 1024, SHADOW_HEIGHT = SHADOW_WIDTH;
+	FrameBuffer* shadowBuffer = new FrameBuffer();
+	shadowBuffer->removeColorBuffer();
+
+	Texture* depthTexture = new Texture(SHADOW_WIDTH, SHADOW_HEIGHT,(uint32) GL_TEXTURE_2D, GL_DEPTH_COMPONENT);
+
+	depthTexture->setTextureParamI(GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	depthTexture->setTextureParamI(GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	depthTexture->setTextureParamI(GL_TEXTURE_WRAP_S, GL_REPEAT);
+	depthTexture->setTextureParamI(GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+	shadowBuffer->addTextureBuffer(depthTexture, GL_DEPTH_ATTACHMENT);
+
+	if (!shadowBuffer->isComplete())
+		std::cout << "ERROR: Shadow Framebuffer is incomplete!" << std::endl;
+	shadowBuffer->unBind();
 
 	Shader* defaultShader = new Shader(defaultVertexSource, defaultFragmentSource);
 	Shader* skyboxShader = new Shader(skyboxVertexSource, skyboxFragmentSource);
@@ -285,8 +302,6 @@ int main() {
 #else // !CUSTOM_CUSTOM_MULTISAMPLE
 		sampleFrameBuffer->bind();
 #endif
-		glDisable(GL_FRAMEBUFFER_SRGB);
-		
 
 		fl32 currentTime = (fl32)Window::getTime();
 		fl32 deltaTime = currentTime - lastTime;
@@ -304,6 +319,23 @@ int main() {
 
 		glEnable(GL_DEPTH_TEST);
 
+		glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
+		shadowBuffer->bind();
+
+		glClear(GL_DEPTH_BUFFER_BIT);
+		defaultShader->bind();
+
+		defaultShader->setVec3("viewPos", viewPos);
+		defaultShader->setMat4("model", Matrix4f::translation(Vector3f(0.0f, 0.0f, 0.0f)));
+
+		defaultShader->setMat4("view", Matrix4f::rotation(Vector3f(0.0f, 1.0f), -y).multiply(Matrix4f::translation(viewPos)));
+
+		model->draw(*defaultShader);
+		defaultShader->unBind();
+
+		shadowBuffer->unBind();
+
+		glViewport(0, 0, width, height);
 		renderer->prepareRender();
 
 		//Models
@@ -312,7 +344,8 @@ int main() {
 		defaultShader->setVec3("viewPos", viewPos);
 		defaultShader->setMat4("model", Matrix4f::translation(Vector3f(0.0f, 0.0f, 0.0f)));
 
-		defaultShader->setMat4("view", Matrix4f::rotation(Vector3f(0.0f, 1.0f), -y).multiply(Matrix4f::translation(viewPos)));
+		//defaultShader->setMat4("view", Matrix4f::rotation(Vector3f(0.0f, 1.0f), -y).multiply(Matrix4f::translation(viewPos)));
+		defaultShader->setMat4("view", Matrix4f::lookAt(viewPos, Vector3f(), Vector3f(0.0f, 1.0f)));
 
 		model->draw(*defaultShader);
 		defaultShader->unBind();
@@ -357,8 +390,8 @@ int main() {
 		sampleFrameBuffer->blitBuffer(Vector4f(0.0f, 0.0f, width, height), Vector4f(0.0f, 0.0f, width, height), GL_COLOR_BUFFER_BIT);
 #endif // CUSTOM_MULTISAMPLE
 
-		if (gammaCorrect)
-			glEnable(GL_FRAMEBUFFER_SRGB);
+		//if (gammaCorrect)
+		//	glEnable(GL_FRAMEBUFFER_SRGB);
 
 		//Frame buffer rendering
 #ifdef POST_PROCESS
@@ -408,8 +441,8 @@ int main() {
 			defaultShader->unBind();
 		}
 
-		if (input->keyPressed(GLFW_KEY_C))
-			gammaCorrect = !gammaCorrect;
+		//if (input->keyPressed(GLFW_KEY_C))
+		//	gammaCorrect = !gammaCorrect;
 
 		if (deltaSum >= numUpdates / 60.0) {
 			input->update();
@@ -427,6 +460,10 @@ int main() {
 	delete cube;
 	delete skybox;
 	delete model;
+
+	delete shadowBuffer;
+	delete depthTexture;
+
 #ifdef POST_PROCESS
 	delete colorBuffer;
 	delete renderBuffer;

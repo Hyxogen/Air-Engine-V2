@@ -29,6 +29,8 @@ namespace engine { namespace buffer {
 
 			void unBind() const;
 
+			void setTextureParamI(uint32 param, uint32 value);
+
 			inline unsigned int getWidth() const { return mWidth; }
 
 			inline unsigned int getHeight() const { return mHeight; }

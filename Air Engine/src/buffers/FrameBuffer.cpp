@@ -56,4 +56,10 @@ namespace engine {
 			bind();
 			return glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE;
 		}
+
+		void FrameBuffer::removeColorBuffer() {
+			bind();
+			glDrawBuffer(GL_NONE);
+			glReadBuffer(GL_NONE);
+		}
 } }

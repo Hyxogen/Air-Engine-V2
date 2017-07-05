@@ -20,6 +20,8 @@ namespace engine { namespace buffer {
 
 			virtual void unBindTarget(uint32 target) const;
 
+			void removeColorBuffer();
+
 			bool isComplete() const;
 
 			void addTextureBuffer(const Texture* texture, uint32 target) const;

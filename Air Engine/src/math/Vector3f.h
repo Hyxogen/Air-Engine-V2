@@ -43,7 +43,7 @@ namespace engine {
 
 			friend Vector3f operator+(Vector3f& a, Vector3f& b);
 
-			friend Vector3f operator-(Vector3f& a, Vector3f& b);
+			friend Vector3f operator-(const Vector3f& a, const Vector3f& b);
 
 			friend Vector3f operator*(Vector3f& vector, fl32 scalar);
 

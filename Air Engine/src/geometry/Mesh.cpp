@@ -48,22 +48,22 @@ namespace engine {
 
 		void Mesh::draw(graphics::Shader& shader) const {
 			
-			unsigned int diffuseTexCount = 1;
-			unsigned int specularTexCount = 1;
+			uint32 diffuseTexCount = 1;
+			uint32 specularTexCount = 1;
 
 			for (unsigned int i = 0; i < mTextures.size(); i++) {
 				glActiveTexture(GL_TEXTURE0 + i);
-				std::stringstream ss;
+				//std::stringstream ss;
 				std::string number;
 				std::string name = mTextures[i]->type;
 
 				if (name == "texture_diffuse")
-					ss << diffuseTexCount++;
+					number = std::to_string(diffuseTexCount++);
 				else if (name == "texture_specular")
-					ss << specularTexCount++;
+					number = std::to_string(specularTexCount++);
 				//continue;
 			//ss << 
-				number = ss.str();
+				//number = ss.str();
 
 				std::string* combined = new std::string("material." + name + number);
 
@@ -93,12 +93,12 @@ namespace engine {
 				std::string name = mTextures[i]->type;
 				//TODO optimize string stream
 				if (name == "texture_diffuse")
-					ss << diffuseTexCount++;
+					number = std::to_string(diffuseTexCount++);
 				else if (name == "texture_specular")
 					ss << specularTexCount++;
 				//continue;
 				//ss << 
-				number = ss.str();
+				//number = ss.str();
 
 				std::string* combined = new std::string("material." + name + number);
 

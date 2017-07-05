@@ -31,11 +31,15 @@ namespace engine {
 
 			static Matrix4f rotation(const Vector3f& axis, fl32 angle);
 
+			static Matrix4f rotation(const Vector3f& r, const Vector3f& u, const Vector3f& f);
+
 			static Matrix4f translation(const Vector3f& position);
 
 			static Matrix4f scale(const Vector3f& scale);
 
 			static Matrix4f transformation(const Matrix4f& translation, const Matrix4f& rotation, const Matrix4f& scale);
+
+			static Matrix4f lookAt(const Vector3f& position, const Vector3f& center, const Vector3f& up);
 
 			friend Matrix4f operator*(const Matrix4f& a, const Matrix4f& b);
 		};

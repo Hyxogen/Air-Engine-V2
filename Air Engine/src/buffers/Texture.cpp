@@ -115,6 +115,11 @@ namespace engine { namespace buffer {
 			std::cout << "Deleting texture " << mPath.c_str() << std::endl;
 		}
 
+		void Texture::setTextureParamI(uint32 param, uint32 value) {
+			bind();
+			glTexParameteri(mType, param, value);
+		}
+
 		void Texture::bind() const {
 			glBindTexture(mType, mBufferID);
 			boundBuffers[mType] = mBufferID;

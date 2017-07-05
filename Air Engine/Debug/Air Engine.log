@@ -1,3 +1,15 @@
-﻿  Main.cpp
+﻿  Vector3f.cpp
+  Matrix4f.cpp
+  Shader.cpp
+  Window.cpp
+  Mesh.cpp
+  Main.cpp
+  Generating Code...
+  Compiling...
+  Vector4f.cpp
+  Model.cpp
+  FrameBuffer.cpp
+g:\onedrive\documenten\visual studio 2017\projects\air engine\air engine\src\buffers\framebuffer.cpp(52): warning C4244: 'argument': conversion from 'fl32' to 'GLint', possible loss of data
+  Generating Code...
   Air Engine.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Debug\Air Engine.exe
   Air Engine.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Debug\Air Engine.pdb (Partial PDB)

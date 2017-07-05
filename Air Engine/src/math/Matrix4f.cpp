@@ -67,10 +67,10 @@ namespace engine {
 			out.mElements[1 + 1 * 4] = 1.0f / tanHalf;
 
 			out.mElements[2 + 2 * 4] = -((far + near) / (far - near));
+			//out.mElements[2 + 3 * 4] = -((2.0f * far * near) / (far - near));
+
 			out.mElements[2 + 3 * 4] = -((2.0f * far * near) / (far - near));
-
 			out.mElements[3 + 2 * 4] = -1.0f;
-
 			return out;
 		}
 
@@ -114,6 +114,57 @@ namespace engine {
 
 		Matrix4f Matrix4f::transformation(const Matrix4f& translation, const Matrix4f& rotation, const Matrix4f& scale) {
 			return (scale * rotation) * translation;
+		}
+
+		Matrix4f Matrix4f::rotation(const Vector3f& r, const Vector3f& u, const Vector3f& f) {
+			Matrix4f out(1.0f);
+
+			out.mElements[0 + 0 * 4] = r.x;
+			out.mElements[1 + 0 * 4] = u.y;
+			out.mElements[2 + 0 * 4] = f.z;
+
+			out.mElements[0 + 1 * 4] = r.x;
+			out.mElements[1 + 1 * 4] = u.y;
+			out.mElements[2 + 1 * 4] = f.z;
+
+			out.mElements[0 + 2 * 4] = r.x;
+			out.mElements[1 + 2 * 4] = u.y;
+			out.mElements[2 + 2 * 4] = f.z;
+
+			return out;
+		}
+
+		Matrix4f Matrix4f::lookAt(const Vector3f& position, const Vector3f& center, const Vector3f& up) {
+			Matrix4f out(1.0f);
+
+			Vector3f f = (center - position).normalize();
+			Vector3f s = (f.cross(up.normalize()));
+			Vector3f u = (s.normalize().cross(f)).normalize();
+
+			//Vector3f right = up.cross(center);
+
+			//Matrix4f rotation = Matrix4f::rotation(right, up, center);
+			//Matrix4f translation = Matrix4f::translation(position);
+
+			out.mElements[1 + 0 * 4] = s.x;
+			out.mElements[2 + 0 * 4] = s.y;
+			out.mElements[3 + 0 * 4] = s.z;
+			//out.mElements[0 + 3 * 4] = -(xaxis.dot(position));
+
+			out.mElements[1 + 1 * 4] = u.x;
+			out.mElements[2 + 1 * 4] = u.y;
+			out.mElements[3 + 1 * 4] = u.z;
+			//out.mElements[1 + 3 * 4] = -(yaxis.dot(position));
+
+			out.mElements[1 + 2 * 4] = -f.x;
+			out.mElements[2 + 2 * 4] = -f.y;
+			out.mElements[3 + 2 * 4] = -f.z;
+			//out.mElements[2 + 3 * 4] = -(zaxis.dot(position));
+
+			Matrix4f result = (out * Matrix4f::translation(Vector3f(-position.x, -position.y, -position.x)));
+
+			return result;
+			//return (rotation * translation);
 		}
 
 		Matrix4f operator*(const Matrix4f& a, const Matrix4f& b) {
