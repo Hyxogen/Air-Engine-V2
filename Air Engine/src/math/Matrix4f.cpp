@@ -1,4 +1,5 @@
 #include "Matrix4f.h"
+#define ACCESS(column, row) out.mElements[column + row * 4]
 
 namespace engine {
 	namespace math {
@@ -146,6 +147,18 @@ namespace engine {
 			//Matrix4f rotation = Matrix4f::rotation(right, up, center);
 			//Matrix4f translation = Matrix4f::translation(position);
 
+			ACCESS(1, 0) = s.x;
+			ACCESS(2, 0) = s.y;
+			ACCESS(3, 0) = s.z;
+
+			ACCESS(1, 1) = u.x;
+			ACCESS(2, 1) = u.y;
+			ACCESS(3, 1) = u.z;
+
+			ACCESS(1, 2) = -f.x;
+			ACCESS(2, 2) = -f.y;
+			ACCESS(3, 2) = -f.z;
+			/*
 			out.mElements[1 + 0 * 4] = s.x;
 			out.mElements[2 + 0 * 4] = s.y;
 			out.mElements[3 + 0 * 4] = s.z;
@@ -160,6 +173,7 @@ namespace engine {
 			out.mElements[2 + 2 * 4] = -f.y;
 			out.mElements[3 + 2 * 4] = -f.z;
 			//out.mElements[2 + 3 * 4] = -(zaxis.dot(position));
+			*/
 
 			Matrix4f result = (out * Matrix4f::translation(Vector3f(-position.x, -position.y, -position.x)));
 
