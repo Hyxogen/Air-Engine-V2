@@ -46,7 +46,13 @@ void main() {
 	vec3 lightDir = normalize(light.position - out_FragPos);
 	//vec3 lightDir = normalize(-light.direction);
 	float diff = max(dot(lightDir, normal), 0.0);
-	vec3 diffuse = diff * vec3(texture(material.texture_diffuse1, out_TexCoord)) * light.diffuse;
+
+	vec4 diffuseColor = texture(material.texture_diffuse1, out_TexCoord);
+
+	if (diffuseColor.a < 0.5)
+		discard;
+
+	vec3 diffuse = diff * vec3(diffuseColor) * light.diffuse;
 	diffuse *= attenuation;
 
 	float specularStrength = 0.5;

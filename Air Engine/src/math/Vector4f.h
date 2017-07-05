@@ -1,6 +1,7 @@
 #pragma once
 #include <math.h>
 #include "Matrix4f.h"
+#include "..\DataTypes.h"
 
 namespace engine {
 	namespace math {
@@ -11,13 +12,13 @@ namespace engine {
 
 			union {
 				struct {
-					float x, y, z, w;
+					fl32 x, y, z, w;
 				};
 
-				float mPoints[4];
+				fl32 mPoints[4];
 			};
 
-			Vector4f(float xx = 0.0f, float yy = 0.0f, float zz = 0.0f, float ww = 0.0f);
+			Vector4f(fl32 xx = 0.0f, fl32 yy = 0.0f, fl32 zz = 0.0f, fl32 ww = 0.0f);
 
 			Vector4f(Vector4f& vector);
 
@@ -27,11 +28,11 @@ namespace engine {
 
 			Vector4f substract(const Vector4f& other) const;
 
-			Vector4f multiply(float scalar) const;
+			Vector4f multiply(fl32 scalar) const;
 
 			Vector4f multiply(const Matrix4f& matrix) const;
 
-			Vector4f divide(float divider) const;
+			Vector4f divide(fl32 divider) const;
 
 			Vector4f operator-();
 
@@ -42,9 +43,9 @@ namespace engine {
 
 			friend Vector4f operator-(Vector4f& a, Vector4f& b);
 
-			friend Vector4f operator*(Vector4f& vector, float scalar);
+			friend Vector4f operator*(Vector4f& vector, fl32 scalar);
 
-			friend Vector4f operator/(Vector4f& vector, float divider);
+			friend Vector4f operator/(Vector4f& vector, fl32 divider);
 		};
 	}
 }

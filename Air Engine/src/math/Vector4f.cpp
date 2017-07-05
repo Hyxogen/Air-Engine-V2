@@ -4,7 +4,7 @@
 namespace engine {
 	namespace math {
 
-		Vector4f::Vector4f(float xx, float yy, float zz, float ww) {
+		Vector4f::Vector4f(fl32 xx, fl32 yy, fl32 zz, fl32 ww) {
 			x = xx;
 			y = yy;
 			z = zz;
@@ -37,7 +37,7 @@ namespace engine {
 			return add(other.invert());
 		}
 
-		Vector4f Vector4f::multiply(float scalar) const {
+		Vector4f Vector4f::multiply(fl32 scalar) const {
 			Vector4f out;
 
 			out.x = x * scalar;
@@ -61,7 +61,7 @@ namespace engine {
 			return out;
 		}
 
-		Vector4f Vector4f::divide(float divider) const {
+		Vector4f Vector4f::divide(fl32 divider) const {
 			Vector4f out;
 
 			out.x = x / divider;
@@ -83,11 +83,11 @@ namespace engine {
 			return a.substract(b);
 		}
 
-		Vector4f operator*(Vector4f& a, float scalar) {
+		Vector4f operator*(Vector4f& a, fl32 scalar) {
 			return a.multiply(scalar);
 		}
 
-		Vector4f operator/(Vector4f& vector, float divider) {
+		Vector4f operator/(Vector4f& vector, fl32 divider) {
 			return vector.divide(divider);
 		}
 	}

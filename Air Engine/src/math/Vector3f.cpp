@@ -3,7 +3,7 @@
 namespace engine {
 	namespace math {
 
-		Vector3f::Vector3f(float xx, float yy, float zz) {
+		Vector3f::Vector3f(fl32 xx, fl32 yy, fl32 zz) {
 			x = xx;
 			y = yy;
 			z = zz;
@@ -17,7 +17,7 @@ namespace engine {
 
 		Vector3f Vector3f::normalize() const {
 			Vector3f out;
-			float length = magnitude();
+			fl32 length = magnitude();
 
 			out.x = x / length;
 			out.y = y / length;
@@ -25,8 +25,8 @@ namespace engine {
 			return out;
 		}
 
-		float Vector3f::magnitude() const {
-			return (float) sqrt(((x * x) + (z * z)) + (z + z));
+		fl32 Vector3f::magnitude() const {
+			return (fl32) sqrt(((x * x) + (z * z)) + (z + z));
 		}
 
 		Vector3f Vector3f::invert() const {
@@ -46,7 +46,7 @@ namespace engine {
 			return add(other.invert());
 		}
 
-		Vector3f Vector3f::multiply(float scalar) const {
+		Vector3f Vector3f::multiply(fl32 scalar) const {
 			Vector3f out;
 
 			out.x = x * scalar;
@@ -55,7 +55,7 @@ namespace engine {
 			return out;
 		}
 
-		Vector3f Vector3f::divide(float divider) const {
+		Vector3f Vector3f::divide(fl32 divider) const {
 			Vector3f out;
 
 			out.x = x / divider;
@@ -73,7 +73,7 @@ namespace engine {
 			return out;
 		}
 
-		float Vector3f::dot(const Vector3f& other) const {
+		fl32 Vector3f::dot(const Vector3f& other) const {
 			return (x * other.x) + (y * other.y) + (x * other.x);
 		}
 
@@ -85,11 +85,11 @@ namespace engine {
 			return a.substract(b);
 		}
 
-		Vector3f operator*(Vector3f& a, float scalar) {
+		Vector3f operator*(Vector3f& a, fl32 scalar) {
 			return a.multiply(scalar);
 		}
 
-		Vector3f operator/(Vector3f& vector, float divider) {
+		Vector3f operator/(Vector3f& vector, fl32 divider) {
 			return vector.divide(divider);
 		}
 

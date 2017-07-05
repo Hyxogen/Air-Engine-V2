@@ -13,9 +13,9 @@ namespace engine {
 			BufferObject* mElementBuffer, *mVertexBuffer;
 
 		public:
-			VertexArray(std::vector<float> data, std::vector<unsigned int> indices);
+			VertexArray(std::vector<fl32> data, std::vector<uint32> indices);
 
-			VertexArray(const void* data, GLuint size, std::vector<unsigned int> indices);
+			VertexArray(const void* data, uint32 size, std::vector<unsigned int> indices);
 
 			~VertexArray();
 
@@ -23,12 +23,12 @@ namespace engine {
 			
 			void unBind() const;
 
-			void assignAttribPointer(GLuint index, unsigned int size, uint32 dataType, GLuint stride = 0,
+			void assignAttribPointer(uint32 index, unsigned int size, uint32 dataType, uint32 stride = 0,
 				void* offset = 0, const BufferObject* bufferObject = nullptr, GLboolean normalized = GL_FALSE);
 
-			void setAttribDivisor(GLuint index, GLuint value) const;
+			void setAttribDivisor(uint32 index, uint32 value) const;
 
-			inline unsigned int getVertexCount() const { return mVertexBuffer->getSize() / sizeof(float); }
+			inline unsigned int getVertexCount() const { return mVertexBuffer->getSize() / sizeof(fl32); }
 
 			inline unsigned int getIndicesCount() const { return mElementBuffer->getSize() / sizeof(unsigned int); }
 

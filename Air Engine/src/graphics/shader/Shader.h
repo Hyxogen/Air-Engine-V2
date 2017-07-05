@@ -11,11 +11,11 @@ namespace engine {
 
 		class Shader {
 
-			GLuint mProgramID, mVertexShaderID, mFragmentShaderID, mGeometryShaderID;
+			uint32 mProgramID, mVertexShaderID, mFragmentShaderID, mGeometryShaderID;
 			std::unordered_map<std::string, GLint> mCached;
 
 		public:
-			Shader(const char* vertexShader, const char* fragmentShader, const char* geometrySource = nullptr);
+			Shader(const uint8* vertexShader, const uint8* fragmentShader, const uint8* geometrySource = nullptr);
 			
 			~Shader();
 
@@ -23,11 +23,11 @@ namespace engine {
 			
 			void unBind();
 
-			void setFloat(const char* name, GLfloat value);
+			void setfl32(const char* name, fl32 value);
 
 			void setInt(const char* name, GLint value);
 
-			void setUInt(const char* name, GLuint value);
+			void setUInt(const char* name, uint32 value);
 
 			void setVec3(const char* name, const math::Vector3f& vector);
 
@@ -37,7 +37,7 @@ namespace engine {
 		private:
 			void loadUniforms();
 			
-			const GLuint compileShader(const char* source, uint32 type);
+			const uint32 compileShader(const uint8* source, uint32 type);
 		};
 
 } }

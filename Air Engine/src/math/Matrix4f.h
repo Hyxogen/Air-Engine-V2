@@ -2,9 +2,7 @@
 #include "Mathf.h"
 #include "Vector3f.h"
 #include "Vector4f.h"
-#ifdef MAT_MUL_DEBUG
-#include <iostream>
-#endif
+#include "..\DataTypes.h"
 
 namespace engine {
 	namespace math {
@@ -13,25 +11,25 @@ namespace engine {
 
 			union {
 				struct {
-					float mElements[4 * 4];
+					fl32 mElements[4 * 4];
 				};
 
 				struct {
-					float mRows[4][4];
+					fl32 mRows[4][4];
 				};
 			};
 
-			Matrix4f(float diagonal = 0.0f);
+			Matrix4f(fl32 diagonal = 0.0f);
 
 			Matrix4f multiply(const Matrix4f& other) const;
 
 			static Matrix4f identity();
 
-			static Matrix4f orthographic(float near, float far,float top, float bottom, float left, float right);
+			static Matrix4f orthographic(fl32 near, fl32 far,fl32 top, fl32 bottom, fl32 left, fl32 right);
 
-			static Matrix4f perspective(float ar, float fov, float near, float far);
+			static Matrix4f perspective(fl32 ar, fl32 fov, fl32 near, fl32 far);
 
-			static Matrix4f rotation(const Vector3f& axis, float angle);
+			static Matrix4f rotation(const Vector3f& axis, fl32 angle);
 
 			static Matrix4f translation(const Vector3f& position);
 

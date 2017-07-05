@@ -3,7 +3,7 @@
 namespace engine {
 	namespace math {
 
-		Matrix4f::Matrix4f(float diagonal) {
+		Matrix4f::Matrix4f(fl32 diagonal) {
 			for (int i = 0; i < 16; i++) {
 				mElements[i] = 0.0f;
 			}
@@ -22,7 +22,7 @@ namespace engine {
 			Matrix4f out;
 			for (int y = 0; y < 4; y++) {
 				for (int x = 0; x < 4; x++) {
-					float o = 0;
+					fl32 o = 0;
 					for (int c = 0; c < 4; c++) {
 						o += this->mElements[c + y * 4] * other.mElements[x + c * 4];
 					}
@@ -32,16 +32,16 @@ namespace engine {
 			return out;
 		}
 
-		Matrix4f Matrix4f::rotation(const Vector3f& axis, float angle) {
+		Matrix4f Matrix4f::rotation(const Vector3f& axis, fl32 angle) {
 			Matrix4f out(1.0f);
 
-			float s = (float)sin(degToRad(angle));
-			float c = (float)cos(degToRad(angle));
-			float omc = 1 - c;
+			fl32 s = (fl32)sin(degToRad(angle));
+			fl32 c = (fl32)cos(degToRad(angle));
+			fl32 omc = 1 - c;
 
-			float x = axis.x;
-			float y = axis.y;
-			float z = axis.z;
+			fl32 x = axis.x;
+			fl32 y = axis.y;
+			fl32 z = axis.z;
 
 			out.mElements[0 + 0 * 4] = c + x * omc;
 			out.mElements[1 + 0 * 4] = y * x * omc - z * s;
@@ -58,10 +58,10 @@ namespace engine {
 			return out;
 		}
 
-		Matrix4f Matrix4f::perspective(float ar, float fov, float near, float far) {
+		Matrix4f Matrix4f::perspective(fl32 ar, fl32 fov, fl32 near, fl32 far) {
 			Matrix4f out;
 			//tanh or tan
-			float tanHalf = (float)tan(degToRad(fov) / 2.0f);
+			fl32 tanHalf = (fl32)tan(degToRad(fov) / 2.0f);
 
 			out.mElements[0 + 0 * 4] = 1.0f / (ar * tanHalf);
 			out.mElements[1 + 1 * 4] = 1.0f / tanHalf;
@@ -74,7 +74,7 @@ namespace engine {
 			return out;
 		}
 
-		Matrix4f Matrix4f::orthographic(float near, float far, float top, float bottom, float left, float right) {
+		Matrix4f Matrix4f::orthographic(fl32 near, fl32 far, fl32 top, fl32 bottom, fl32 left, fl32 right) {
 			Matrix4f out(1.0f);
 
 			out.mElements[0 + 0 * 4] = 2.0f / (right - left);

@@ -29,7 +29,7 @@ namespace engine {
 		}
 
 		void BufferObject::writeData(const void* data, uint32 size, uint32 offset) {
-			if (mUsage = GL_STATIC_DRAW)
+			if (mUsage == GL_STATIC_DRAW)
 				std::cout << "WARNING: writing to a buffer with GL_STATIC_DRAW is highly discouraged please use GL_DYNAMIC DRAW instead" 
 				<< std::endl;
 

@@ -1,5 +1,6 @@
 #pragma once
 #include <math.h>
+#include "..\DataTypes.h"
 
 namespace engine {
 	namespace math {
@@ -8,19 +9,19 @@ namespace engine {
 
 			union {
 				struct {
-					float x, y;
+					fl32 x, y;
 				};
 
-				float mPoints[2];
+				fl32 mPoints[2];
 			};
 
-			Vector2f(float xx = 0.0f, float yy = 0.0f);
+			Vector2f(fl32 xx = 0.0f, fl32 yy = 0.0f);
 
 			Vector2f(Vector2f& vector);
 
 			Vector2f normalize() const;
 
-			float magnitude() const;
+			fl32 magnitude() const;
 
 			Vector2f invert() const;
 
@@ -28,11 +29,11 @@ namespace engine {
 
 			Vector2f substract(const Vector2f& other) const;
 
-			Vector2f multiply(float scalar) const;
+			Vector2f multiply(fl32 scalar) const;
 
-			Vector2f divide(float divider) const;
+			Vector2f divide(fl32 divider) const;
 
-			float dot(const Vector2f& other) const;
+			fl32 dot(const Vector2f& other) const;
 
 			Vector2f operator-();
 
@@ -42,9 +43,9 @@ namespace engine {
 
 			friend Vector2f operator-(Vector2f& a, Vector2f& b);
 
-			friend Vector2f operator*(Vector2f& vector, float scalar);
+			friend Vector2f operator*(Vector2f& vector, fl32 scalar);
 
-			friend Vector2f operator/(Vector2f& vector, float divider);
+			friend Vector2f operator/(Vector2f& vector, fl32 divider);
 
 			friend bool operator<(Vector2f& a, Vector2f& b);
 

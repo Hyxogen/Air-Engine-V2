@@ -3,18 +3,18 @@
 namespace engine {
 	namespace buffer {
 
-		VertexArray::VertexArray(std::vector<float> data, std::vector<unsigned int> indices) {
+		VertexArray::VertexArray(std::vector<fl32> data, std::vector<unsigned int> indices) {
 			glGenVertexArrays(1, &mBufferID);
 			glBindVertexArray(mBufferID);
 
-			mElementBuffer = new BufferObject(GL_ELEMENT_ARRAY_BUFFER, (void*)&indices[0], indices.size() * sizeof(unsigned int));
-			mVertexBuffer = new BufferObject(GL_ARRAY_BUFFER, (void*)&data[0], data.size() * sizeof(float));
+			mElementBuffer = new BufferObject(GL_ELEMENT_ARRAY_BUFFER, (void*)&indices[0], indices.size() * sizeof(uint32));
+			mVertexBuffer = new BufferObject(GL_ARRAY_BUFFER, (void*)&data[0], data.size() * sizeof(fl32));
 			//glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-			//glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(float), (void*)&data[0], GL_STATIC_DRAW);
+			//glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(fl32), (void*)&data[0], GL_STATIC_DRAW);
 			/*
 			glEnableVertexAttribArray(0);
-			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, vertexSize * sizeof(float), (void *) NULL);
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, vertexSize * sizeof(fl32), (void *) NULL);
 			*/
 			//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 			//glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(int), (void*)&indices[0], GL_STATIC_DRAW);
@@ -23,7 +23,7 @@ namespace engine {
 			
 		}
 
-		VertexArray::VertexArray(const void* data, GLuint size, std::vector<unsigned int> indices) {
+		VertexArray::VertexArray(const void* data, uint32 size, std::vector<unsigned int> indices) {
 			glGenVertexArrays(1, &mBufferID);
 			glBindVertexArray(mBufferID);
 
@@ -38,7 +38,7 @@ namespace engine {
 			glDeleteVertexArrays(1, &mBufferID);
 		}
 
-		void VertexArray::assignAttribPointer(GLuint index, unsigned int size, uint32 dataType, GLuint stride,
+		void VertexArray::assignAttribPointer(uint32 index, unsigned int size, uint32 dataType, uint32 stride,
 			void* offset, const BufferObject* bufferObject, GLboolean normalized) {
 
 			bind();
@@ -54,7 +54,7 @@ namespace engine {
 			glVertexAttribPointer(index, size, dataType, normalized, stride, offset);
 		}
 
-		void VertexArray::setAttribDivisor(GLuint index, GLuint value) const {
+		void VertexArray::setAttribDivisor(uint32 index, uint32 value) const {
 			bind();
 			glVertexAttribDivisor(index, value);
 		}

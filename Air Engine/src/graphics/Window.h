@@ -2,6 +2,7 @@
 #include <iostream>
 #include <GLFW\glfw3.h>
 #include "..\io\InputHandler.h"
+#include "..\DataTypes.h"
 
 namespace engine {
 
@@ -36,7 +37,7 @@ namespace engine {
 
 			inline unsigned int getHeight() { return mHeight; }
 
-			inline float getAspectRatio() { return (float)mWidth / (float) mHeight; }
+			inline fl32 getAspectRatio() { return (fl32)mWidth / (fl32) mHeight; }
 		};
 
 	}

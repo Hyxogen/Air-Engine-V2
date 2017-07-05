@@ -23,9 +23,9 @@ namespace engine {
 
 			virtual void unBindTarget(uint32 target) const;
 
-			inline GLuint getBufferID() const { return mBufferID; }
+			inline uint32 getBufferID() const { return mBufferID; }
 
-			inline GLuint getType() const { return mType; }
+			inline uint32 getType() const { return mType; }
 
 			static inline bool isBound(uint32 target) { return boundBuffers[target] != 0; }
 		};

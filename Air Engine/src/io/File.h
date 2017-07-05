@@ -3,6 +3,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include "..\DataTypes.h"
 
 namespace engine {
 	namespace io {
@@ -27,11 +28,11 @@ namespace engine {
 
 			void createFile();
 
-			const char* readFile();
+			uint8* readFile();
 
-			const std::vector<std::string> readFileLines();
+			std::vector<std::string> readFileLines();
 
-			const std::string readLine();
+			std::string readLine();
 
 			void write(const std::string& data);
 
@@ -39,6 +40,6 @@ namespace engine {
 
 			long long file_size();
 
-			static const char* readFile(const std::string& path);
+			static uint8* readFile(const std::string& path);
 		};
 } }

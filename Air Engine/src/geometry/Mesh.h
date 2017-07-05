@@ -38,7 +38,7 @@ namespace engine {
 			buffer::VertexArray* mVertexArray;
 
 		public:
-			GLuint indicesCount = 0;
+			uint32 indicesCount = 0;
 
 			Mesh(const std::vector<Vertex> vertices, const std::vector<unsigned int> indices, const std::vector<MeshTexture*> textures);
 
@@ -48,11 +48,11 @@ namespace engine {
 
 			void drawInstanced(graphics::Shader& shader, unsigned int count) const;
 
-			inline GLuint getVaoID() const { return mVertexArray->getBufferID(); }
+			inline uint32 getVaoID() const { return mVertexArray->getBufferID(); }
 
-			inline GLuint getVboID() const { return mVertexArray->getVertexBuffer()->getBufferID(); }
+			inline uint32 getVboID() const { return mVertexArray->getVertexBuffer()->getBufferID(); }
 
-			inline GLuint getEboID() const { return mVertexArray->getElementBuffer()->getBufferID(); }
+			inline uint32 getEboID() const { return mVertexArray->getElementBuffer()->getBufferID(); }
 
 			inline buffer::VertexArray* getVertexArray() const { return mVertexArray; }
 		private:

@@ -12,22 +12,22 @@ namespace engine {
 			close();
 		}
 
-		const char* File::readFile() {
+		uint8* File::readFile() {
 			if (!mFile.is_open()) open(std::ios::in | std::ios::binary);
 
 			std::streampos length = file_size();
 			mFile.seekg(0, std::ios::beg);
 
-			char* buffer = new char[(int)length];
+			uint8* buffer = new uint8[(int)length];
 			memset(buffer, 0, (int) length);
 			//buffer[length] = 0;
 
-			mFile.read(buffer, length);
+			mFile.read((char*)buffer, length);
 
 			return buffer;
 		}
 
-		const std::vector<std::string> File::readFileLines() {
+		std::vector<std::string> File::readFileLines() {
 			if (!mFile.is_open()) open(std::ios::in);
 			std::vector<std::string> out;
 			mFile.seekg(0, std::ios::beg);
@@ -56,7 +56,7 @@ namespace engine {
 			stream.close();
 		}
 
-		const std::string File::readLine() {
+		std::string File::readLine() {
 			if (!mFile.is_open()) open(std::ios::in);
 			std::string buffer;
 			std::getline(mFile, buffer);
@@ -77,7 +77,7 @@ namespace engine {
 			return mFile.tellg();
 		}
 
-		const char* File::readFile(const std::string& path) {
+		uint8* File::readFile(const std::string& path) {
 			File file(path);
 			if (!file.exists()) return nullptr;
 

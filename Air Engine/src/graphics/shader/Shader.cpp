@@ -3,7 +3,7 @@
 namespace engine {
 	namespace graphics {
 
-		Shader::Shader(const char* vertexShader, const char* fragmentShader, const char* geometrySource) {
+		Shader::Shader(const uint8* vertexShader, const uint8* fragmentShader, const uint8* geometrySource) {
 			mProgramID = glCreateProgram();
 
 			mVertexShaderID = compileShader(vertexShader, GL_VERTEX_SHADER);
@@ -56,7 +56,7 @@ namespace engine {
 			glUseProgram(0);
 		}
 
-		void Shader::setFloat(const char* name, GLfloat value) {
+		void Shader::setfl32(const char* name, fl32 value) {
 			glUniform1f(getUniformLocation(name), value);
 		}
 
@@ -64,7 +64,7 @@ namespace engine {
 			glUniform1i(getUniformLocation(name), value);
 		}
 
-		void Shader::setUInt(const char* name, GLuint value) {
+		void Shader::setUInt(const char* name, uint32 value) {
 			glUniform1ui(getUniformLocation(name), value);
 		}
 
@@ -114,10 +114,10 @@ namespace engine {
 			}
 		}
 
-		const GLuint Shader::compileShader(const char* source, uint32 type) {
-			GLuint shaderID = glCreateShader(type);;
+		const uint32 Shader::compileShader(const uint8* source, uint32 type) {
+			uint32 shaderID = glCreateShader(type);;
 
-			glShaderSource(shaderID, 1, &source, NULL);
+			glShaderSource(shaderID, 1, (const GLchar* const*)&source, NULL);
 			glCompileShader(shaderID);
 
 			GLint status;

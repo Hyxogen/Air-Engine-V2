@@ -1,25 +1,10 @@
-﻿  glad.c
-..\Dependencies\GLAD\src\glad.c(737): warning C4090: 'function': different 'const' qualifiers
-  Buffer.cpp
-  BufferObject.cpp
-  FrameBuffer.cpp
-src\buffers\FrameBuffer.cpp(52): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
-  RenderBuffer.cpp
-  VertexArray.cpp
-  Mesh.cpp
+﻿  Mesh.cpp
   Model.cpp
-  SimpleRenderer.cpp
   Shader.cpp
-  Texture.cpp
-  Window.cpp
-  File.cpp
-  InputHandler.cpp
   Main.cpp
-  Matrix4f.cpp
-  Vector2f.cpp
-  Vector3f.cpp
-  Vector4f.cpp
   Generating code
-  All 1984 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  5 of 1984 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+    4 functions were new in current compilation
+    28 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Air Engine.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Release\Air Engine.exe

@@ -3,7 +3,7 @@
 namespace engine {
 	namespace math {
 
-		Vector2f::Vector2f(float xx, float yy) {
+		Vector2f::Vector2f(fl32 xx, fl32 yy) {
 			x = xx;
 			y = yy;
 		}
@@ -15,15 +15,15 @@ namespace engine {
 
 		Vector2f Vector2f::normalize() const {
 			
-			float length = magnitude();
+			fl32 length = magnitude();
 
-			float xx = x / length;
-			float yy = y / length;
+			fl32 xx = x / length;
+			fl32 yy = y / length;
 			return Vector2f(xx, yy);
 		}
 
-		float Vector2f::magnitude() const {
-			return (float) sqrt((x * x) + (y * y));
+		fl32 Vector2f::magnitude() const {
+			return (fl32) sqrt((x * x) + (y * y));
 		}
 
 		Vector2f Vector2f::invert() const {
@@ -42,7 +42,7 @@ namespace engine {
 			return add(other.invert());
 		}
 
-		Vector2f Vector2f::multiply(float scalar) const {
+		Vector2f Vector2f::multiply(fl32 scalar) const {
 			Vector2f out;
 
 			out.x = x * scalar;
@@ -50,7 +50,7 @@ namespace engine {
 			return out;
 		}
 
-		Vector2f Vector2f::divide(float divider) const {
+		Vector2f Vector2f::divide(fl32 divider) const {
 			Vector2f out;
 
 			out.x = x / divider;
@@ -58,7 +58,7 @@ namespace engine {
 			return out;
 		}
 
-		float Vector2f::dot(const Vector2f& other) const {
+		fl32 Vector2f::dot(const Vector2f& other) const {
 			return (x * other.x) + (y * other.y);
 		}
 
@@ -70,11 +70,11 @@ namespace engine {
 			return a.substract(b);
 		}
 
-		Vector2f operator*(Vector2f& a, float scalar) {
+		Vector2f operator*(Vector2f& a, fl32 scalar) {
 			return a.multiply(scalar);
 		}
 
-		Vector2f operator/(Vector2f& vector, float divider) {
+		Vector2f operator/(Vector2f& vector, fl32 divider) {
 			return vector.divide(divider);
 		}
 

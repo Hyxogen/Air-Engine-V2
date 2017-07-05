@@ -14,7 +14,6 @@
 #define POST_PROCESS
 //#define CUSTOM_MULTISAMPLE;
 //#define INSTANCED
-//TODO Replace all data types with custom data types
 int main() {
 	using namespace engine;
 	using namespace graphics;
@@ -31,41 +30,41 @@ int main() {
 		return -1;
 	}
 	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_CULL_FACE);
+//	glEnable(GL_CULL_FACE);
 	glEnable(GL_MULTISAMPLE);
 	//glEnable(GL_STENCIL_TEST);
 	//glEnable(GL_BLEND);
 	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	//glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ZERO);
 
-	glCullFace(GL_BACK);
-	glFrontFace(GL_CCW);
+//	glCullFace(GL_BACK);
+//	glFrontFace(GL_CCW);
 	//glStencilFunc(GL_EQUAL, 1, 0x00);
 	//glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
 	glClearColor(0.0f, 0.5f, 0.5f, 1.0f);
 
 #ifdef POST_PROCESS
-	const char* screenVertexSource = File::readFile("res/shaders/postprocessing/SimpleQuadVertexShader.glsl");
-	const char* screenFragmentSource = File::readFile("res/shaders/postprocessing/SimpleQuadFragmentShader.glsl");
+	uint8* screenVertexSource = File::readFile("res/shaders/postprocessing/SimpleQuadVertexShader.glsl");
+	uint8* screenFragmentSource = File::readFile("res/shaders/postprocessing/SimpleQuadFragmentShader.glsl");
 #endif
-	const char* defaultVertexSource = File::readFile("res/shaders/lighting/AttenuationVertexShader.glsl");
-	const char* defaultFragmentSource = File::readFile("res/shaders/lighting/AttenuationFragmentShader.glsl");
-	const char* defaultGeometrySource = File::readFile("res/shaders/SimpleGeometryShader.glsl");
+	uint8* defaultVertexSource = File::readFile("res/shaders/lighting/AttenuationVertexShader.glsl");
+	uint8* defaultFragmentSource = File::readFile("res/shaders/lighting/AttenuationFragmentShader.glsl");
+	uint8* defaultGeometrySource = File::readFile("res/shaders/SimpleGeometryShader.glsl");
 	
 #ifdef INSTANCED
-	const char* instancedVertexSource = File::readFile("res/shaders/instanced/IAttenuationVertexShader.glsl");
-	const char* instancedFragmentSource = File::readFile("res/shaders/instanced/IAttenuationFragmentShader.glsl");
+	uint8* instancedVertexSource = File::readFile("res/shaders/instanced/IAttenuationVertexShader.glsl");
+	uint8* instancedFragmentSource = File::readFile("res/shaders/instanced/IAttenuationFragmentShader.glsl");
 #endif
 
-	const char* skyboxVertexSource = File::readFile("res/shaders/cubemap/CubemapVertexShader.glsl");
-	const char* skyboxFragmentSource = File::readFile("res/shaders/cubemap/CubemapFragmentShader.glsl");
+	uint8* skyboxVertexSource = File::readFile("res/shaders/cubemap/CubemapVertexShader.glsl");
+	uint8* skyboxFragmentSource = File::readFile("res/shaders/cubemap/CubemapFragmentShader.glsl");
 
-	const char* normalVertexSource = File::readFile("res/shaders/geometry/NormalVertexShader.glsl");
-	const char* normalFragmentSource = File::readFile("res/shaders/geometry/NormalFragmentShader.glsl");
-	const char* normalGeometrySource = File::readFile("res/shaders/geometry/NormalGeometryShader.glsl");
+	uint8* normalVertexSource = File::readFile("res/shaders/geometry/NormalVertexShader.glsl");
+	uint8* normalFragmentSource = File::readFile("res/shaders/geometry/NormalFragmentShader.glsl");
+	uint8* normalGeometrySource = File::readFile("res/shaders/geometry/NormalGeometryShader.glsl");
 
 
-	unsigned int width = window->getWidth(), height = window->getHeight();
+	uint32 width = window->getWidth(), height = window->getHeight();
 
 #ifdef POST_PROCESS
 	FrameBuffer* screenBuffer = new FrameBuffer();
@@ -140,7 +139,7 @@ int main() {
 	Model* cube = new Model("res/models/cube/Cube.obj");
 
 #ifdef POST_PROCESS
-	std::vector<float> screenQuad = {
+	std::vector<fl32> screenQuad = {
 		// positions   // texCoords
 		-1.0f,  1.0f,  0.0f, 1.0f,
 		-1.0f, -1.0f,  0.0f, 0.0f,
@@ -151,22 +150,22 @@ int main() {
 		1.0f,  1.0f,  1.0f, 1.0f
 	};
 
-	std::vector<unsigned int> screenIndices = {
+	std::vector<uint32> screenIndices = {
 		0, 1, 2, 3, 4, 5
 	};
 
 	VertexArray* screen = new VertexArray(screenQuad, screenIndices);
 
 	screen->bind();
-	screen->assignAttribPointer(0, 2, GL_FLOAT, 4 * sizeof(float));
-	screen->assignAttribPointer(1, 2, GL_FLOAT, 4 * sizeof(float), (void*)(2 * sizeof(float)));
+	screen->assignAttribPointer(0, 2, GL_FLOAT, 4 * sizeof(fl32));
+	screen->assignAttribPointer(1, 2, GL_FLOAT, 4 * sizeof(fl32), (void*)(2 * sizeof(fl32)));
 	screen->unBind();
 
 #endif;
 #ifdef INSTANCED
 	unsigned int amount = 100000;
-	float radius = 50.0f;
-	float offset = 2.5f;
+	fl32 radius = 50.0f;
+	fl32 offset = 2.5f;
 
 	Matrix4f* modelMatrices = new Matrix4f[amount];
 	srand((unsigned int) Window::getTime());
@@ -174,23 +173,23 @@ int main() {
 	for (unsigned int i = 0; i < amount; i++) {
 		Matrix4f model;
 
-		float angle = (float)i / (float)amount * 360.0f;
+		fl32 angle = (fl32)i / (fl32)amount * 360.0f;
 
-		float displacement = (rand() % (int)(2 * offset * 100)) / 100.0f - offset;
-		float x = sin(angle) * radius + displacement;
-
-		displacement = (rand() % (int)(2 * offset * 100)) / 100.0f - offset;
-		float y = displacement * 0.4f;
+		fl32 displacement = (rand() % (int)(2 * offset * 100)) / 100.0f - offset;
+		fl32 x = sin(angle) * radius + displacement;
 
 		displacement = (rand() % (int)(2 * offset * 100)) / 100.0f - offset;
-		float z = cos(angle) * radius + displacement;
+		fl32 y = displacement * 0.4f;
+
+		displacement = (rand() % (int)(2 * offset * 100)) / 100.0f - offset;
+		fl32 z = cos(angle) * radius + displacement;
 
 		Matrix4f translation = Matrix4f::translation(Vector3f(x, y, z));
 
-		float scale = (rand() % 20) / 100.0f + 0.05f;
+		fl32 scale = (rand() % 20) / 100.0f + 0.05f;
 		Matrix4f scaleMat = Matrix4f::scale(Vector3f(scale, scale, scale));
 
-		float rotAngle = (rand() % 360);
+		fl32 rotAngle = (rand() % 360);
 		Matrix4f rotation = Matrix4f::rotation(Vector3f(0.4f, 0.6f, 0.6f), rotAngle);
 
 		model = Matrix4f::transformation(translation, rotation, scaleMat);
@@ -200,7 +199,7 @@ int main() {
 	BufferObject* bufferObject = new BufferObject(GL_ARRAY_BUFFER, &modelMatrices[0], amount * sizeof(Matrix4f));
 	bufferObject->bind();
 	for (unsigned int i = 0; i < rock->mMeshes.size(); i++) {
-		GLuint VAO = rock->mMeshes[i]->getVaoID();
+		uint32 VAO = rock->mMeshes[i]->getVaoID();
 		VertexArray* vertexArray = rock->mMeshes[i]->getVertexArray();
 
 		vertexArray->bind();
@@ -240,19 +239,19 @@ int main() {
 	defaultShader->setMat4("projection", projection);
 
 	defaultShader->setVec3("material.specular", Vector3f(1.0f, 1.0f, 1.0f));
-	defaultShader->setFloat("material.shininess", 32.0f * 4.0f);
+	defaultShader->setfl32("material.shininess", 32.0f * 4.0f);
 
 	defaultShader->setVec3("light.position", Vector3f(1.2f, 1.0f, 1.0f));
 	defaultShader->setVec3("light.ambient", Vector3f(1.0f, 1.0f, 1.0f));
 	defaultShader->setVec3("light.diffuse", Vector3f(1.0f, 1.0f, 1.0f));
 	defaultShader->setVec3("light.specular", Vector3f(1.0f, 1.0f, 1.0f));
-	defaultShader->setFloat("light.linear", 0.0014f);
-	defaultShader->setFloat("light.quadratic", 0.000007f);
+	defaultShader->setfl32("light.linear", 0.0014f);
+	defaultShader->setfl32("light.quadratic", 0.000007f);
 
 	Vector3f viewPos, lightPos(1.2f, 1.0f, 1.0f);
 
-	float speed = 50.0f;
-	float y = 0.0f;
+	fl32 speed = 50.0f;
+	fl32 y = 0.0f;
 	skyboxShader->bind();
 	skyboxShader->setMat4("projection", projection);
 	skyboxShader->setInt("skybox", 0);
@@ -273,8 +272,8 @@ int main() {
 
 	int phong = 0;
 	bool gammaCorrect = false;
-	float lastTime = (float)Window::getTime();
-	float deltaSum = 0;
+	fl32 lastTime = (fl32)Window::getTime();
+	fl32 deltaSum = 0;
 	unsigned int numFrames = 0, numUpdates = 0;
 
 	while (!window->shouldClose()) {
@@ -289,8 +288,8 @@ int main() {
 		glDisable(GL_FRAMEBUFFER_SRGB);
 		
 
-		float currentTime = (float)Window::getTime();
-		float deltaTime = currentTime - lastTime;
+		fl32 currentTime = (fl32)Window::getTime();
+		fl32 deltaTime = currentTime - lastTime;
 		lastTime = currentTime;
 
 		deltaSum += deltaTime;
