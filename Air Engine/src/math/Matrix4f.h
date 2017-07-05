@@ -31,8 +31,6 @@ namespace engine {
 
 			static Matrix4f rotation(const Vector3f& axis, fl32 angle);
 
-			static Matrix4f rotation(const Vector3f& r, const Vector3f& u, const Vector3f& f);
-
 			static Matrix4f translation(const Vector3f& position);
 
 			static Matrix4f scale(const Vector3f& scale);

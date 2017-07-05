@@ -17,7 +17,7 @@ namespace engine {
 
 			Vector3f(fl32 xx = 0.0f, fl32 yy = 0.0f, fl32 zz = 0.0f);
 
-			Vector3f(Vector3f& vector);
+			Vector3f(const Vector3f& vector);
 
 			Vector3f normalize() const;
 

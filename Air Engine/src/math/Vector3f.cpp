@@ -9,7 +9,7 @@ namespace engine {
 			z = zz;
 		}
 
-		Vector3f::Vector3f(Vector3f& vector) {
+		Vector3f::Vector3f(const Vector3f& vector) {
 			x = vector.x;
 			y = vector.y;
 			z = vector.z;

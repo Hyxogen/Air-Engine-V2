@@ -265,7 +265,7 @@ int main() {
 	defaultShader->setfl32("light.linear", 0.0014f);
 	defaultShader->setfl32("light.quadratic", 0.000007f);
 
-	Vector3f viewPos, lightPos(1.2f, 1.0f, 1.0f);
+	Vector3f viewPos(10.0f, 10.0f, 5.0f), lightPos(1.2f, 1.0f, 1.0f);
 
 	fl32 speed = 50.0f;
 	fl32 y = 0.0f;
@@ -310,8 +310,8 @@ int main() {
 		deltaSum += deltaTime;
 		//std::cout << "Delta time: " << deltaTime << " Delta sum: " << deltaSum << std::endl;
 		if (deltaSum >= 1.0) {
-			window->setTitle(std::to_string((deltaTime * 1000.0)) + " ms || " + std::to_string(numFrames) + " fps" + " | " +
-				std::to_string(numUpdates) + " ups");
+			//window->setTitle(std::to_string((deltaTime * 1000.0)) + " ms || " + std::to_string(numFrames) + " fps" + " | " +
+			//	std::to_string(numUpdates) + " ups");
 			numUpdates = 0;
 			numFrames = 0;
 			deltaSum -= 1.0;
@@ -344,8 +344,8 @@ int main() {
 		defaultShader->setVec3("viewPos", viewPos);
 		defaultShader->setMat4("model", Matrix4f::translation(Vector3f(0.0f, 0.0f, 0.0f)));
 
-		//defaultShader->setMat4("view", Matrix4f::rotation(Vector3f(0.0f, 1.0f), -y).multiply(Matrix4f::translation(viewPos)));
-		defaultShader->setMat4("view", Matrix4f::lookAt(viewPos, Vector3f(), Vector3f(0.0f, 1.0f)));
+		defaultShader->setMat4("view", Matrix4f::rotation(Vector3f(0.0f, 1.0f), -y).multiply(Matrix4f::translation(viewPos)));
+		//defaultShader->setMat4("view", Matrix4f::lookAt(viewPos, Vector3f(0.0f, 1.0f), Vector3f(0.0f, 1.0f)));
 
 		model->draw(*defaultShader);
 		defaultShader->unBind();
@@ -383,6 +383,7 @@ int main() {
 		glDepthFunc(GL_LESS);
 		glEnable(GL_CULL_FACE);
 		skyboxShader->unBind();
+
 
 #ifdef CUSTOM_MULTISAMPLE
 		sampleFrameBuffer->bindTarget(GL_READ_FRAMEBUFFER);
