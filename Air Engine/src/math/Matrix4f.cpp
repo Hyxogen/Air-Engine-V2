@@ -147,17 +147,17 @@ namespace engine {
 			//Matrix4f rotation = Matrix4f::rotation(right, up, center);
 			//Matrix4f translation = Matrix4f::translation(position);
 
-			ACCESS(1, 0) = s.x;
-			ACCESS(2, 0) = s.y;
-			ACCESS(3, 0) = s.z;
+			ACCESS(0, 0) = s.x;
+			ACCESS(1, 0) = s.y;
+			ACCESS(2, 0) = s.z;
 
-			ACCESS(1, 1) = u.x;
-			ACCESS(2, 1) = u.y;
-			ACCESS(3, 1) = u.z;
+			ACCESS(0, 1) = u.x;
+			ACCESS(1, 1) = u.y;
+			ACCESS(2, 1) = u.z;
 
-			ACCESS(1, 2) = -f.x;
-			ACCESS(2, 2) = -f.y;
-			ACCESS(3, 2) = -f.z;
+			ACCESS(0, 2) = -f.x;
+			ACCESS(1, 2) = -f.y;
+			ACCESS(2, 2) = -f.z;
 			/*
 			out.mElements[1 + 0 * 4] = s.x;
 			out.mElements[2 + 0 * 4] = s.y;
