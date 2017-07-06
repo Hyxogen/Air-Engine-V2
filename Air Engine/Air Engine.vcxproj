@@ -186,6 +186,8 @@
     <None Include="res\shaders\lighting\DirectionalVertexShader.glsl" />
     <None Include="res\shaders\postprocessing\SimpleQuadFragmentShader.glsl" />
     <None Include="res\shaders\postprocessing\SimpleQuadVertexShader.glsl" />
+    <None Include="res\shaders\shadows\SimpleDepthFragmentShader.glsl" />
+    <None Include="res\shaders\shadows\SimpleDepthVertexShader.glsl" />
     <None Include="res\shaders\SimpleFragmentShader.glsl" />
     <None Include="res\shaders\SimpleGeometryShader.glsl" />
     <None Include="res\shaders\SimpleVertexShader.glsl" />

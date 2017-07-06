@@ -1,5 +1,6 @@
 #pragma once
 #include "Mathf.h"
+#include "Vector2f.h"
 #include "Vector3f.h"
 #include "Vector4f.h"
 #include "..\DataTypes.h"
@@ -37,7 +38,7 @@ namespace engine {
 
 			static Matrix4f transformation(const Matrix4f& translation, const Matrix4f& rotation, const Matrix4f& scale);
 
-			static Matrix4f lookAt(const Vector3f& position, const Vector3f& center, const Vector3f& up);
+			static Matrix4f lookAt(const Vector3f& position, const Vector3f& center);
 
 			friend Matrix4f operator*(const Matrix4f& a, const Matrix4f& b);
 		};

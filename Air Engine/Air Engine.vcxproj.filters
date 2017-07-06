@@ -156,6 +156,8 @@
     <None Include="res\shaders\geometry\NormalGeometryShader.glsl" />
     <None Include="res\shaders\instanced\IAttenuationFragmentShader.glsl" />
     <None Include="res\shaders\instanced\IAttenuationVertexShader.glsl" />
+    <None Include="res\shaders\shadows\SimpleDepthVertexShader.glsl" />
+    <None Include="res\shaders\shadows\SimpleDepthFragmentShader.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\shaders\lighting\DirectionalFragmentShader.glsl" />

@@ -26,7 +26,7 @@ namespace engine {
 		}
 
 		fl32 Vector3f::magnitude() const {
-			return (fl32) sqrt(x * x + y * y + z + z);
+			return (fl32) sqrt(x * x + y * y + z * z);
 		}
 
 		Vector3f Vector3f::invert() const {

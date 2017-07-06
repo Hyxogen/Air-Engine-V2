@@ -115,7 +115,7 @@ int main() {
 
 	Shader* defaultShader = new Shader(defaultVertexSource, defaultFragmentSource);
 	Shader* skyboxShader = new Shader(skyboxVertexSource, skyboxFragmentSource);
-	Shader* normalShader = new Shader(normalVertexSource, normalFragmentSource, normalGeometrySource);
+	//Shader* normalShader = new Shader(normalVertexSource, normalFragmentSource, normalGeometrySource);
 #ifdef INSTANCED
 	Shader* instancedShader = new Shader(instancedVertexSource, instancedFragmentSource);
 #endif
@@ -251,9 +251,10 @@ int main() {
 	InputHandler* input = window->getInputHandler();
 
 	Matrix4f projection = Matrix4f::perspective(window->getAspectRatio(), 70.0f, 0.1f, 5000.0f);
+	Matrix4f lightProjection = Matrix4f::orthographic(1.0f, 7.5f, 10.0f, -10.0f, -10.0f, 10.0f);
 
 	defaultShader->bind();
-	defaultShader->setMat4("projection", projection);
+	defaultShader->setMat4("projection", lightProjection);
 
 	defaultShader->setVec3("material.specular", Vector3f(1.0f, 1.0f, 1.0f));
 	defaultShader->setfl32("material.shininess", 32.0f * 4.0f);
@@ -273,8 +274,9 @@ int main() {
 	skyboxShader->setMat4("projection", projection);
 	skyboxShader->setInt("skybox", 0);
 
-	normalShader->bind();
-	normalShader->setMat4("projection", projection);
+	//normalShader->bind();
+	//normalShader->setMat4("projection", projection);
+	//normalShader->setMat4("projection", projection);
 #ifdef INSTANCED
 	instancedShader->bind();
 	instancedShader->setMat4("projection", projection);
@@ -310,8 +312,8 @@ int main() {
 		deltaSum += deltaTime;
 		//std::cout << "Delta time: " << deltaTime << " Delta sum: " << deltaSum << std::endl;
 		if (deltaSum >= 1.0) {
-			//window->setTitle(std::to_string((deltaTime * 1000.0)) + " ms || " + std::to_string(numFrames) + " fps" + " | " +
-			//	std::to_string(numUpdates) + " ups");
+			window->setTitle(std::to_string((deltaTime * 1000.0)) + " ms || " + std::to_string(numFrames) + " fps" + " | " +
+				std::to_string(numUpdates) + " ups");
 			numUpdates = 0;
 			numFrames = 0;
 			deltaSum -= 1.0;
@@ -319,6 +321,7 @@ int main() {
 
 		glEnable(GL_DEPTH_TEST);
 
+		//Shadows
 		glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
 		shadowBuffer->bind();
 
@@ -326,6 +329,7 @@ int main() {
 		defaultShader->bind();
 
 		defaultShader->setVec3("viewPos", viewPos);
+		defaultShader->setMat4("projection", lightProjection);
 		defaultShader->setMat4("model", Matrix4f::translation(Vector3f(0.0f, 0.0f, 0.0f)));
 
 		defaultShader->setMat4("view", Matrix4f::rotation(Vector3f(0.0f, 1.0f), -y).multiply(Matrix4f::translation(viewPos)));
@@ -342,10 +346,13 @@ int main() {
 		defaultShader->bind();
 
 		defaultShader->setVec3("viewPos", viewPos);
-		defaultShader->setMat4("model", Matrix4f::translation(Vector3f(0.0f, 0.0f, 0.0f)));
+		defaultShader->setMat4("projection", lightProjection);
+		//defaultShader->setMat4("model", Matrix4f::translation(Vector3f(0.0f, 0.0f, 0.0f)));
+		defaultShader->setMat4("model", Matrix4f::translation(viewPos.invert()));
+		defaultShader->setMat4("view", Matrix4f::rotation(Vector3f(0.0f, 1.0f), -y));
 
-		defaultShader->setMat4("view", Matrix4f::rotation(Vector3f(0.0f, 1.0f), -y).multiply(Matrix4f::translation(viewPos)));
-		//defaultShader->setMat4("view", Matrix4f::lookAt(viewPos, Vector3f(0.0f, 1.0f), Vector3f(0.0f, 1.0f)));
+//		defaultShader->setMat4("view", Matrix4f::rotation(Vector3f(0.0f, 1.0f), -y).multiply(Matrix4f::translation(viewPos)));
+		//defaultShader->setMat4("view", Matrix4f::lookAt(viewPos, Vector3f(0.0f, 1.0f, 0.0f)));
 
 		model->draw(*defaultShader);
 		defaultShader->unBind();
@@ -481,7 +488,7 @@ int main() {
 	delete rock;
 	delete bufferObject;
 #endif
-	delete normalShader;
+	//delete normalShader;
 	delete defaultShader;
 	delete renderer;
 	delete window;
