@@ -251,7 +251,7 @@ int main() {
 	InputHandler* input = window->getInputHandler();
 
 	Matrix4f projection = Matrix4f::perspective(window->getAspectRatio(), 70.0f, 0.1f, 5000.0f);
-	Matrix4f lightProjection = Matrix4f::orthographic(1.0f, 7.5f, 10.0f, -10.0f, -10.0f, 10.0f);
+	Matrix4f lightProjection = Matrix4f::orthographic(0.1f, 10.5f, -2.0f, 2.0f, -1.0f, 1.0f);
 
 	defaultShader->bind();
 	defaultShader->setMat4("projection", lightProjection);
@@ -321,6 +321,7 @@ int main() {
 
 		glEnable(GL_DEPTH_TEST);
 
+		/*
 		//Shadows
 		glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
 		shadowBuffer->bind();
@@ -339,9 +340,9 @@ int main() {
 
 		shadowBuffer->unBind();
 
+		*/
 		glViewport(0, 0, width, height);
 		renderer->prepareRender();
-
 		//Models
 		defaultShader->bind();
 
@@ -350,6 +351,7 @@ int main() {
 		//defaultShader->setMat4("model", Matrix4f::translation(Vector3f(0.0f, 0.0f, 0.0f)));
 		defaultShader->setMat4("model", Matrix4f::translation(viewPos.invert()));
 		defaultShader->setMat4("view", Matrix4f::rotation(Vector3f(0.0f, 1.0f), -y));
+		//defaultShader->setMat4("view", Matrix4f::lookAt(viewPos, Vector3f()));
 
 //		defaultShader->setMat4("view", Matrix4f::rotation(Vector3f(0.0f, 1.0f), -y).multiply(Matrix4f::translation(viewPos)));
 		//defaultShader->setMat4("view", Matrix4f::lookAt(viewPos, Vector3f(0.0f, 1.0f, 0.0f)));

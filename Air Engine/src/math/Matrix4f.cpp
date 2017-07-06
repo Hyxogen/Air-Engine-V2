@@ -76,7 +76,8 @@ namespace engine {
 			return out;
 		}
 
-		Matrix4f Matrix4f::orthographic(fl32 near, fl32 far, fl32 top, fl32 bottom, fl32 left, fl32 right) {
+		/*
+		Matrix4f Matrix4f::orthographic(fl32 near, fl32 far, fl32 left, fl32 right, fl32 bottom, fl32 top) {
 			Matrix4f out(1.0f);
 
 			out.mElements[0 + 0 * 4] = 2.0f / (right - left);
@@ -88,8 +89,22 @@ namespace engine {
 			out.mElements[3 + 2 * 4] = -((far + near) / (far - near));
 
 			return out;
-		}
+		}*/
 
+		
+		Matrix4f Matrix4f::orthographic(fl32 near, fl32 far, fl32 left, fl32 right, fl32 bottom, fl32 top) {
+			Matrix4f out(1.0f);
+
+			out.mElements[0 + 0 * 4] = 2.0f / (right - left);
+			out.mElements[1 + 1 * 4] = 2.0f / (top - bottom);
+			out.mElements[2 + 2 * 4] = 2.0f / (near - far);
+
+			out.mElements[3 + 0 * 4] = -(left + right) / (left - right);
+			out.mElements[3 + 1 * 4] = -(bottom + top) / (bottom - top);
+			out.mElements[3 + 2 * 4] = -(far + near) / (far - near);
+
+			return out;
+		}
 
 		Matrix4f Matrix4f::translation(const Vector3f& position) {
 			Matrix4f out(1.0f);

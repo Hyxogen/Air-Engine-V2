@@ -48,5 +48,6 @@ void main() {
 	float average = 0.2126 * result.x + 0.7152 * result.y + 0.0722 * result.z;
 
 	//out_Color = vec4(col, 1.0);
-	out_Color = texture(screenTexture, TexCoord);
+	float depth = texture(screenTexture, TexCoord).r;
+	out_Color = vec4(vec3(depth), 1.0);
 }
