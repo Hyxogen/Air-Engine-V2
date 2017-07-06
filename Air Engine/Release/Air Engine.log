@@ -1,7 +1,11 @@
 ﻿  Main.cpp
+  Shader.cpp
+  Matrix4f.cpp
+src\math\Matrix4f.cpp(138): warning C4244: 'initializing': conversion from 'double' to 'fl32', possible loss of data
+src\math\Matrix4f.cpp(140): warning C4244: 'initializing': conversion from 'double' to 'fl32', possible loss of data
   Generating code
-  2 of 1888 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+  2 of 1887 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    4 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Air Engine.vcxproj -> G:\Onedrive\Documenten\Visual Studio 2017\Projects\Air Engine\Release\Air Engine.exe

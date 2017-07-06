@@ -31,7 +31,7 @@ int main() {
 	}
 	glEnable(GL_DEPTH_TEST);
 //	glEnable(GL_CULL_FACE);
-	glEnable(GL_MULTISAMPLE);
+	//glEnable(GL_MULTISAMPLE);
 	//glEnable(GL_STENCIL_TEST);
 	//glEnable(GL_BLEND);
 	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -47,8 +47,8 @@ int main() {
 	uint8* screenVertexSource = File::readFile("res/shaders/postprocessing/SimpleQuadVertexShader.glsl");
 	uint8* screenFragmentSource = File::readFile("res/shaders/postprocessing/SimpleQuadFragmentShader.glsl");
 #endif
-	uint8* defaultVertexSource = File::readFile("res/shaders/lighting/AttenuationVertexShader.glsl");
-	uint8* defaultFragmentSource = File::readFile("res/shaders/lighting/AttenuationFragmentShader.glsl");
+	uint8* defaultVertexSource = File::readFile("res/shaders/SimpleVertexShader.glsl");
+	uint8* defaultFragmentSource = File::readFile("res/shaders/SimpleFragmentShader.glsl");
 	uint8* defaultGeometrySource = File::readFile("res/shaders/SimpleGeometryShader.glsl");
 	
 #ifdef INSTANCED
@@ -80,7 +80,7 @@ int main() {
 	if (!screenBuffer->isComplete())
 		std::cout << "ERROR: Screenbuffer is incomplete!" << std::endl;
 	screenBuffer->unBind();
-#endif;
+#endif
 
 #ifdef CUSTOM_MULTISAMPLE
 	FrameBuffer* sampleFrameBuffer = new FrameBuffer();
@@ -251,10 +251,10 @@ int main() {
 	InputHandler* input = window->getInputHandler();
 
 	Matrix4f projection = Matrix4f::perspective(window->getAspectRatio(), 70.0f, 0.1f, 5000.0f);
-	Matrix4f lightProjection = Matrix4f::orthographic(0.1f, 10.5f, -2.0f, 2.0f, -1.0f, 1.0f);
+	Matrix4f lightProjection = Matrix4f::orthographic(0.0f, 1000.0f, 0, width, 0.0f, height);
 
 	defaultShader->bind();
-	defaultShader->setMat4("projection", lightProjection);
+	defaultShader->setMat4("projection", projection);
 
 	defaultShader->setVec3("material.specular", Vector3f(1.0f, 1.0f, 1.0f));
 	defaultShader->setfl32("material.shininess", 32.0f * 4.0f);
@@ -349,9 +349,9 @@ int main() {
 		defaultShader->setVec3("viewPos", viewPos);
 		defaultShader->setMat4("projection", lightProjection);
 		//defaultShader->setMat4("model", Matrix4f::translation(Vector3f(0.0f, 0.0f, 0.0f)));
-		defaultShader->setMat4("model", Matrix4f::translation(viewPos.invert()));
-		defaultShader->setMat4("view", Matrix4f::rotation(Vector3f(0.0f, 1.0f), -y));
-		//defaultShader->setMat4("view", Matrix4f::lookAt(viewPos, Vector3f()));
+		defaultShader->setMat4("model", Matrix4f::translation(viewPos));
+		//defaultShader->setMat4("view", Matrix4f::rotation(Vector3f(0.0f, 1.0f), -y));
+		defaultShader->setMat4("view", Matrix4f::lookAt(viewPos, Vector3f()));
 
 //		defaultShader->setMat4("view", Matrix4f::rotation(Vector3f(0.0f, 1.0f), -y).multiply(Matrix4f::translation(viewPos)));
 		//defaultShader->setMat4("view", Matrix4f::lookAt(viewPos, Vector3f(0.0f, 1.0f, 0.0f)));
@@ -384,7 +384,8 @@ int main() {
 		glDisable(GL_CULL_FACE);
 
 		skyboxShader->bind();
-		skyboxShader->setMat4("view", Matrix4f::rotation(Vector3f(0.0f, 1.0f), -y));
+		skyboxShader->setMat4("projection", projection);
+		skyboxShader->setMat4("view", Matrix4f::rotation(Vector3f(0.0f, 1.0f), y));
 		//glBindTexture(GL_TEXTURE_CUBE_MAP, skybox->getTextureID());
 		skybox->bind();
 

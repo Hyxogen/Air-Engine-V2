@@ -97,11 +97,15 @@ namespace engine {
 
 			out.mElements[0 + 0 * 4] = 2.0f / (right - left);
 			out.mElements[1 + 1 * 4] = 2.0f / (top - bottom);
-			out.mElements[2 + 2 * 4] = 2.0f / (near - far);
+			out.mElements[2 + 2 * 4] = 2.0f / (far - near);
 
-			out.mElements[3 + 0 * 4] = -(left + right) / (left - right);
-			out.mElements[3 + 1 * 4] = -(bottom + top) / (bottom - top);
-			out.mElements[3 + 2 * 4] = -(far + near) / (far - near);
+			out.mElements[0 + 3 * 4] = -(right + left) / (right - left);
+			out.mElements[1 + 3 * 4] = -(top + bottom) / (top - bottom);
+			out.mElements[2 + 3 * 4] = -(far + near) / (far - near);
+
+			//out.mElements[3 + 0 * 4] = -(right + left) / (right - left);
+			//out.mElements[3 + 1 * 4] = -(top + bottom) / (top - bottom);
+			//out.mElements[3 + 2 * 4] = -(far + near) / (far - near);
 
 			return out;
 		}
