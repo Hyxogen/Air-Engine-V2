@@ -1,1 +1,6 @@
-*.opendb
+.vs
+*.psess
+*.vspx
+Release
+Debug
+*.etl
